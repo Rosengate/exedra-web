@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans'), local('OpenSans-Light'), url(opensans.woff) format('woff');
+}
