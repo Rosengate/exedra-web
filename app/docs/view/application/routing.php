@@ -1,6 +1,6 @@
 <h1>Routing</h1>
 <p>The main component of exedra, that basically front-route every single request for your application based on your designed map of routes.</p>
-<p>To continue, use the same index.php from the last topic.</p>
+<p>If you're still on learning, please use the same index.php from the last topic.</p>
 <pre><code>
 require_once "../exedra/Exedra/Exedra.php";
 
@@ -17,7 +17,7 @@ $exedra->dispatch();
 <pre><code>
 $app->map->addRoute(array(
 	'test'	=> ['method'=> 'any', 'uri'=>'test-uri', 'execute'=> function(){ }], //any method
-	'test2' => ['method'=> 'get,post', 'uri'=>'anothertest', 'execute'=> function(){ }], //only GET and POST
+	'test2' => ['method'=> 'get,post', 'uri'=>'test-uri2', 'execute'=> function(){ }], //only permit GET and POST
 	'test3' => ['uri'=>'lasttest', 'execute'=> function(){ }] //not specifying will set permitted method to any methods.
 ));
 </code></pre>
@@ -70,10 +70,27 @@ $app->map->addRoute(array(
 ));
 </code></pre>
 <p><b>Behaviour :</b><br>
-1. To use $app, use just need to 'use' the variable from the outer scope. Or, you may just simply retrieve it through $exe, like this :
+1. To use $app, you just need to 'use' the variable from the outer scope. Or, you may just simply retrieve it through $exe, like this :
 <pre><code>
 $app = $exe->app;
 </code></pre>
-2. By default, the $exe instance is relatively referred to the parent of the current route level. This can be seen by route 'general.by-exe', that you only need to write the route based on the current level, but you may later set this route prefixing later by method setRoutePrefix() on $exe instance. (covered later)<br>
-3. To escape and use the absolute route by the $exe instance, just use '<b>@</b>' at the beginning of route. Example can be shown on route 'general.by-exe2'
+2. By default, the $exe instance is relatively referred to the current route prefix. Route prefix can be set, else, it will use the current level route node. Such affected component(s) are like URL builder.<br>
+3. To escape and use the absolute route by the $exe instance, just use '<b>@</b>' at the beginning of route.<br>
+Example can be shown on route 'general.by-exe2'
 </p>
+<h2>6. False URI</h2>
+<p>Setting up false flag on uri, will deny an HTTP request entry into that route. This may be good, if you want the route to solely be used somewhere.</p>
+<pre><code>
+$app->map->addRoute(array(
+	'error'=> ['uri'=>false, 'execute'=> function(){ }]
+));
+</code></pre>
+<h2>7. Subapplication</h2>
+<p>You may set sub-application as route parameter, using key '<b>subapp</b>'. This will affect builder like controller and view on the current and following route to use the folder based on sub-application value set.</p>
+<pre><code>
+$app->map->addRoute(array(
+	'admin'=> ['uri'=> 'dashboard', 'subapp'=> 'admin', 'subroute'=> array(
+		'default'=> ['uri'=> '[:controller]/[**:action]']
+	)]
+));
+</code></pre>

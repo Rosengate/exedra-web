@@ -8,6 +8,12 @@ $app = $exedra->build("app", function($app)
 	$app->setFailRoute('doc.error');
 
 	$app->map->addRoute(array(
+		"main"=>['execute'=> function($exe){
+			$exe->url->setBase('http://localhost/side/exedra-web');
+			$exe->url->setAsset('http://localhost/side/exedra-web/assets');
+
+			$docsurl = $exe->url->create('doc.default', ['folder'=> 'application', 'file'=> 'boot']);
+			return "Building exedra homebase.<br>Status : on <a href='$docsurl'>documentation</a> level.";}],
 		"doc"=> ['uri'=>'documentation', 'subapp'=>'docs', 'subroute'=>[
 			'error'=>['uri'=>false, 'execute'=>function($exe)
 			{
