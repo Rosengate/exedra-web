@@ -44,6 +44,11 @@
 				padding:0px;
 				tab-size: 4;
 			}
+
+			.file-not-exist
+			{
+				opacity: 0.5;
+			}
 		</style>
 	</head>
 	<body>
@@ -62,8 +67,9 @@
 						<div class='menu-content'>
 							<ul>
 							<?php foreach($menuContents as $path=>$name):?>
+								<?php $exist = $exe->view->has($path);?>
 								<?php $paths = explode("/", $path);?>
-								<li><a href="<?php echo $exe->url->create("default", ["folder"=>$paths[0], "file"=>$paths[1]]);?>"><?php echo $name;?></a></li>
+								<li class="<?php echo $exist? 'file-exist':'file-not-exist';?>"><a href="<?php echo $exe->url->create("default", ["folder"=>$paths[0], "file"=>$paths[1]]);?>"><?php echo $name;?></a></li>
 							<?php endforeach;?>
 							</ul>
 						</div>

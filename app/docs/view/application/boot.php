@@ -1,6 +1,6 @@
 <h1>Booting Exedra Up</h1>
-<p>Exedra uses front-controller pattern, which acts as the main handler for every incoming request. In this case, we'll just use index.php as the main front-controller. But first, make sure you've already cloned exedra somewhere onto your disk.</p>
-<p>Require Exedra in your index.php, and boot your application up just like this : </p>
+<p>Exedra uses front-controller pattern, which acts as the main handler for every incoming request. In this case, we'll just use index.php as the main front-controller. But first, make sure you've already cloned exedra somewhere in your disk.</p>
+<p>Require Exedra in your index.php (from wherever you put exedra), and boot your application up just like this : </p>
 <pre><code>
 require_once "../exedra/Exedra/Exedra.php";
 

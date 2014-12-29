@@ -1,0 +1,28 @@
+{
+	"Application Lifecycle":
+	{
+		"application/boot": "Booting Up",
+		"application/routing":"Routing",
+		"application/execution": "Execution",
+		"application/middleware": "Middleware"
+	},
+	"Structure":
+	{
+		"structure/loader": "File loader",
+		"structure/structure": "File structure"
+	},
+	"M.V.C Builder":
+	{
+		"builder/controller": "Controller",
+		"builder/view": "View",
+		"builder/model": "Model"
+	},
+	"Components":
+	{
+		"component/url": "URL",
+		"component/session": "Session",
+		"component/validator": "validator",
+		"component/redirection": "Redirection",
+		"component/form": "Form"
+	}
+}
