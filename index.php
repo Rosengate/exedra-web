@@ -8,10 +8,17 @@ $app = $exedra->build("app", function($app)
 	$app->setFailRoute('doc.error');
 
 	// general config.
-	$app->config->set([
+	$conf['dev'] = array(
 		'url.base'=> 'http://localhost/side/exedra-web',
 		'url.asset'=> 'http://localhost/side/exedra-web/assets'
-		]);
+		);
+
+	$conf['pro'] = array(
+		'url.base'=> 'http://exedra.rosengate.com',
+		'url.asset'=> 'http://exedra.rosengate.com/assets'
+		);
+
+	$app->config->set($conf[file_get_contents('../env')]);
 
 	$app->map->addRoute(array(
 		"main"=>['execute'=> function($exe){
