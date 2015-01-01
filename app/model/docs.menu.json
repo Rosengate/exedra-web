@@ -21,7 +21,8 @@
 	{
 		"component/url": "URL",
 		"component/session": "Session",
-		"component/validator": "validator",
+		"component/flash": "Flash",
+		"component/validator": "Validator",
 		"component/redirection": "Redirection",
 		"component/form": "Form"
 	}
