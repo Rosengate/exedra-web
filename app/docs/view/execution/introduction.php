@@ -1,7 +1,7 @@
 <h1>Execution</h1>
 <p>One of the main important layer for your application. The execution layer. Basically this is where a route has successfully been executed, and it's the moment you decide what you're going to do next.</p>
 <p>Like what have been mentioned earlier, you're given the instance of <b>\Exedra\Application\Execution\Exec</b> on the execution handler. This instance is relatively tied to few things such as routePrefix or the configured sub-application on the outer layer. (routing)</p>
-<p>This instance also has a dependendeny injection container, that hold a lot of useful components, such as session, validator, form helper (form), and etc. Which mean, yeah, non of the components are instanced unless called, exedra use getter for this.</p>
+<p>This instance also has a <a href='<?php echo $exe->url->create('default', ['view'=>['others','dic']]);?>'>dependendeny injection container</a>, that hold a lot of useful dependencies for your application, such as session, validator, form helper (form), and etc.</p>
 <h2>1. Example</h2>
 <p><b>Let's begin with example and a sneak peak of other components :</b></p>
 <pre><code>
@@ -62,3 +62,22 @@ $app->map->addRoute(array(
 	}]
 ));
 </code></pre>
+<h2>5. Registered dependencies</h2>
+<p>This execution instance basically already has a dependency injection container built along, that at the framework runtime it has registered number of useful component for application development.</p>
+<p>List of registered dependencies that could be useful for your application :</p>
+<label>Builders (factories of classes):</label>
+<ul>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'builders', 'controller']]);?>'>Controller</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'builders', 'view']]);?>'>View</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['']]);?>'>Model</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components', 'url']]);?>'>Url</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'builders', 'middleware']]);?>'>Middleware</a></li>
+</ul>
+<label>Components :</label>
+<ul>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components','session']]);?>'>Session</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components','flash']]);?>'>Flash</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components','validator']]);?>'>Validator</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components','form']]);?>'>Form</a></li>
+	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components','redirection']]);?>'>Redirect</a></li>
+</ul>

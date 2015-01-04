@@ -1,29 +1,40 @@
 {
-	"Application Lifecycle":
+	"Application Layer":
 	{
 		"application/boot": "Booting Up",
-		"application/routing":"Routing",
-		"application/execution": "Execution",
-		"application/middleware": "Middleware"
+		"application/routing": "Routing",
+		"application/structure": "Structure"
 	},
-	"Structure":
+	"Application : Components":
 	{
-		"structure/loader": "File loader",
-		"structure/structure": "File structure"
+		"application/components/config": "Config",
+		"application/components/session": "Session",
+		"application/components/request": "HTTP Request",
+		"application/components/loader": "Loader",
+		"application/components/structure": "Structure"
 	},
-	"M.V.C Builder":
+	"Execution Layer":
 	{
-		"builder/controller": "Controller",
-		"builder/view": "View",
-		"builder/model": "Model"
+		"execution/introduction": "Introduction"
 	},
-	"Components":
+	"Execution : Builders":
 	{
-		"component/url": "URL",
-		"component/session": "Session",
-		"component/flash": "Flash",
-		"component/validator": "Validator",
-		"component/redirection": "Redirection",
-		"component/form": "Form"
+		"execution/builders/controller":"Controller",
+		"execution/builders/view":"View",
+		"execution/builders/model":"Model",
+		"execution/builders/middleware": "Middleware"
+	},
+	"Execution : Components":
+	{
+		"execution/components/url": "URL builder",
+		"execution/components/session": "Session",
+		"execution/components/flash": "Flash",
+		"execution/components/validator": "Validator",
+		"execution/components/redirection": "Redirection",
+		"execution/components/form": "Form"
+	},
+	"Others":
+	{
+		"others/dic": "DI Container"
 	}
 }

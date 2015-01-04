@@ -53,7 +53,7 @@
 	</head>
 	<body>
 		
-		<div class="container">
+		<div style="width:90%;padding-left:5%;">
 			<div class="row">
 				<div class='col-sm-12'>
 				<h4>Exedra Documentation</h4>
@@ -69,7 +69,7 @@
 							<?php foreach($menuContents as $path=>$name):?>
 								<?php $exist = $exe->view->has($path);?>
 								<?php $paths = explode("/", $path);?>
-								<li class="<?php echo $exist? 'file-exist':'file-not-exist';?>"><a href="<?php echo $exe->url->create("default", ["folder"=>$paths[0], "file"=>$paths[1]]);?>"><?php echo $name;?></a></li>
+								<li class="<?php echo $exist? 'file-exist':'file-not-exist';?>"><a href="<?php echo $exe->url->create("default", ["view"=>$paths]);?>"><?php echo $name;?></a></li>
 							<?php endforeach;?>
 							</ul>
 						</div>

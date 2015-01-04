@@ -25,15 +25,15 @@ $app = $exedra->build("app", function($app)
 			// $exe->url->setBase('http://localhost/side/exedra-web');
 			// $exe->url->setAsset('http://localhost/side/exedra-web/assets');
 
-			$docsurl = $exe->url->create('doc.default', ['folder'=> 'application', 'file'=> 'boot']);
+			$docsurl = $exe->url->create('doc.default', ['view'=> ['application', 'boot']]);
 			return "Building exedra homebase.<br>Status : on <a href='$docsurl'>documentation</a> level.";}],
 		"doc"=> ['uri'=>'documentation', 'subapp'=>'docs', 'subroute'=>[
 			'error'=>['uri'=>false, 'execute'=>function($exe)
 			{
 				// re-route to error page.
-				return $exe->execute('default', ['folder'=>'error', 'file'=> '404', 'message'=> $exe->param('exception')->getMessage()]);
+				return $exe->execute('default', ['view'=>['error',404], 'message'=> $exe->param('exception')->getMessage()]);
 			}],
-			'default'=>['uri'=> '[:folder]/[:file]', 'execute'=> function($exe) {
+			'default'=>['uri'=> '[**:view]', 'execute'=> function($exe) {
 					// $exe->url->setBase('http://localhost/side/exedra-web');
 					// $exe->url->setAsset('http://localhost/side/exedra-web/assets');
 
@@ -44,7 +44,8 @@ $app = $exedra->build("app", function($app)
 					$layout = $exe->view->create("template/default");
 
 					// just create a view. no need a controller.
-					$view = $exe->param('folder')."/".$exe->param('file');
+					// $view = $exe->param('folder')."/".$exe->param('file');
+					$view = implode("/", $exe->param('view'));
 					$layout->set('menu', json_decode($exe->app->loader->getContent('model:docs.menu.json'), true));
 					$layout->set('content', $exe->view->create($view));
 					return $layout->render();

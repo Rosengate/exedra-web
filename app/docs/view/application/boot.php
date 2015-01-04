@@ -11,7 +11,7 @@ $myapp = $exedra->build("app", function($app)
 });
 
 </code></pre>
-<p>The <b>first argument</b> of exedra::build passed is supposed to be your application folder name (in this case 'app'). We'll <a href='<?php echo $exe->url->create('default', ['folder'=>'application', 'file'=> 'structure']);?>'>cover this later</a>. <br>Okay, to test the application, we can <b>mock the application</b> without having to set up the .htaccess just yet. <br><br>
+<p>The <b>first argument</b> of exedra::build passed is supposed to be your application folder name (in this case 'app'). We'll <a href='<?php echo $exe->url->create('default', ['view'=>['application','structure']]);?>'>cover this later</a>. <br>Okay, to test the application, we can <b>mock the application</b> without having to set up the .htaccess just yet. <br><br>
 Write below code outside of the main closure, and <u>expect the simple caught exception</u> because no routing has been done yet.</p>
 <pre><code>
 echo $myapp->execute(array("method"=>"get","uri"=>"test"));
