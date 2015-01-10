@@ -21,12 +21,15 @@ $app = $exedra->build("app", function($app)
 	$app->config->set($conf[file_get_contents('../env')]);
 
 	$app->map->addRoute(array(
-		"main"=>['execute'=> function($exe){
-			// $exe->url->setBase('http://localhost/side/exedra-web');
-			// $exe->url->setAsset('http://localhost/side/exedra-web/assets');
+		"main"=>['subapp'=>'web','execute'=> function($exe){
+			$exe->view->setDefaultData('exe', $exe);
 
-			$docsurl = $exe->url->create('doc.default', ['view'=> ['application', 'boot']]);
-			return "Building exedra homebase.<br>Status : on <a href='$docsurl'>documentation</a> level.";}],
+			$data['docsUrl'] = $exe->url->create('doc.default', ['view'=> ['application', 'boot']]);
+
+			return $exe->view->create('layout/default', $data)->render();
+			// $docsurl = $exe->url->create('doc.default', ['view'=> ['application', 'boot']]);
+			// return "Building exedra homebase.<br>Status : on <a href='$docsurl'>documentation</a> level.";
+		}],
 		"doc"=> ['uri'=>'documentation', 'subapp'=>'docs', 'subroute'=>[
 			'error'=>['uri'=>false, 'execute'=>function($exe)
 			{
