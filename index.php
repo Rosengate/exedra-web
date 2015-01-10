@@ -10,7 +10,7 @@ $app = $exedra->build("app", function($app)
 	// general config.
 	$conf['dev'] = array(
 		'url.base'=> 'http://localhost/side/exedra-web',
-		'url.asset'=> 'http://localhost/side/exedra-web/assets'
+		'url.asset'=> 'http://localhost/side/exedra-web/assets',
 		);
 
 	$conf['pro'] = array(
