@@ -92,8 +92,8 @@
     <!-- ******PROMO****** -->
     <section id="promo" class="promo section offset-header">
         <div class="container text-center">
-            <h2 class="title">éxe<span class="highlight">dra</span></h2>
-            <p class="intro">A multi-tier nestful route oriented PHP framework, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.</p>
+            <h2 class="title" style="text-shadow:0px 0px 5px black;">éxe<span class="highlight">dra</span></h2>
+            <p class="intro" style="text-shadow:0px 0px 5px #526020;">A multi-tier nestful route oriented PHP framework, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.</p>
             <div class="btns">
                 <a class="btn btn-cta-secondary" href="https://github.com/Rosengate/exedra/archive/master.zip" target="_blank">Download</a>
                 <a class="btn btn-cta-primary" href="<?php echo $docsUrl;?>" target="_blank">Documentation</a>
