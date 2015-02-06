@@ -49,7 +49,7 @@ $app = $exedra->build("app", function($app)
 					// just create a view. no need a controller.
 					// $view = $exe->param('folder')."/".$exe->param('file');
 					$view = implode("/", $exe->param('view'));
-					$layout->set('menu', json_decode($exe->app->loader->getContent('model:docs.menu.json'), true));
+					$layout->set('menu', json_decode($exe->app->loader->getContent(array('structure'=> 'model','path'=> 'docs.menu.json')), true));
 					$layout->set('content', $exe->view->create($view));
 					return $layout->render();
 				}]
