@@ -2,16 +2,20 @@
 	"Application Layer":
 	{
 		"application/boot": "Booting Up",
-		"application/routing": "Routing",
-		"application/structure": "Structure"
+		"application/routing": "Routing"
+	},
+	"Application : Core":
+	{
+		"application/components/application": "Application",
+		"application/components/structure": "Structure",
+		"application/components/loader": "Loader"
+
 	},
 	"Application : Components":
 	{
 		"application/components/config": "Config",
 		"application/components/session": "Session",
-		"application/components/request": "HTTP Request",
-		"application/components/loader": "Loader",
-		"application/components/structure": "Structure"
+		"application/components/request": "HTTP Request"
 	},
 	"Execution Layer":
 	{
