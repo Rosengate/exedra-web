@@ -12,13 +12,13 @@
 	</tr>
 </table>
 <p>p/s : Used in some of my project, like <a target="_blank" href='http://github.com/eimihar/persona'>Persona</a> and etc.</p>
-<h3>1.2 Symfony Doctrine</h3>
+<h3>1.2 Symfony Doctrine2</h3>
 <p>Powerful and highly advanced ORM.</p>
 <table class='table'>
 	<tr>
 		<td style="width:100px;">Docs</td><td>: <a target="_blank" href='http://symfony.com/doc/current/book/doctrine.html'>Documentation</a></td>
 	</tr>
 	<tr>
-		<td>Github</td><td>: <a target="_blank" href='http://symfony.com/doc/current/book/doctrine.html'>Github</a></td>
+		<td>Github</td><td>: <a target="_blank" href='https://github.com/doctrine/doctrine2'>Github</a></td>
 	</tr>
 </table>
