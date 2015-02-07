@@ -64,7 +64,7 @@ $app->map->addRoute(array(
 </code></pre>
 <h2>5. Registered dependencies</h2>
 <p>This execution instance basically already has a dependency injection container built along, that at the framework runtime it has registered number of useful component for application development.</p>
-<p>List of registered dependencies that could be useful for your application :</p>
+<h3>5.1 List of registered dependencies that could be useful for your application :</h3>
 <label>Builders (factories of classes):</label>
 <ul>
 	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'builders', 'controller']]);?>'>Controller</a></li>
@@ -81,3 +81,31 @@ $app->map->addRoute(array(
 	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components','form']]);?>'>Form</a></li>
 	<li><a href='<?php echo $exe->url->create('default', ['view'=>['execution', 'components','redirection']]);?>'>Redirect</a></li>
 </ul>
+<h3>5.2 (Re)register dependency</h3>
+<p>Similar to application instance, you may also re-register your dependency through the given DI container.</p>
+<p>Below is some original code as seen in <b>\Exedra\Application\Execution\Exec::__construct()</b></p>
+<pre><code>
+$this->di = new \Exedra\Application\DI(array(
+	"loader"=> array("\Exedra\Loader", array($app->getAppName().'/'.$subapp, $this->app->structure)),
+	"controller"=> array("\Exedra\Application\Builder\Controller", array($this)),
+	"view"=> array("\Exedra\Application\Builder\View", array($this)),
+	"middleware"=> array("\Exedra\Application\Builder\Middleware", array($this)),
+	"url"=> array("\Exedra\Application\Builder\Url", array($this->app,$this)),
+	"request"=>$this->app->request,
+	"response"=>$this->app->exedra->httpResponse,
+	"validator"=> array("\Exedra\Application\Utilities\Validator"),
+	"flash"=> function() use($app) {return new \Exedra\Application\Session\Flash($app->session);},
+	"redirect"=> array("\Exedra\Application\Response\Redirect", array($this)),
+	"exception"=> array("\Exedra\Application\Builder\Exception", array($this)),
+	"form"=> array("\Exedra\Application\Utilities\Form", array($this)),
+	"session"=> function() use($app) {return $app->session;},
+	"file"=> array("\Exedra\Application\Builder\File", array($app, $this->subapp))
+	));
+</code></pre>
+<p>To re-register and use your own instead, just do similarly like this through $exe instance.</p>
+<pre><code>
+$exe->di->register(array(
+	'validator'=> array('\MyClasses\Validator'),
+	'form'=> array('\MyClasses\Form', array($exe))
+));
+</code></pre>

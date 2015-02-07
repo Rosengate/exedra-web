@@ -21,21 +21,23 @@ $this->add(array(
 "config"		=>"config", // used by Exedra\Application\Config
 "view"			=>"view",	// used by Exedra\Application\Builder\View
 "route"			=>"routes", // used when you use a load syntax.
-"documents"		=>"documents",
+"documents"	=>"documents",
 "middleware"	=>"middleware", // used by for Exedra\Application\Builder\Middleware
 "storage"		=>"storage")); 
 </code></pre>
 <h2>3. Update</h2>
 <p>You may update the existing structure. Use method <b>set</b></p>
 <pre><code>
-$app->set('controller', 'kawalan');
+$app->structure->set('controller', 'kawalan');
 </code></pre>
 <p>Or set by array, for example.</p>
 <pre><code>
-$app->set(array(
+$app->structure->set(array(
 'config' => 'konfigurasi',
 'view' => 'paparan',
 'route' => 'hala',
 'documents' => 'dokumen'
 ));
 </code></pre>
+<h2>4. Usage</h2>
+<p>Structure may also be used by a loader. Examples are shown on the <a href='<?php echo $exe->url->create('default', ['view'=> ['application','components','loader']]);?>'>next topic.</a></p>

@@ -30,7 +30,7 @@ $app = $exedra->build("app", function($app)
 			// $docsurl = $exe->url->create('doc.default', ['view'=> ['application', 'boot']]);
 			// return "Building exedra homebase.<br>Status : on <a href='$docsurl'>documentation</a> level.";
 		}],
-		"doc"=> ['uri'=>'documentation', 'subapp'=>'docs', 'subroute'=>[
+		"doc"=> ['uri'=>'docs', 'subapp'=>'docs', 'subroute'=>[
 			'error'=>['uri'=>false, 'execute'=>function($exe)
 			{
 				// re-route to error page.

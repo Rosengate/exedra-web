@@ -33,17 +33,24 @@ $myapp = $exedra->build('app', function($app)
 <hr style="border-color:#e5e5e5;">
 <h2>2. load</h2>
 <p>Return a require_once of a file</p>
-<p>Load a file by path app/storage/myfile.php</p>
+<h3>2.1 By string</h3>
 <pre><code>
 $app->loader->load('storage/myfile.php');
 </code></pre>
-<p>Or load a file based on given structure.</p>
+<h3>2.2 By associative array</h3>
+<p>Two currently acceptable key</p>
+<ol>
+	<li>structure (optional)</li>
+	<li>path (mandatory)</li>
+</ol>
 <pre><code>
-$app->loader->load(['structure'=>'storage', 'path'=> 'myfile.php']);
+$app->loader->load(array('structure'=>'storage', 'path'=> 'myfile.php'));
 </code></pre>
 <p>Load a file while array as a second argument to be extracted.</p>
 <pre><code>
-$app->loader->load(['structure'=> 'storage', 'path'=> 'myfile.php'], array('myvar'=> 'helloworld'));
+$app->loader->load(
+	array('structure'=> 'storage', 'path'=> 'myfile.php'),
+	array('myvar'=> 'helloworld'));
 </code></pre>
 <h2>3. getContent</h2>
 <p>Get file contents. Basically uses php function <b>file_get_contents</b>.</p>

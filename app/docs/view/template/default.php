@@ -10,6 +10,7 @@
 		<link href="<?php echo $exe->url->asset('css/bootstrap.min.css');?>" rel="stylesheet">
 		<script src="<?php echo $exe->url->asset('js/jquery.min.js');?>"></script>
 		<script src="<?php echo $exe->url->asset('js/bootstrap.min.js');?>"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset('devaid/plugins/font-awesome/css/font-awesome.css');?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset("highlight-js/styles/zenburn.css");?>">
 		<script type="text/javascript" src='<?php echo $exe->url->asset("highlight-js/highlight.pack.js");?>'></script>
 		<script>hljs.initHighlightingOnLoad();</script>
@@ -33,8 +34,8 @@
 			#docs-title
 			{
 				font-size:50px;
-				color: #f8fcf8;
-				text-shadow:0px 0px 5px #3f3f3f;
+				color: #494949;
+				/*text-shadow:0px 0px 5px #3f3f3f, 0px 2px 6px #3f3f3f;*/
 				padding:5px;
 				padding-top: 10px;
 				letter-spacing: 3px;
@@ -45,10 +46,19 @@
 				padding-top:20px;
 				background: #eaeaea;
 				border-top:0px;
-				box-shadow: 0px 0px 5px #616161;
+				box-shadow: 0px 1px 3px #616161;
 				margin-top:30px;
 				padding-bottom: 20px;
 			}
+
+			#top-menu
+			{
+				text-align: right;
+			}
+
+			
+
+			
 
 			#top-menu a
 			{
@@ -103,6 +113,7 @@
 			{
 				border-bottom: 2px dashed #909090;
 				padding:10px;
+				padding-left: 0px;
 				color: #494949;
 				text-transform: uppercase;
 				font-weight: bold;
@@ -113,18 +124,84 @@
 				color: #494949;
 			}
 
+			#menu-toggle
+			{
+				position: absolute;
+				right:3%;
+				font-size:25px;
+				top:12px;
+				color: #484848;
+				display: none;
+				text-decoration: none;
+			}
+
 			#content-container
 			{
-				padding-left:50px;
+				position: relative;
+			}
+
+			@media (max-width:768px){
+				#docs-title
+				{
+					font-size:25px;
+					text-align: center;
+				}
+
+				#top-menu
+				{
+					text-align: center;
+				}
+
+				.container
+				{
+					width: 98% !important;
+				}
+
+				#menu
+				{
+					display: none;
+					background: inherit;
+					box-shadow: none;
+				}
+
+				#menu-toggle
+				{
+					display: block;
+				}
+
+				#content-container h1
+				{
+					font-size: 25px;
+				}
+
+				pre code
+				{
+					font-size: 0.9em;
+				}
+
+				#header
+				{
+					
+				}
 			}
 		</style>
+		<script type="text/javascript">
+
+		var menu = new function()
+		{
+			this.show = function()
+			{
+				$("#menu").toggle();
+			}
+		}
+		</script>
 	</head>
 	<body>
-		<div style="width:90%;padding-left:5%;">
+		<div class='container' style="width:80%;">
 			<div class="row" id='header'>
 				<div class='col-sm-12'>
-					<div id='docs-title'>Exedra Documentation</div>
-					<div id='top-menu' style="text-align:right;"><a href='<?php echo $exe->url->create('@main');?>'>Home</a> | <a target="_blank" href='http://github/rosengate/exedra-web'>Github</a> | <a href='#' title='Exedra Rocks!'>About</a></div>
+					<div id='docs-title'>Exédra Documentation</div>
+					<div id='top-menu'><a href='<?php echo $exe->url->create('@main');?>'>Home</a> | <a target="_blank" href='http://github.com/rosengate/exedra-web'>Github</a> | <a target='_blank' href='http://eimihar.rosengate.com' title='Exedra Rocks!'>Author</a></div>
 				</div>
 			</div>
 			<!-- Menu -->
@@ -145,6 +222,7 @@
 					<?php endforeach;?>
 				</div>
 				<div id='content-container' class="col-sm-10" style="padding-bottom:200px;">
+					<a href='#' id='menu-toggle' onclick='menu.show();' class="fa fa-bars"></a href='#'>
 					<?php $content->render();?>
 				</div>
 			</div>

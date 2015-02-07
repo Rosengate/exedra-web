@@ -16,6 +16,7 @@ $myapp = $exedra->build('app', function($app)
 </code></pre>
 <h2>2. Core component</h2>
 <p>Some of the core components are lazily injected on a DI container by default. Mean they're only instantiated once called.</p>
+<p>As seen in <b>\Exedra\Application\Application::__construct()</b></p>
 <pre><code>
 $this->di = new \Exedra\Application\DI(array(
 	"request"=>$this->exedra->httpRequest,
@@ -28,7 +29,7 @@ $this->di = new \Exedra\Application\DI(array(
 	'file'=> array('\Exedra\Application\Builder\File', array($this))
 	));
 </code></pre>
-<h2>3. Re-register component</h2>
+<h2>3. (Re)register component</h2>
 <p>You may later want to re-register the component. Just use the di container, and register the component by the same component's name again. Just make sure you extends the original class.</p>
 <pre><code>
 $app->di->register('config', array('\MyClasses\config'));
@@ -36,8 +37,8 @@ $app->di->register('config', array('\MyClasses\config'));
 <p>Or by array</p>
 <pre><code>
 $app->di->register(array(
-	'event'=> array('\MyClasses\EventObserver'),
-	'cache'=> array('\MyClasses\CacheManager')
+	'event'=> session('\MyClasses\Event'),
+	'cache'=> array('\MyClasses\Cache')
 ));
 
 // you may then retrieve your own dependencies by 

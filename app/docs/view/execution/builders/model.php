@@ -22,3 +22,23 @@
 		<td>Github</td><td>: <a target="_blank" href='https://github.com/doctrine/doctrine2'>Github</a></td>
 	</tr>
 </table>
+<h3>1.3 Redbean PHP</h3>
+<p>A independant datamapper.</p>
+<table class='table'>
+	<tr>
+		<td style="width:100px;">Docs</td><td>: <a target="_blank" href='http://redbeanphp.com/'>Documentation</a></td>
+	</tr>
+	<tr>
+		<td>Github</td><td>: <a target="_blank" href='https://github.com/gabordemooij/redbean'>Github</a></td>
+	</tr>
+</table>
+<h3>1.3 Spot ORM</h3>
+<p>A Datamapper built on doctrine/dbal.</p>
+<table class='table'>
+	<tr>
+		<td style="width:100px;">Docs</td><td>: <a target="_blank" href='http://phpdatamapper.com/docs/'>Documentation</a></td>
+	</tr>
+	<tr>
+		<td>Github</td><td>: <a target="_blank" href='https://github.com/vlucas/spot2'>Github</a></td>
+	</tr>
+</table>

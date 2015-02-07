@@ -1,5 +1,5 @@
 <h1>Middleware</h1>
-<p>This layer is actually part of the execution layer. It lives and encapsulate the original execution layer.</p>
+<p>This layer is actually part of the execution layer. It lives and encapsulate the original execution layer. They're also known as filter in other frameworks.</p>
 <p>You may bind a middleware at the routing layer.</p>
 <h2>1. Next()</h2>
 <p><b>Next</b> method basically resembles the handler for the next closure it's executing.</p>
