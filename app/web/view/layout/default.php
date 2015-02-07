@@ -19,14 +19,13 @@
     <link rel="stylesheet" href="<?php echo $exe->url->asset('devaid/plugins/font-awesome/css/font-awesome.css');?>">
     <link rel="stylesheet" href="<?php echo $exe->url->asset('devaid/plugins/prism/prism.css');?>">
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="<?php echo $exe->url->asset('devaid/css/styles-2.css');?>">
+    <link id="theme-style" rel="stylesheet" href="<?php echo $exe->url->asset('devaid/css/styles-custom.css');?>">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-
     #about-feature > div
     {
         height:150px;
@@ -36,7 +35,7 @@
     {
         font-size:1.3em;
         font-weight: bold;
-        color: #3f4a19;
+        color: #323331;
     }
 
     .contact-item-value
@@ -63,7 +62,7 @@
         <div class="container">            
             <h1 class="logo pull-left">
                 <a class="scrollto" href="#promo">
-                    <span class="logo-title">$Exedra->web()</span>
+                    <span class="logo-title">Exedra PHP</span>
                 </a>
             </h1><!--//logo-->              
             <nav id="main-nav" class="main-nav navbar-right" role="navigation">
@@ -92,7 +91,7 @@
     <!-- ******PROMO****** -->
     <section id="promo" class="promo section offset-header">
         <div class="container text-center">
-            <h2 class="title" style="text-shadow:0px 0px 5px black;">éxe<span class="highlight">dra</span></h2>
+            <h2 class="title" style="text-shadow:0px 0px 5px black;">Exé<span class="highlight">dra</span></h2>
             <p class="intro" style="text-shadow:0px 0px 5px #526020;">A multi-tier nestful route oriented PHP framework, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.</p>
             <div class="btns">
                 <a class="btn btn-cta-secondary" href="https://github.com/Rosengate/exedra/archive/master.zip" target="_blank">Download</a>
