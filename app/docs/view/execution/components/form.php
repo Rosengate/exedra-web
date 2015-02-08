@@ -1,4 +1,4 @@
-<h1>Form</h1>
+<h1>Form <span>\Exedra\Application\Utilities\Form</span></h1>
 <p>A utility class that help you write a form's input elements. This class is accessible through the $exe instance</p>
 <p>Let say we're passing the $form instance that was taken from the $exe instance to the view.</p>
 <pre><code>
@@ -31,7 +31,7 @@ echo $form->password('password', ['class'=>'form-control']);
 echo $form->text('username', null, 'lucy');
 </code></pre>
 <h2>2. Select</h2>
-<p>You'll need an associated array containing value:label for this select element</p>
+<p>You'll need an associated array containing value=>label for this select element</p>
 <pre><code>
 $countries = array[
 	'my'=>'malaysia',
@@ -83,7 +83,8 @@ if($exe->request->post)
 $exe->flash->set('form_data', $this->exe->request->post);
 </code></pre>
 <h3>4.1 Retrieving flashed form data</h3>
-<p>Just in case you want to retrieve the flashed data, you may do this way :</p>
+<p><u>Just in case</u> if you want to retrieve the flashed data, you may do this way :</p>
 <pre><code>
 $username = $exe->flash->get('form_data.username');
 </code></pre>
+<p>p/s : hence, key <b>form_data</b> is a reserved one for this usage.</p>

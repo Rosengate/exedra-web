@@ -1,4 +1,4 @@
-<h1>View</h1>
+<h1>View <span>\Exedra\Application\Builder\View</span></h1>
 <p>In exedra, we have no templating engine but php itself. But, it's more than creating a simple php file. You're given a builder that is based on $exe instance, that enable to properly design your view login, required data, and even build a layout dan can contain a view.</p>
 <h2>1. Create a view</h2>
 <pre><code>

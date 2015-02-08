@@ -1,4 +1,4 @@
-<h1>Controller</h1>
+<h1>Controller <span>\Exedra\Application\Builder\Controller</span></h1>
 <p>One of the main component in MVC oriented architecture. You may actually code everything in routing, but having a planned controllers will surely structure your codes well.</p>
 <h2>1. Create a controller</h2>
 <p>You may retrieve the builder from $exe instance.</p>

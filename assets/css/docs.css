@@ -1,0 +1,175 @@
+body {
+	font-family: 'Palatino Linotype';
+	background:#f0f0f0;
+	letter-spacing: 1px;
+}
+
+#docs-title
+{
+	font-size:50px;
+	color: #494949;
+	/*text-shadow:0px 0px 5px #3f3f3f, 0px 2px 6px #3f3f3f;*/
+	padding:5px;
+	padding-top: 10px;
+	letter-spacing: 3px;
+}
+
+#menu 
+{
+	padding-top:20px;
+	background: #eaeaea;
+	border-top:0px;
+	box-shadow: 0px 1px 3px #616161;
+	margin-top:30px;
+	padding-bottom: 20px;
+}
+
+#top-menu
+{
+	text-align: right;
+}
+
+#top-menu a
+{
+	color: #3f3f3f;
+}
+
+.menu-content ul
+{
+	list-style: none;
+	padding:0px;
+}
+
+.menu-content ul li
+{
+	border-bottom:1px dashed #a4a4a4;
+	padding:3px;
+	padding-left:10px;
+}
+
+.menu-content ul li.active a
+{
+	color: #dd7c4f;
+	font-weight: bold;
+}
+
+#content-container pre
+{
+	padding:0px;
+	tab-size: 4;
+}
+
+.file-not-exist
+{
+	opacity: 0.5;
+}
+
+#content-container p
+{
+	color: #494949;
+	font-size: 1.2em;
+}
+
+#content-container h1
+{
+	border-bottom: 2px dashed #909090;
+	padding:10px;
+	padding-left: 0px;
+	color: #494949;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#content-container h1 span
+{
+	float:right;
+	font-size:14px;
+	position:relative;
+	top:20px;
+	opacity:0.6;
+	text-transform:none;
+}
+
+#content-container h2
+{
+	color: #494949;
+}
+
+#menu-toggle
+{
+	position: absolute;
+	right:3%;
+	font-size:25px;
+	top:12px;
+	color: #484848;
+	display: none;
+	text-decoration: none;
+}
+
+.menu-title-main
+{
+	font-size: 1.3em;
+	font-weight: bold;
+	padding-bottom: 3px;
+	padding-top: 5px;
+}
+
+#content-container
+{
+	position: relative;
+}
+
+@media (max-width:768px){
+	#docs-title
+	{
+		font-size:25px;
+		text-align: center;
+	}
+
+	#top-menu
+	{
+		text-align: center;
+	}
+
+	.container
+	{
+		width: 98% !important;
+	}
+
+	#menu
+	{
+		display: none;
+		background: inherit;
+		box-shadow: none;
+	}
+
+	#menu-toggle
+	{
+		display: block;
+	}
+
+	#content-container h1
+	{
+		font-size: 25px;
+	}
+
+	#content-container h1 span
+	{
+		display: none;
+	}
+
+	pre code
+	{
+		font-size: 0.9em;
+	}
+
+	#docs-description
+	{
+		display: none;
+	}
+
+	#header
+	{
+		
+	}
+}

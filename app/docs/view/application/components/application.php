@@ -1,4 +1,4 @@
-<h1>Application</h1>
+<h1>Application <span>\Exedra\Application\Application</span></h1>
 <p>The original application instance built by exedra. This is the instance where some core components are based on.</p>
 <p>Most of below topics may have been introduced previously. We'll cover in detail here.</p>
 <h2>1. Building The Instance.</h2>

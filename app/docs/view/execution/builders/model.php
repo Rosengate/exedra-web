@@ -1,8 +1,8 @@
 <h1>Model</h1>
-<p>If by common definition of model is classes of database relational model, we actually provides no ORM for this. But if it's (ORM) what you're looking for, take a look at some existing ORM out there :</p>
+<p>If by common definition of model is classes of object based database relational model, we actually provide no ORM for this. And if it's really (ORM) what you're looking for, take a look at some existing ORMs out there :</p>
 <h2>1. Some ORM</h2>
 <h3>1.1 Laravel Eloquent</h3>
-<p>Pretty nice datamapper I believe. You may find the docs here :</p>
+<p>Pretty nice datamapper. You may find the docs here :</p>
 <table class='table'>
 	<tr>
 		<td style="width:100px;">Docs</td><td>: <a target="_blank" href='http://laravel.com/docs/4.2/eloquent'>Documentation</a></td>

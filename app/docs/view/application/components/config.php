@@ -1,4 +1,4 @@
-<h1>Configuration</h1>
+<h1>Configuration <span>\Exedra\Application\Config</span></h1>
 <p>Exedra has so very little to none configuration you can do in order to run your application up. In fact, the moment you booted up exedra, and set up some basic routing, everything should already be working. But there're times you may want to configure some parameters for your application.</p>
 <p>Exedra provides a simple component to handle configuration. The instance of configuration is retrievable by the application ($app) instance.</p>
 <pre><code>

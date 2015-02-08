@@ -1,4 +1,4 @@
-<h1>Session</h1>
+<h1>Session <span>\Exedra\Application\Session\Session</span></h1>
 <p>Handle the session across the request</p>
 <h2>1. set()</h2>
 <p>Session is basically part of application instance ($app), but you may still retrieve from $exe instance itself.</p>

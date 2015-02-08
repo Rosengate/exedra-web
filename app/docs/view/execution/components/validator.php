@@ -1,4 +1,4 @@
-<h1>Validator</h1>
+<h1>Validator <span>\Exedra\Application\Utilities\Validator</span></h1>
 <p>Exedra provides you a very simple validator, that you may simply use for validating data. </p>
 <h2>1. Writing Validation</h2>
 <p>Consider these data, with some example value : </p>

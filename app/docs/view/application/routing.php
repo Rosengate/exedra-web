@@ -1,4 +1,4 @@
-<h1>Routing</h1>
+<h1>Routing <span>\Exedra\Application\Map\.</span></h1>
 <p>The main component of exedra, that basically front-route every single request for your application based on your designed map of routes.</p>
 <p>If you're still on learning, please use the same index.php from the last topic.</p>
 <pre><code>

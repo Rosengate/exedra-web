@@ -1,4 +1,4 @@
-<h1>Flash</h1>
+<h1>Flash <span>\Exedra\Application\Session\Flash</span></h1>
 <p>Flash is basically made of a session (on key <b>flash</b>), except it lasts a single request.</p>
 <h2>1. set</h2>
 <pre><code>

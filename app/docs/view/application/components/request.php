@@ -1,4 +1,4 @@
-<h1>HTTP Request</h1>
+<h1>HTTP Request <span>\Exedra\HTTP\Request</span></h1>
 <p>HTTP request actually live in the scope of exedra itself, but is retrievable through the application instance, or the exe instance itself. This is to ease the developer(s) without writing too long chain of instances, in order to just get this component.</p>
 <h2>1. get</h2>
 <p>get value from _get parameter.</p>

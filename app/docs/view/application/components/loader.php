@@ -1,4 +1,4 @@
-<h1>Loader</h1>
+<h1>Loader <span>\Exedra\Loader</span></h1>
 <p>Exedra provides a common loader that is usable within 3 scope level. The Exedra instance, the Application instance, and the Exec ($exe) instance. This scope based loader has nothing difference, except that they're prefixed by the directory the instances were based on.</p>
 <h2>1. Instances</h2>
 <hr style="border-color:#e5e5e5;">

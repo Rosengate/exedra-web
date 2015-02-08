@@ -8,6 +8,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link href="<?php echo $exe->url->asset('css/bootstrap.min.css');?>" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset('css/docs.css');?>">
 		<script src="<?php echo $exe->url->asset('js/jquery.min.js');?>"></script>
 		<script src="<?php echo $exe->url->asset('js/bootstrap.min.js');?>"></script>
 		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset('devaid/plugins/font-awesome/css/font-awesome.css');?>">
@@ -25,165 +26,7 @@
 		</script>
 		<style type="text/css">
 			/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);*/
-			body {
-			  font-family: 'Palatino Linotype';
-			  background:#f0f0f0;
-			  letter-spacing: 1px;
-			}
-
-			#docs-title
-			{
-				font-size:50px;
-				color: #494949;
-				/*text-shadow:0px 0px 5px #3f3f3f, 0px 2px 6px #3f3f3f;*/
-				padding:5px;
-				padding-top: 10px;
-				letter-spacing: 3px;
-			}
-
-			#menu 
-			{
-				padding-top:20px;
-				background: #eaeaea;
-				border-top:0px;
-				box-shadow: 0px 1px 3px #616161;
-				margin-top:30px;
-				padding-bottom: 20px;
-			}
-
-			#top-menu
-			{
-				text-align: right;
-			}
-
 			
-
-			
-
-			#top-menu a
-			{
-				color: #3f3f3f;
-			}
-
-			#header
-			{
-			}
-
-			.menu-content
-			{
-			}
-
-			.menu-content ul
-			{
-				list-style: none;
-				padding:0px;
-			}
-
-			.menu-content ul li
-			{
-				border-bottom:1px dashed #a4a4a4;
-				padding:3px;
-				padding-left:10px;
-			}
-
-			.menu-content ul li.active a
-			{
-				color: #dd7c4f;
-				font-weight: bold;
-			}
-
-			#content-container pre
-			{
-				padding:0px;
-				tab-size: 4;
-			}
-
-			.file-not-exist
-			{
-				opacity: 0.5;
-			}
-
-			#content-container p
-			{
-				color: #494949;
-				font-size: 1.2em;
-			}
-
-			#content-container h1
-			{
-				border-bottom: 2px dashed #909090;
-				padding:10px;
-				padding-left: 0px;
-				color: #494949;
-				text-transform: uppercase;
-				font-weight: bold;
-			}
-
-			#content-container h2
-			{
-				color: #494949;
-			}
-
-			#menu-toggle
-			{
-				position: absolute;
-				right:3%;
-				font-size:25px;
-				top:12px;
-				color: #484848;
-				display: none;
-				text-decoration: none;
-			}
-
-			#content-container
-			{
-				position: relative;
-			}
-
-			@media (max-width:768px){
-				#docs-title
-				{
-					font-size:25px;
-					text-align: center;
-				}
-
-				#top-menu
-				{
-					text-align: center;
-				}
-
-				.container
-				{
-					width: 98% !important;
-				}
-
-				#menu
-				{
-					display: none;
-					background: inherit;
-					box-shadow: none;
-				}
-
-				#menu-toggle
-				{
-					display: block;
-				}
-
-				#content-container h1
-				{
-					font-size: 25px;
-				}
-
-				pre code
-				{
-					font-size: 0.9em;
-				}
-
-				#header
-				{
-					
-				}
-			}
 		</style>
 		<script type="text/javascript">
 
@@ -201,13 +44,26 @@
 			<div class="row" id='header'>
 				<div class='col-sm-12'>
 					<div id='docs-title'>Exédra Documentation</div>
-					<div id='top-menu'><a href='<?php echo $exe->url->create('@main');?>'>Home</a> | <a target="_blank" href='http://github.com/rosengate/exedra-web'>Github</a> | <a target='_blank' href='http://eimihar.rosengate.com' title='Exedra Rocks!'>Author</a></div>
+					<div id='docs-description' style="position:absolute;padding-left:10px;">Every single knowledge of your application matters.</div>
+					<div id='top-menu'>
+						<a href='<?php echo $exe->url->create('@main');?>'>Home</a> | 
+						<a target="_blank" href='http://github.com/rosengate/exedra'>Github</a> | 
+						<a target='_blank' href='http://eimihar.rosengate.com/about' title='Exedra Rocks!'>Author</a></div>
 				</div>
 			</div>
 			<!-- Menu -->
 			<div class="row">
 				<div id='menu' class='col-sm-2'>
 					<?php foreach($menu as $menuTitle=>$menuContents):?>
+					<?php if(is_string($menuContents) && $menuContents == "main"):?>
+						<div class='menu-title-main'>
+						<?php echo $menuTitle;?>
+						</div>
+					<?php else:?>
+						<?php
+						// this looks ugly but oh well.
+						$menuTitle = str_replace(array('Application :', 'Execution :'), '', $menuTitle);
+						?>
 						<div class='menu-title'><?php echo $menuTitle;?></div>
 						<div class='menu-content'>
 							<ul>
@@ -219,6 +75,7 @@
 							<?php endforeach;?>
 							</ul>
 						</div>
+					<?php endif;?>
 					<?php endforeach;?>
 				</div>
 				<div id='content-container' class="col-sm-10" style="padding-bottom:200px;">

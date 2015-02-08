@@ -1,4 +1,4 @@
-<h1>DI Container</h1>
+<h1>DI Container <span>\Exedra\Application\DI</span></h1>
 <p>This container provides you some legal way to help you resolve your dependency(s).</p>
 <h2>1. Execution</h2>
 <p>On execution instance ($exe), there's a dependency injection container, that let your register your dependency on the $exe instance itself. Most of the components for this layer are registered through this container. And you may still register through your own, or, re-register one of the layer's component.</p>
@@ -32,4 +32,9 @@ $exe->di->register('mycontainer', function() use($exe)
 <p>And you may use it through this way for example</p>
 <pre><code>
 $exe->mycontainer->layout->render();
+</code></pre>
+<h3>1.3. Auto-resolve</h3>
+<p>In case you wondered, the the Exec ($exe) instance itself, already has <b>__get</b> magic method to help resolve the dependencies registered on $exe->di. However you may still resolve the dependency, through the DI instance itself if you want.<br>For example :</p>
+<pre><code>
+$exe->di->resolve('url')->create('myroute');
 </code></pre>

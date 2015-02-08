@@ -1,6 +1,6 @@
-<h1>Execution</h1>
+<h1>Execution <span>\Exedra\Application\Execution\.</span></h1>
 <p>One of the main important layer for your application. The execution layer. Basically this is where a route has successfully been executed, and it's the moment you decide what you're going to do next.</p>
-<p>Like what have been mentioned earlier, you're given the instance of <b>\Exedra\Application\Execution\Exec</b> on the execution handler. This instance is relatively tied to few things such as routePrefix or the configured sub-application on the outer layer. (routing)</p>
+<p>Like what have been mentioned earlier, you're given the instance of <b>\Exedra\Application\Execution\Exec</b> ($exe) on the execution handler. This instance is relatively tied to few things such as routePrefix or the configured sub-application on the outer layer. (routing)</p>
 <p>This instance also has a <a href='<?php echo $exe->url->create('default', ['view'=>['others','dic']]);?>'>dependendeny injection container</a>, that hold a lot of useful dependencies for your application, such as session, validator, form helper (form), and etc.</p>
 <h2>1. Example</h2>
 <p><b>Let's begin with example and a sneak peak of other components :</b></p>
@@ -22,18 +22,19 @@ $app->map->addRoute(array(
 ));
 </code></pre>
 <h2>2. Route Prefix</h2>
-<p>Route prefix is best configured within a middleware on some route node. It basically let you base your route on a fixed route (prefix). The ultimate benefit is, lessen the concern of writing the full absolute route, be more modular of your own application.</p>
+<p>Route prefix is best configured within a middleware on some route node. It basically let you bases your route on a fixed route name (prefix), and anything further down the route would simply be prefixed.</p>
 <pre><code>
 $exe->setRoutePrefix('example.route');
 </code></pre>
-<p>List of components affected by this route prefixing is :<br>
-1. URL<br>
-2. Redirection
-</p>
+<p>List of components affected by this route prefixing is :</p>
+<ol>
+	<li>URI</li>
+	<li>Redirection</li>
+</ol>
 <h2>3. execute()</h2>
-<p>Like what've been mentioned in the previous topic (re-routing), this method is basically an alias to method application::execute(), except, it was bound relatively to the current execution context, if it was used by the instance.</p>
+<p>Like what've been mentioned in the previous topic (re-routing), this method is basically an alias to method <b>application::execute()</b>, except, it was bound relatively to the current execution context, if it was used by the instance.</p>
 <p><b>First parameter : Route name : </b><br>
-This route name is relatively tied to the current route prefix, if the method was called by the exec instance. But, can still be escaped with character '@'
+This route name is relatively tied to the current route prefix, if the method was called by the exec instance. But, can still be escaped with the absolute character '@'.
 </p>
 <p>For example : </p>
 <pre><code>
@@ -47,7 +48,7 @@ $exe->execute('@public.main.index');
 Is an argument/data to be passed to the specified route execution context. That later can be retrieved by method param(). Example can be shown on the next subtopic. [<b>param()</b>]
 </p>
 <h2>4. param()</h2>
-<p>This method return the value argument passed, either through named parameter on URI, or the second parameter of execute() method.</p>
+<p>This method return the passed argument, either by URI named parameter(s), or passed as the second argument of execute() method.</p>
 <pre><code>
 $app->map->addRoute(array(
 	'first'=> ['uri'=> 'test/[:myparam]', 'execute'=> function($exe)
@@ -63,7 +64,7 @@ $app->map->addRoute(array(
 ));
 </code></pre>
 <h2>5. Registered dependencies</h2>
-<p>This execution instance basically already has a dependency injection container built along, that at the framework runtime it has registered number of useful component for application development.</p>
+<p>This execution instance basically already has a dependency injection container built along, that at the framework runtime it has registered number of useful components for application development.</p>
 <h3>5.1 List of registered dependencies that could be useful for your application :</h3>
 <label>Builders (factories of classes):</label>
 <ul>

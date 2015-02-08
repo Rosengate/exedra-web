@@ -1,4 +1,4 @@
-<h1>Url</h1>
+<h1>Url <span>\Exedra\Application\Builder\Url</span></h1>
 <p>In exedra, we do not purely write a url of your specific route, except through a builder, that was based on current execution context. Url is built with route reading capability, since exedra is an heavily route oriented application, you need to specify route name and it's URI named parameter.</p>
 <h2>1. Create a URL</h2>
 <p>Specify route name, and parameters required.</p>

@@ -1,6 +1,7 @@
-<h1>Structure</h1>
-<p>One of exedra core component, provide you a methods to modify your application (folder) structure and conventions (folders especially) for your own need.</p>
+<h1>Structure <span>\Exedra\Application\Structure\Structure</span></h1>
+<p>One of exedra core component, an instance that handle your application structure and their folder naming format.</p>
 <h2>1. add</h2>
+<p>Add new structure</p>
 <pre><code>
 $app->structure->add('storage', 'storage');
 </code></pre>
@@ -14,7 +15,7 @@ $app->structure->add(array(
 <p>Structures are used mostly by Exedra's components. Total existing structures (in the class' constructor) registered were :<br>
 p/s : subject to changes.</p>
 <pre><code>
-// as seen in \Exedra\Application\Structure\Structure
+// as seen in \Exedra\Application\Structure\Structure::__construct()
 $this->add(array(
 "controller"	=>"controller", // used by Exedra\Application\Builder\Controller
 "model"			=>"model", 
@@ -25,8 +26,8 @@ $this->add(array(
 "middleware"	=>"middleware", // used by for Exedra\Application\Builder\Middleware
 "storage"		=>"storage")); 
 </code></pre>
-<h2>3. Update</h2>
-<p>You may update the existing structure. Use method <b>set</b></p>
+<h2>3. set</h2>
+<p>You may update the existing structure.</p>
 <pre><code>
 $app->structure->set('controller', 'kawalan');
 </code></pre>
@@ -39,5 +40,6 @@ $app->structure->set(array(
 'documents' => 'dokumen'
 ));
 </code></pre>
+<p>p/s : for now add is actually an alias to set method.</p>
 <h2>4. Usage</h2>
 <p>Structure may also be used by a loader. Examples are shown on the <a href='<?php echo $exe->url->create('default', ['view'=> ['application','components','loader']]);?>'>next topic.</a></p>
