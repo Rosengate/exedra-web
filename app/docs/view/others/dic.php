@@ -1,7 +1,7 @@
-<h1>DI Container <span>\Exedra\Application\DI</span></h1>
+<h1>DI Container <span>\Exedra\Application\Dic</span></h1>
 <p>This container provides you some legal way to help you resolve your dependency(s).</p>
 <h2>1. Execution</h2>
-<p>On execution instance ($exe), there's a dependency injection container, that let your register your dependency on the $exe instance itself. Most of the components for this layer are registered through this container. And you may still register through your own, or, re-register one of the layer's component.</p>
+<p>On execution instance ($exe), there's a dependency injection container with property named <b>$di</b>, that let you register your dependency for the $exe instance itself. Most of the components for this layer are registered through this container. And you may still register through your own, or, re-register one of the layer's component.</p>
 <h3>1.1 Register Dependency :</h3>
 <pre><code>
 $exe->di->register('layout', function() use($exe)
@@ -18,7 +18,7 @@ $exe->layout->render();
 <pre><code>
 $exe->di->register('mycontainer', function() use($exe)
 {
-	$mycontainer = new \Exedra\Application\Di;
+	$mycontainer = new \Exedra\Application\Dic;
 
 	// and register another here.
 	$mycontainer->register('layout', function() use($exe)

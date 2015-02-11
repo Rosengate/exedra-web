@@ -86,7 +86,7 @@ $app->map->addRoute(array(
 <p>Similar to application instance, you may also re-register your dependency through the given DI container.</p>
 <p>Below is some original code as seen in <b>\Exedra\Application\Execution\Exec::__construct()</b></p>
 <pre><code>
-$this->di = new \Exedra\Application\DI(array(
+$this->di = new \Exedra\Application\Dic(array(
 	"loader"=> array("\Exedra\Loader", array($app->getAppName().'/'.$subapp, $this->app->structure)),
 	"controller"=> array("\Exedra\Application\Builder\Controller", array($this)),
 	"view"=> array("\Exedra\Application\Builder\View", array($this)),

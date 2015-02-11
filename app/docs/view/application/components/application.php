@@ -18,7 +18,7 @@ $myapp = $exedra->build('app', function($app)
 <p>Some of the core components are lazily injected on a DI container by default. Mean they're only instantiated once called.</p>
 <p>As seen in <b>\Exedra\Application\Application::__construct()</b></p>
 <pre><code>
-$this->di = new \Exedra\Application\DI(array(
+$this->di = new \Exedra\Application\Dic(array(
 	"request"=>$this->exedra->httpRequest,
 	"response"=>$this->exedra->httpResponse,
 	// below are lazily loaded.
