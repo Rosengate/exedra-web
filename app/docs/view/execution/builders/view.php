@@ -62,12 +62,27 @@ $exe->layout->set('view', $exe->view->create('user/profile'))->render();
 	&lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
+<pre><code>
+&lt;!--in view/user/profile.php--&gt;
+Hello world!!!!
+</code></pre>
+<p><b>The rendered result :</b></p>
+<pre><code>
+&lt;!--in layout/default.php--&gt;
+&lt;html&gt;
+	&lt;head&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		Hello world!!!!! 
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 <h2>5. Use Case</h2>
-<p>The best place to write a layout, is within your a middleware.</p>
-<p>An example application, write a layout within route 'public'. So, every route nested under it, would have the layout. </p>
+<p>The best place to create a layout instance, is within your a middleware.</p>
+<p>For example, create a layout within route 'public'. So, every route nested under it, would have the layout. </p>
 <pre><code>
 $app->map->addRoute(array(
-	'public'=> ['uri'='', 'bind:middleware'=> function($exe)
+	'public'=> ['uri'='', 'middleware'=> function($exe)
 	{
 		$exe->layout = $exe->view->create('layout/default');
 		$exe->layout->setRequired(['view']);

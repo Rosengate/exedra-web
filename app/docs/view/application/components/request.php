@@ -3,15 +3,15 @@
 <h2>1. get</h2>
 <p>get value from _get parameter.</p>
 <pre><code>
-$page = $app->request->get['page'];
+$page = $app->request->get('page');
 
 // or from exe instance.
-$page = $exe->request->get['page'];
+$page = $exe->request->get('page');
 </code></pre>
 <h2>2. post</h2>
 <p>Get value from _post parameter</p>
 <pre><code>
-$username = $exe->request->post['username'];
+$username = $exe->request->post('username');
 </code></pre>
 <h2>3. getMethod</h2>
 <p>Get request method</p>
@@ -30,4 +30,12 @@ if($exe->request->isAjax())
 <p>Get URI of the request</p>
 <pre><code>
 $uri = $exe->request->getURI();
+</code></pre>
+<h2>6. isSecure</h2>
+<p>Check the current request protocol. Return true if HTTPS.</p>
+<pre><code>
+if($exe->request->isSecure())
+{
+	// do something.
+}
 </code></pre>

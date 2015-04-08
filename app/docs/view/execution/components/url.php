@@ -24,28 +24,29 @@ $app->map->addRoute(array(
 ));
 </code></pre>
 <p>Within route public.user.index : </p>
+<h3>1.1 Relative Route</h3>
 <pre><code>
 // create public.user.profile url.
 $url = $exe->url->create('profile', ['username'=> 'eimihar']);
 </code></pre>
 <pre><code>
 // create public.page (will return an error, unable to create url)
-$url = $exe->url->create('page')
+$url = $exe->url->create('page');
 </code></pre>
-<p>The second example will throw an error, due to unable to find route named 'page' under the prefix 'public.user'.</p>
-<h2>2. Absolute Route</h2>
-<p>To specify the absolute route, do this :</p>
-<p>Still within the same route (public.user.index) </p>
+<p>The second example will throw an error, due to inablity to find route named 'page' under the prefix 'public.user'.</p>
+<h3>2. Absolute Route</h3>
+<p>To specify the absolute route, do this (while following the same scenario as above):</p>
 <pre><code>
-// create public.page
+// create url for route public.page
 $url = $exe->url->create('@public.page');
 </code></pre>
-<h2>3. Url with route prefixing</h2>
+<p>Above pattern will not care on what route you're currently on.</p>
+<h2>2. Url with route prefixing</h2>
 <p>Like we've been mentioned earlier, route prefixing would basically affect on how route would be read on creating a URL. Every route mentioned in the first parameter of the URL would be prefixed with the configured route prefix. Consider below routing : </p>
 <p>p/s : It's best to set a route prefix in a middleware.</p>
 <pre><code>
 $app->map->addRoute(array(
-	'public'=> ['uri'=>'','bind:middleware'=>function($exe){
+	'public'=> ['uri'=>'','middleware'=>function($exe){
 
 		// prefix all the nested route with 'public'
 		$exe->setRoutePrefix('public');
@@ -79,12 +80,12 @@ $url = $exe->url->create('user.profile', ['username'=>'eimihar']);
 $url = $exe->url->create('page');
 </code></pre>
 <h2>4. Base And Asset Url</h2>
-<p>You may configure a base url with on the url builder itself ($exe->url), or through application configuration.</p>
+<p>You may configure a base url with on the url builder itself ($exe->url).</p>
 <pre><code>
 $exe->url->setBase('http://localhost/myproject');
 $exe->url->setAsset('http://localhost/myproject/assets');
 </code></pre>
-<p>Through application configuration : </p>
+<p>Or through application configuration : </p>
 <pre><code>
 require_once "../exedra/Exedra/Exedra.php";
 
@@ -99,5 +100,5 @@ $myapp = $exedra->build("app", function($app)
 
 $exedra->dispatch();
 </code></pre>
-<p>This configuration will be applied across your application.</p>
-<p>p/s : you may later retrieve any configured application through $app instance.</p>
+<p>This configuration will be applied across your executed application.</p>
+<p>p/s : you may later retrieve any configured parameter through $app instance. Refer <a href='<?php echo $exe->url->create('@doc.default', array('view' => array('application', 'components', 'config')));?>'>config</a> for more details.</p>

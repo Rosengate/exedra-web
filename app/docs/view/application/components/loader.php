@@ -59,12 +59,28 @@ $contents = $app->loader->getContents(['structure'=> 'storage', 'path'=> 'world/
 </code></pre>
 <h2>4. registerAutoload</h2>
 <p>Register an autoloadable classes path. This method is available by any loader of any instance based.</p>
-<p>Register by passed string.</p>
+<p>4.1 Register by passed string.</p>
 <pre><code>
-$exedra->registerAutoload('myclasses');
+$exedra->loader->registerAutoload('myclasses');
 </code></pre>
-<p>Register by list of path. Let us use $app instance based for this once.</p>
+<p>4.2 Register by list of path. Let us use $app instance based for this once.</p>
 <pre><code>
 // within the application context.
+$app->loader->registerAutoload(array(
+	'model/entities',
+	'libraries'
+	));
+</code></pre>
+<p>4.3 This autoloadeder is available as per mentioned 3 instance level ($exedra, $app, $exe), since the loader already injected as public property for these instances.</p>
+<p>4.3.1 On Exedra</p>
+<pre><code>
+$exedra->loader->registerAutoload('vendor/exedra/classes');
+</code></pre>
+<p>4.3.2 On Application instance</p>
+<pre><code>
 $app->loader->registerAutoload('model/entities');
+</code></pre>
+<p>4.3.3 On Execution instance</p>
+<pre><code>
+$exe->loader->registerAutoload('mylibs');
 </code></pre>

@@ -44,7 +44,7 @@
 			<div class="row" id='header'>
 				<div class='col-sm-12'>
 					<div id='docs-title'>Exédra Documentation</div>
-					<div id='docs-description' style="position:absolute;padding-left:10px;">Every single knowledge of your application matters.</div>
+					<div id='docs-description' style="position:absolute;padding-left:10px;">Code with sense, and consent.</div>
 					<div id='top-menu'>
 						<a href='<?php echo $exe->url->create('@main');?>'>Home</a> | 
 						<a target="_blank" href='http://github.com/rosengate/exedra'>Github</a> | 

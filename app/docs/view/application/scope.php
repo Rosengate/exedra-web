@@ -9,7 +9,7 @@ $exedra = new \Exedra\Exedra(__DIR__);
 </code></pre>
 <h2>2. Application</h2>
 <p style="font-size:0.9em;">\Exedra\Application\Application</p>
-<p>The application instance you build by exedra. Retrievable by the original closure, or the one returned by the method Exedra\Exedra::build(). Read more about the instance at <a href='<?php echo $exe->url->create('default', ['view'=> array('application', 'components', 'application')]);?>'>here</a>.</p>
+<p>The application instance you build by exedra. Retrievable within the original closure, or the one returned by the method Exedra\Exedra::build(). Read more about the instance at <a href='<?php echo $exe->url->create('default', ['view'=> array('application', 'components', 'application')]);?>'>here</a>.</p>
 <pre><code>
 $app = $exedra->build('myapp', function($app)
 {

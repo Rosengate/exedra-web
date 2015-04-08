@@ -1,4 +1,5 @@
 <?php
+// require_once "../testexedra/vendor/rosengate/exedra/Exedra/Exedra.php";
 require_once "../exedra/Exedra/Exedra.php";
 
 $exedra = new \Exedra\Exedra(__DIR__);
@@ -25,7 +26,7 @@ $app = $exedra->build("app", function($app)
 			$exe->view->setDefaultData('exe', $exe);
 
 			$data['docsUrl'] = $exe->url->create('doc');
-
+			
 			return $exe->view->create('layout/default', $data)->render();
 		}],
 		"doc"=> ['uri'=>'docs', 'subapp'=>'docs',
