@@ -10,18 +10,18 @@ $app = $exedra->build("app", function($app)
 
 	// general config.
 	$conf['dev'] = array(
-		'url.base'=> 'http://localhost/side/exedra-web',
-		'url.asset'=> 'http://localhost/side/exedra-web/assets',
+		'app.url'=> 'http://localhost/side/exedra-web',
+		'asset.url'=> 'http://localhost/side/exedra-web/assets',
 		);
 
 	$conf['pro'] = array(
-		'url.base'=> 'http://exedra.rosengate.com',
-		'url.asset'=> 'http://exedra.rosengate.com/assets'
+		'app.url'=> 'http://exedra.rosengate.com',
+		'asset.url'=> 'http://exedra.rosengate.com/assets'
 		);
 
 	$app->config->set($conf[file_get_contents('../env')]);
 
-	$app->map->addRoute(array(
+	$app->map->addRoutes(array(
 		"main"=>['subapp'=>'web','execute'=> function($exe){
 			$exe->view->setDefaultData('exe', $exe);
 
