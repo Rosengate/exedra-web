@@ -4,7 +4,7 @@
 <p>Specify route name, and parameters required.</p>
 <p>p/s : consider below routing for the further subtopic.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'public'=> ['uri'=>'', 'subroute'=> array(
 		'user'=> ['uri'=>'user', 'subroute'=>array(
 			'index'=> ['uri'=> '', 'execute'=> function()
@@ -45,7 +45,7 @@ $url = $exe->url->create('@public.page');
 <p>Like we've been mentioned earlier, route prefixing would basically affect on how route would be read on creating a URL. Every route mentioned in the first parameter of the URL would be prefixed with the configured route prefix. Consider below routing : </p>
 <p>p/s : It's best to set a route prefix in a middleware.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'public'=> ['uri'=>'','middleware'=>function($exe){
 
 		// prefix all the nested route with 'public'

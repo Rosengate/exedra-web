@@ -4,7 +4,7 @@
 <h2>1. Next()</h2>
 <p><b>Next</b> method basically resembles the handler for the next closure it's executing.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'user'=>['uri'=>'user/[:username]', 'middleware'=>function($exe)
 		{
 			// this next() encapsulates/handles the execution closure on user.profile
@@ -21,7 +21,7 @@ $app->map->addRoute(array(
 <h2>2. Bind by class</h2>
 <p>You may also bind the middleware to which class should handle it.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'user'=>['uri'=>'user/[:username]', 'middleware'=>'middleware=user',
 	//... 
 </code></pre>
@@ -38,14 +38,14 @@ class MiddlewareUser
 </code></pre>
 <p>To specify the method name, you may do like this.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'user'=>['uri'=>'user/[:username]', 'middleware'=>'middleware=user@myhandle',
 	//... 
 </code></pre>
 <h2>3. Bind by path</h2>
 <p>You may also specify a path, so it may load a path that should contain a handler (closure)</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'user'=>['uri'=>'user/[:username]', 'middleware'=>'middleware:user',
 	//... 
 </code></pre>

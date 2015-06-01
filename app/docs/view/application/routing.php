@@ -15,7 +15,7 @@ $exedra->dispatch();
 <h2>1. Request method</h2>
 <p>On specifying or by any methods : </p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'test'	=> ['method'=> 'any', 'uri'=>'test-uri', 'execute'=> function(){ }], //any method
 	'test2' => ['method'=> 'get,post', 'uri'=>'test-uri2', 'execute'=> function(){ }], //only permit GET and POST
 	'test3' => ['uri'=>'lasttest', 'execute'=> function(){ }] //not specifying will set permitted method to any methods.
@@ -24,7 +24,7 @@ $app->map->addRoute(array(
 <h2>2. URI</h2>
 <p>Mocking uri 'my/test' will execute route 'test', and 'my/test/uri' will execute the route 'test2'</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'test' 	=> ['uri'=> 'my/test', 'execute'=> function(){ }],
 	'test2' => ['uri'=> 'my/test/uri', 'execute'=> function(){ }]
 ));
@@ -33,7 +33,7 @@ $app->map->addRoute(array(
 <p>For every successful route execution, the handler will be given an instance of <b>\Exedra\Application\Execution\Exec</b> through the first parameter.<br>
 You may then retrieve the value of the named parameter through that.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'myroute'=>['uri'=> 'books/[:author]/[:book-title]', 'execute'=> function($exe)
 	{
 		return 'my-name is'. $exe->param('author') .', and i have a books called '. $exe->param('book-title');
@@ -44,7 +44,7 @@ $app->map->addRoute(array(
 <p>Ah, the main dish of the exedra is finally here. Basically, exedra let you nest a route into another route, then nest a route into another route, infinitely. The idea is, to let you build a nestful and resource oriented URI design, and control the structure as per route node, through a bound middleware (covered later).</p>
 <p>For example :</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'user'=> ['uri'=> 'user/[:username]', 'subroute'=> array(
 		'profile'=> ['uri'=> '', 'execute'=> function($exe){ }],
 		'book'=> ['uri'=> 'book', 'subroute'=> array(
@@ -60,7 +60,7 @@ $app->map->addRoute(array(
 <h2>5. Re-Routing</h2>
 <p>You may execute another route within a successful execution handler. Either through the use of application instance, or the exec instance.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'general'=> ['uri'=> '', 'subroute'=> array(
 		'error'=> 	['uri'=> '404', 'execute'=> function(){ return "on error page"}],
 		'by-app'=>	['uri'=> 'by-app', 'execute'=> function($exe) use($app) { return $app->execute('general.error')}],
@@ -81,14 +81,14 @@ Example can be shown on route 'general.by-exe2'
 <h2>6. False URI</h2>
 <p>Setting up false flag on uri, will deny an HTTP request entry into that route. This may be good, if you want the route to solely be used somewhere.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'error'=> ['uri'=>false, 'execute'=> function(){ }]
 ));
 </code></pre>
 <h2>7. Subapplication</h2>
 <p>You may set sub-application as route parameter, using key '<b>subapp</b>'. This will affect builder like controller and view on the current and following route to use the folder based on sub-application value set.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'admin'=> ['uri'=> 'dashboard', 'subapp'=> 'admin', 'subroute'=> array(
 		'default'=> ['uri'=> '[:controller]/[**:action]']
 	)]

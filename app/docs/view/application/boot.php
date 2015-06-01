@@ -21,7 +21,7 @@ echo $myapp->execute(array("method"=>"get","uri"=>"test"));
 $myapp = $exedra->build("app", function($app)
 {
 	// the main closure to do all sort of routing.
-	$app->map->addRoute(array(
+	$app->map->addRoutes(array(
 		'first-test'=> array('method'=> 'any','uri'=> 'test', 'execute'=> function()
 			{
 				return "My first route!";

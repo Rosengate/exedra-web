@@ -5,7 +5,7 @@
 <h2>1. Example</h2>
 <p><b>Let's begin with example and a sneak peak of other components :</b></p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'testroute'=> ['uri'=> 'testuri', 'execute'=> function($exe)
 	{
 		// here. is basically the layer of execution. example : 
@@ -50,7 +50,7 @@ Is an argument/data to be passed to the specified route execution context. That 
 <h2>4. param()</h2>
 <p>This method return the passed argument, either by URI named parameter(s), or passed as the second argument of execute() method.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'first'=> ['uri'=> 'test/[:myparam]', 'execute'=> function($exe)
 	{
 		// forward this named parameter to the other route.

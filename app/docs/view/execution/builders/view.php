@@ -2,7 +2,7 @@
 <p>In exedra, we have no templating engine but php itself. But, it's more than creating a simple php file. You're given a builder that is based on $exe instance, that enable to properly design your view login, required data, and even build a layout dan can contain a view.</p>
 <h2>1. Create a view</h2>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'profile'=> ['uri'=> 'user/[:username]', 'execute'=> function($exe)
 	{
 		$view = $exe->view->create("user/profile");
@@ -81,7 +81,7 @@ Hello world!!!!
 <p>The best place to create a layout instance, is within your a middleware.</p>
 <p>For example, create a layout within route 'public'. So, every route nested under it, would have the layout. </p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'public'=> ['uri'='', 'middleware'=> function($exe)
 	{
 		$exe->layout = $exe->view->create('layout/default');

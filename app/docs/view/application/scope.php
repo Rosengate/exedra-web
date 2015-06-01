@@ -24,7 +24,7 @@ $myapp = $exedra->get('myapp');
 <p style="font-size:0.9em;">\Exedra\Application\Execution\Exec</p>
 <p>The original execution instance, which we rather keep it short to Exec, and called it <b>$exe</b>. This instance is retrieved from within the route execution closure. This instance held a lot of useful functionality injected for your application. Such as builders, and utilities, and you may also retrieve the execution arguments, like uri parameters, and etc. You can read more <a href='<?php echo $exe->url->create('default', ['view'=> array('execution', 'introduction')]);?>'>here</a>.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'myroute'=> array('uri'=> 'myroute/[:myname]', 'execute'=> function($exe)
 	{
 		return $exe->param('myname');

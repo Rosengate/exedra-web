@@ -3,7 +3,7 @@
 <h2>1. Create a controller</h2>
 <p>You may retrieve the builder from $exe instance.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'profile'=>['uri'=> 'user/[:userID]', 'execute'=> function($exe)
 	{
 		return $exe->controller->execute('user', 'profile', [$exe->param['userID']]);
@@ -30,7 +30,7 @@ class ControllerUser
 <h2>2. Create a default controller's route</h2>
 <p>The common controller/action/p1/p2/p3 routing.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'default'=>['uri'=> '[:controller]/[**:action]', 'execute'=> function($exe)
 	{
 		return $exe->controller->execute($exe->param('controller'), $exe->param('action'));
@@ -40,13 +40,13 @@ $app->map->addRoute(array(
 <h2>3. By String</h2>
 <p>Specify the string of class@method</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'profile'=>['uri'=> 'user/[:userID]', 'execute'=> 'controller=user@profile']
 ));
 </code></pre>
 <p>Or <b>mention the parameter</b> in the string.</p>
 <pre><code>
-$app->map->addRoute(array(
+$app->map->addRoutes(array(
 	'default'=> ['uri'=> '[:controller]/[**:action]', 'execute'=> 'controller={controller}@{action}']
 ));
 </code></pre> 

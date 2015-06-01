@@ -22,7 +22,7 @@ $myapp = $exedra->build('app', function($app)
 <pre><code>
 $myapp = $exedra->build('app', function($app)
 {
-	$app->map->addRoute(array(
+	$app->map->addRoutes(array(
 		'test'=> ['uri'=> 'test', 'subapp'=> 'backend', 'execute'=> function($exe)
 		{
 			// the loader will be based on /app/backend/
