@@ -217,7 +217,7 @@
                 <div class="code-block">
                     <!--//Use Prismjs - http://prismjs.com/index.html#basic-usage -->
                     <pre><code class="language-php">
-    $app->map->addRoute(array(
+    $app->map->addRoutes(array(
         'public'=> ['uri'=> '[:user]', 'subroute'=> array(
             'about'=> ['uri'=> 'about-me', 'execute'=>'controller=main@about']
         )]
