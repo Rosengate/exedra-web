@@ -6,7 +6,7 @@ $exedra = new \Exedra\Exedra(__DIR__);
 
 $app = $exedra->build("app", function($app)
 {
-	$app->setFailRoute('doc.error');
+	$app->registry->setFailRoute('doc.error');
 
 	// general config.
 	$conf['dev'] = array(
