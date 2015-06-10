@@ -2,13 +2,13 @@
 <p>Exedra provides a common loader that is usable within 3 scope level. The Exedra instance, the Application instance, and the Exec ($exe) instance. This scope based loader has nothing difference, except that they're prefixed by the directory the instances were based on.</p>
 <h2>1. Instances</h2>
 <hr style="border-color:#e5e5e5;">
-<h4>1.1. Exedra</h4>
+<h3>1.1. Exedra</h3>
 <p>The directory for this instance are decided by first argument given, when creating exedra</p>
 <pre><code>
 $dir = __DIR__; // current dir.
 $exedra = new \Exedra\Exedra($dir);
 </code></pre>
-<h4>1.2. Application</h4>
+<h3>1.2. Application</h3>
 <p>For this instance, the loader will be based on app folder name.</p>
 <pre><code>
 $myapp = $exedra->build('app', function($app)
@@ -17,13 +17,13 @@ $myapp = $exedra->build('app', function($app)
 
 });
 </code></pre>
-<h4>1.3. Exec</h4>
-<p>And for this instance, the loader will be based on <b>subapp</b> configured in routing, if there's no subapp configured, it will use the application directory instead.</p>
+<h3>1.3. Exec</h3>
+<p>And for this instance, the loader will be based on <a href='<?php echo $exe->url->create('default', ['view' => ['application', 'components', 'module']]);?>'><b>module</b></a> parameter configured in routing, if there's no module configured, it will use the application directory instead.</p>
 <pre><code>
 $myapp = $exedra->build('app', function($app)
 {
 	$app->map->addRoutes(array(
-		'test'=> ['uri'=> 'test', 'subapp'=> 'backend', 'execute'=> function($exe)
+		'test'=> ['uri'=> 'test', 'module'=> 'backend', 'execute'=> function($exe)
 		{
 			// the loader will be based on /app/backend/
 		}]
@@ -44,7 +44,9 @@ $app->loader->load('storage/myfile.php');
 	<li>path (mandatory)</li>
 </ol>
 <pre><code>
-$app->loader->load(array('structure'=>'storage', 'path'=> 'myfile.php'));
+$app->loader->load(array(
+			'structure'=>'storage',
+			'path'=> 'myfile.php'));
 </code></pre>
 <p>Load a file while array as a second argument to be extracted.</p>
 <pre><code>

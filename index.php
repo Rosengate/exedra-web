@@ -4,6 +4,8 @@ require_once "../exedra/Exedra/Exedra.php";
 
 $exedra = new \Exedra\Exedra(__DIR__);
 
+$exedra->configure('cache_path', true);
+
 $app = $exedra->build("app", function($app)
 {
 	$app->registry->setFailRoute('doc.error');
@@ -21,21 +23,28 @@ $app = $exedra->build("app", function($app)
 
 	$app->config->set($conf[file_get_contents('../env')]);
 
+	$app->registry->addMiddleware(function($exe)
+	{
+		$exe->response->header('Route', $exe->route->getAbsoluteName());
+
+		return $exe->next($exe);
+	});
+
 	$app->map->addRoutes(array(
-		"main"=>['subapp'=>'web','execute'=> function($exe){
+		"main"=>['module'=>'web','execute'=> function($exe){
 			$exe->view->setDefaultData('exe', $exe);
 
 			$data['docsUrl'] = $exe->url->create('doc');
 			
 			return $exe->view->create('layout/default', $data)->render();
 		}],
-		"doc"=> ['uri'=>'docs', 'subapp'=>'docs',
+		"doc"=> ['uri'=>'docs', 'module'=>'docs',
 			'execute'=> function($exe)
 				{
 					// forward to first topic.
 					return $exe->execute('@doc.default', ['view'=> ['application', 'boot']]);
 				},
-			'subroute'=>[
+			'subroutes'=>[
 				'error'=>['uri'=>false, 'execute'=>function($exe)
 				{
 					// re-route to error page.
@@ -51,9 +60,18 @@ $app = $exedra->build("app", function($app)
 						// just create a view. no need a controller.
 						// $view = $exe->param('folder')."/".$exe->param('file');
 						$view = implode("/", $exe->param('view'));
-						$layout->set('menu', json_decode($exe->app->loader->getContent(array('structure'=> 'model','path'=> 'docs.menu.json')), true));
-						$layout->set('content', $exe->view->create($view));
-						return $layout->render();
+
+						// only return view without template, if request is ajax.
+						if($exe->request->isAjax())
+						{
+							return $exe->view->create($view)->render();
+						}
+						else
+						{
+							$layout->set('menu', json_decode($exe->app->loader->getContent(array('structure'=> 'model','path'=> 'docs.menu.json')), true));
+							$layout->set('content', $exe->view->create($view));
+							return $layout->render();
+						}
 					}]
 				]]
 		));

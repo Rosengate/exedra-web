@@ -28,13 +28,13 @@ $exe->setRoutePrefix('example.route');
 </code></pre>
 <p>List of components affected by this route prefixing is :</p>
 <ol>
-	<li>URI</li>
+	<li>Url</li>
 	<li>Redirection</li>
 </ol>
 <h2>3. execute()</h2>
 <p>Like what've been mentioned in the previous topic (re-routing), this method is basically an alias to method <b>application::execute()</b>, except, it was bound relatively to the current execution context, if it was used by the instance.</p>
 <p><b>First parameter : Route name : </b><br>
-This route name is relatively tied to the current route prefix, if the method was called by the exec instance. But, can still be escaped with the absolute character '@'.
+This route name is relatively tied to the current route prefix, if the method was called by the exec instance. But, can still be escaped with the absolute character <b>'@'</b>.
 </p>
 <p>For example : </p>
 <pre><code>

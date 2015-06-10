@@ -10,8 +10,9 @@
 		"application/components/application": "Application",
 		"application/routing": "Routing",
 		"application/components/structure": "Structure",
-		"application/components/loader": "Loader"
-
+		"application/components/loader": "Loader",
+		"application/components/module" :"Module",
+		"application/components/registry": "Registry"
 	},
 	"Application : Components":
 	{
@@ -29,7 +30,8 @@
 		"execution/builders/controller":"Controller",
 		"execution/builders/view":"View",
 		"execution/builders/model":"Model",
-		"execution/builders/middleware": "Middleware"
+		"execution/builders/middleware": "Middleware",
+		"execution/builders/path": "Path"
 	},
 	"Execution : Components":
 	{

@@ -39,7 +39,6 @@ echo $myapp->execute('first-test');
 <pre><code>
 RewriteEngine on
 
-RewriteCond %{REQUEST_URI} !/assets
 RewriteRule ^/? index.php [L]
 Options -Indexes
 </code></pre>
@@ -48,6 +47,7 @@ Options -Indexes
 // echo $myapp->execute('first-test');
 $exedra->dispatch();
 </code></pre>
+<p>Our <b>\Exedra\HTTP\Request</b> class takes variable $_SERVER['REQUEST_URI'] to get the URI.<br>The execute() method from the $app instance <b>(\Exedra\Application\Application)</b> also takes the request instance, just to let you know.</p>
 
 <h2>Booting Up</h2>
 <p>Consider below as the full clean code for this topic.</p>

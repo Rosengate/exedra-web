@@ -28,7 +28,7 @@ $app->map->addRoutes(array(
 </code></pre>
 <h2>2. Available Parameters</h2>
 <p>List of available parameters. All of them are optional. Route matches are dictated by the given HTTP Request internally.</p>
-<div class='table'>
+<div style="padding:10px; background: white;">
 <?php $parameters = array(
 	'method' => array(
 		'description' => 'An HTTP Method. It can be a single method, or multiple method or any. Not specifying will accept any method.',
@@ -54,9 +54,9 @@ $app->map->addRoutes(array(
 		'description' => 'Add list of routes assigned under the current route.',
 		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.')
 		),
-	'subapp' => array(
-		'description' => 'Name of a sub application. Anything that executed under this route and it\'s child will be assigned to this sub application. The controller or view looked by the execution pattern will be prefixed by a folder named by this given sub application name.',
-		'value' => 'String of sub application name.'
+	'module' => array(
+		'description' => 'Name of a module. Anything that executed under this route and it\'s child will be assigned to this module. The controller or view looked by the execution pattern will be prefixed by a folder named by this given module name.',
+		'value' => 'String of module name.'
 		)
 );?>
 <table class='table'>
@@ -136,11 +136,11 @@ $app->map->addRoutes(array(
 	'error'=> ['uri'=>false, 'execute'=> function(){ }]
 ));
 </code></pre>
-<h3>3.6. Subapplication</h3>
-<p>You may set sub-application as route parameter, using key '<b>subapp</b>'. This will affect builder like controller and view on the current and following route to use the folder based on sub-application value set.</p>
+<h3>3.6. Module</h3>
+<p>You may set sub-application as route parameter, using key '<b>module</b>'. This will affect builder like controller and view on the current and following route to use the folder based on sub-application value set.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'admin'=> ['uri'=> 'dashboard', 'subapp'=> 'admin', 'subroute'=> array(
+	'admin'=> ['uri'=> 'dashboard', 'module'=> 'admin', 'subroute'=> array(
 		'default'=> ['uri'=> '[:controller]/[**:action]']
 	)]
 ));

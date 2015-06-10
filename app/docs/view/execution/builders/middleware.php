@@ -25,10 +25,12 @@ $app->map->addRoutes(array(
 	'user'=>['uri'=>'user/[:username]', 'middleware'=>'middleware=user',
 	//... 
 </code></pre>
-<p>For this example, basically it will look for a middleware class, called MiddlewareUser, in default path app\middleware\user.php</p>
-<p>If you didn't specify the method name, it will look for method named 'handle'</p>
+<p>For this example, basically it will look for a middleware class, called <strong>App\Middleware\User</strong> (namespaced), in default path app\middleware\user.php</p>
+<p>If you didn't specify the method name, it will look for method named 'handle', and the method will basically inject <b>\Exedra\Application\Execution\Exec</b> instance as argument.</p>
 <pre><code>
-class MiddlewareUser
+namespace App\Middleware;
+
+class User
 {
 	public function handle($exe)
 	{

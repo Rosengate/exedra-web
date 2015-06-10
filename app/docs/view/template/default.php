@@ -37,6 +37,37 @@
 				$("#menu").toggle();
 			}
 		}
+
+		var docs = new function()
+		{
+			this.baseUrl = '<?php echo $exe->url->parent();?>';
+			this.load = function(page)
+			{
+				$("#content-wrap").load(this.baseUrl+'/'+page, function()
+				{
+					// menu
+					$('.menu-content li').removeClass('active');
+					$('.menu-content li#list-'+page.split('/').join('-')).addClass('active');
+
+					// re-highlight.
+					$(document).ready(function() {
+					  $('pre code').each(function(i, block) {
+					  	$(this).html($.trim($(this).html()));
+					    hljs.highlightBlock(block);
+					  });
+					});
+
+					// hide menu if mobile mode
+					if($("#menu-toggle").css('display') == 'block')
+					{
+						menu.show();
+					}
+
+					// history.
+					window.history.pushState({}, '', docs.baseUrl+'/'+page);
+				});
+			}
+		}
 		</script>
 	</head>
 	<body>
@@ -70,8 +101,11 @@
 							<?php foreach($menuContents as $path=>$name):?>
 								<?php $exist = $exe->view->has($path);?>
 								<?php $selected = implode('/', $exe->param('view')) == $path;?>
-								<?php $paths = explode("/", $path);?>
-								<li class="<?php echo $exist? 'file-exist':'file-not-exist';?> <?php echo $selected ? 'active' : '';?>"><a href="<?php echo $exe->url->create("default", ["view"=>$paths]);?>"><?php echo $name;?></a></li>
+								<?php $paths = explode("/", $path);
+								?>
+								<li id='list-<?php echo str_replace('/', '-', $path);?>' class="<?php echo $exist? 'file-exist':'file-not-exist';?> <?php echo $selected ? 'active' : '';?>">
+									<a href="javascript:void(0);" onclick='docs.load("<?php echo $path;?>");'><?php echo $name;?></a>
+								</li>
 							<?php endforeach;?>
 							</ul>
 						</div>
@@ -80,7 +114,9 @@
 				</div>
 				<div id='content-container' class="col-sm-10" style="padding-bottom:200px;">
 					<a href='#' id='menu-toggle' onclick='menu.show();' class="fa fa-bars"></a href='#'>
+					<div id='content-wrap'>
 					<?php $content->render();?>
+					</div>
 				</div>
 			</div>
 			<!-- Menu Ends -->

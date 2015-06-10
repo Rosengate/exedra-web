@@ -15,8 +15,33 @@ $myapp = $exedra->build('app', function($app)
 });
 </code></pre>
 <h2>2. Core component</h2>
-<p>Some of the core components are lazily injected on a DI container by default. Mean they're only instantiated once called.</p>
-<p>As seen in <b>\Exedra\Application\Application::__construct()</b></p>
+<p>Some of the core components are lazily injected on a DI container by default, usable as a public property to application instance.</p>
+<div style="padding:10px; background: white;">
+<?php $dependencies = array(
+	'request' => 'HTTP Request referenced on this property for convenient use in application level.',
+	'response' => 'HTTP Response referenced for convenient use in application level.',
+	'map' => 'The main instance or general gateway for handling routes and levels.',
+	'config' => 'A configuration instance with simple set, get, has functionality. May read dot notation based key.',
+	'session' => 'The instance for handling user session. May read dot notation based key.',
+	'exception' => 'Instance for handling exception on application level.',
+	'path' => 'A path builder for convenient handling of path on application level.'
+	);
+?>
+	<table class='table'>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<?php foreach($dependencies as $name => $description):?>
+		<tr>
+			<td><?php echo $name;?></td>
+			<td><?php echo $description;?></td>
+		</tr>
+		<?php endforeach;?>
+	</table>
+</div>
+
+<!-- <p>As seen in <b>\Exedra\Application\Application::__construct()</b></p>
 <pre><code>
 $this->di = new \Exedra\Application\Dic(array(
 	"request"=>$this->exedra->httpRequest,
@@ -28,7 +53,7 @@ $this->di = new \Exedra\Application\Dic(array(
 	"exception"=> array("\Exedra\Application\Builder\Exception"),
 	'file'=> array('\Exedra\Application\Builder\File', array($this))
 	));
-</code></pre>
+</code></pre> -->
 <h2>3. (Re)register component</h2>
 <p>You may later want to re-register the component. Just use the di container, and register the component by the same component's name again. Just make sure you extends the original class.</p>
 <pre><code>
@@ -51,19 +76,19 @@ $app->cache;
 <p>p/s : just make sure that the classes are available. If you're using composer, good. Else, use our autoloader, or your own.</p>
 <h2>4. execute</h2>
 <p>Execute application, by the given string of route name or an associative array of a query</p>
-<p>By route name</p>
+<h3>4.1. By route name</h3>
 <pre><code>
 $app->execute('public.user', ['username'=> 'eimihar']);
 </code></pre>
-<p>By an associative array of query</p>
+<h3>4.2. By an associative array of query</h3>
 <pre><code>
 $app->execute(array(
 	'uri'=> 'user/eimihar',
 	'method'=> 'get'
 ));
 </code></pre>
-<p>Most of the time, you don't usually use the second method. The first method of execution, is good for executing another route.</p>
-<p>For the second method is usually executed by the original Exedra Dispatch method.</p>
+<p>Most of the time, you don't usually use the second method unless for testing. The first method of execution, is good for executing another route.</p>
+<p>Because the second method is usually executed by the original Exedra Dispatch method.</p>
 <pre><code>
 // dispatch request to the built application.
 $exedra->dispatch();

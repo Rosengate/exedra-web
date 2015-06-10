@@ -16,11 +16,11 @@ $app->map->addRoutes(array(
 <pre><code>
 // within the execution handler.
 $view = $exe->view->create("user/profile");
-
-// by direct set
 $view->set('title', "User Profile");
-
-// by array
+</code></pre>
+<p>Or by array</p>
+<pre><code>
+	
 $view->set([
 	"username" => "eimihar",
 	"age"=> 26,
