@@ -13,3 +13,7 @@ $app->registry->addMiddleware(function($exe)
 <pre><code>
 $app->registry->setFailRoute('error');
 </code></pre>
+<p>Or directly through application instance</p>
+<pre><code>
+$app->setFailRoute('error');
+</code></pre>

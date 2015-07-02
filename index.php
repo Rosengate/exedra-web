@@ -4,11 +4,9 @@ require_once "../exedra/Exedra/Exedra.php";
 
 $exedra = new \Exedra\Exedra(__DIR__);
 
-$exedra->configure('cache_path', true);
-
-$app = $exedra->build("app", function($app)
+$app = $exedra->build("App", function($app)
 {
-	$app->registry->setFailRoute('doc.error');
+	$app->setFailRoute('doc.error');
 
 	// general config.
 	$conf['dev'] = array(
@@ -25,6 +23,7 @@ $app = $exedra->build("app", function($app)
 
 	$app->registry->addMiddleware(function($exe)
 	{
+		$exe->setFailRoute('404');
 		$exe->response->header('Route', $exe->route->getAbsoluteName());
 
 		return $exe->next($exe);

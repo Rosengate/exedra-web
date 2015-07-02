@@ -13,7 +13,7 @@ $myapp = $exedra->build("app", function($app)
 $exedra->dispatch();
 </code></pre>
 <h2>1. Basic</h2>
-<p>You may simply add route(s) using a convinient method on Map ($map) instance injected as a property to your Application instance ($app). This method basically uses struct (array), with the <b>key</b> as route name against the <b>parameter(s)</b> of the route.</p>
+<p>You may simply add route(s) using a convenient method on Map ($map) instance injected as a property to your Application instance ($app). This method basically uses struct (array), with the <b>key</b> as route name against the <b>parameter(s)</b> of the route.</p>
 <pre><code>
 $app->map->addRoutes(array(
 	'myroute' => array(
@@ -44,13 +44,13 @@ $app->map->addRoutes(array(
 		),
 	'execute' => array(
 		'description' => 'A todo command if route is matched, once found.',
-		'value' => array('A \\Closure', 'Or Execution pattern')
+		'value' => array('A \\Closure', 'Or an execution pattern')
 		),
 	'middleware' => array(
 		'description' => 'Bind a middleware on this route. Any route or it\'s child matched will stack a middleware on execution time.',
 		'value' => array('A \\Closure', 'Or pattern specifying the handler.')
 		),
-	'subroute' => array(
+	'subroutes' => array(
 		'description' => 'Add list of routes assigned under the current route.',
 		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.')
 		),

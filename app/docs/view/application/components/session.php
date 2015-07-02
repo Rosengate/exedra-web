@@ -1,6 +1,6 @@
 <h1>Session <span>\Exedra\Application\Session\Session</span></h1>
 <p>Handle the session across the request</p>
-<h2>1. set()</h2>
+<h2>1. set</h2>
 <p>Session is basically part of application instance ($app), but you may still retrieve from $exe instance itself.</p>
 <pre><code>
 // by $app instance
@@ -9,17 +9,17 @@ $app->session->set('user', 1);
 // by $exe instance
 $exe->session->set('user', 1);
 </code></pre>
-<h2>2. has()</h2>
+<h2>2. has</h2>
 <p>Check whether the session exists or not</p>
 <pre><code>
 $exe->session->has('user');
 </code></pre>
-<h2>3. get()</h2>
+<h2>3. get</h2>
 <p>Get the session value</p>
 <pre><code>
 $user = $exe->session->get('user');
 </code></pre>
-<h2>4. destroy()</h2>
+<h2>4. destroy</h2>
 <pre><code>
 // destroy selected key
 $exe->session->destroy('user');

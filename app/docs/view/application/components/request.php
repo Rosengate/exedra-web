@@ -24,6 +24,14 @@ $username = $exe->request->post('username');
 <pre><code>
 $method = $exe->request->getMethod();
 </code></pre>
+<h2>3. isMethod</h2>
+<p>Equate with the current method</p>
+<pre><code>
+if($exe->request->isMethod('post'))
+{
+
+}
+</code></pre>
 <h2>3. isAjax</h2>
 <p>Check whether it's an <b>XML HTTP Request</b></p>
 <pre><code>
@@ -32,10 +40,10 @@ if($exe->request->isAjax())
 	// do stuff
 }
 </code></pre>
-<h2>4. getURI</h2>
+<h2>4. getUri</h2>
 <p>Get <b>URI</b> of the request</p>
 <pre><code>
-$uri = $exe->request->getURI();
+$uri = $exe->request->getUri();
 </code></pre>
 <h2>5. isSecure</h2>
 <p>Check the current request scheme. Return true if HTTPS.</p>

@@ -1,7 +1,7 @@
 <h1>Middleware <span>\Exedra\Application\Builder\Middleware</span></h1>
 <p>This layer is actually part of the execution layer. It lives and encapsulate the original execution layer. They're also known as filter in other frameworks.</p>
 <p>You may bind a middleware at the routing layer.</p>
-<h2>1. Next()</h2>
+<h2>1. next()</h2>
 <p><b>Next</b> method basically resembles the handler for the next closure it's executing.</p>
 <pre><code>
 $app->map->addRoutes(array(
@@ -58,4 +58,26 @@ return function($exe)
 {
 	return $exe->next($exe);
 };
+</code></pre>
+<h2>4. Stacking middleware</h2>
+<p>Middlewares are stackable. They're executed based on how you map them either on route or through registry. For example :</p>
+<pre><code>
+$app->map->addRoutes(array(
+	'frontend' => array(
+		'middleware' => 'middleware=frontend',
+		'subroutes' => array(
+			'blog' => array(
+				'middleware' => 'middleware=frontend/blog'
+			)
+		)
+	)
+));
+</code></pre>
+<h2>5. Middleware by registry</h2>
+<p>You may stack a middleware even on application level, through registry instance.</p>
+<pre><code>
+$app->registry->addMiddleware(function()
+{
+
+});
 </code></pre>

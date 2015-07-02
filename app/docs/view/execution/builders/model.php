@@ -23,7 +23,7 @@
 	</tr>
 </table>
 <h3>1.3 Redbean PHP</h3>
-<p>A independant datamapper.</p>
+<p>An independant datamapper.</p>
 <table class='table'>
 	<tr>
 		<td style="width:100px;">Docs</td><td>: <a target="_blank" href='http://redbeanphp.com/'>Documentation</a></td>

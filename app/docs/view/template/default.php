@@ -23,6 +23,8 @@
 				this.innerHTML	= this.innerHTML.trim();
 			});
 		});
+
+		
 		</script>
 		<style type="text/css">
 			/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);*/
@@ -41,7 +43,7 @@
 		var docs = new function()
 		{
 			this.baseUrl = '<?php echo $exe->url->parent();?>';
-			this.load = function(page)
+			this.load = function(page, unpushed)
 			{
 				$("#content-wrap").load(this.baseUrl+'/'+page, function()
 				{
@@ -64,10 +66,21 @@
 					}
 
 					// history.
-					window.history.pushState({}, '', docs.baseUrl+'/'+page);
+					if(!unpushed)
+						window.history.pushState({}, '', docs.baseUrl+'/'+page);
 				});
 			}
 		}
+
+		// handle state backward/forward navigation
+		$(window).on('popstate',function()
+		{
+			var url = docs.baseUrl;
+			var href = window.location.href;
+			var page = href.split(url+'/').join('');
+
+			docs.load(page, true);
+		});
 		</script>
 	</head>
 	<body>

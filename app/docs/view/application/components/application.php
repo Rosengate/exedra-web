@@ -2,11 +2,11 @@
 <p>The original application instance built by exedra. This is the instance where some core components are based on.</p>
 <p>Most of below topics may have been introduced previously. We'll cover in detail here.</p>
 <h2>1. Building The Instance.</h2>
-<p>This instance are built by Exedra.</p>
+<p>Create your application instance with the method <b>build</b>. First argument is your application name. In our examples, we just used <b>app</b> as the name.</p>
 <pre><code>
 $myapp = $exedra->build('app');
 </code></pre>
-<p>You may pass a application closure as second argument while building the instance, which is recomended, to no taint your global namespace with anything.</p>
+<p>You may pass a application closure as second argument while building the instance, which is recomended.</p>
 <p>The closure will give you the app instance as the first parameter.</p>
 <pre><code>
 $myapp = $exedra->build('app', function($app)
@@ -15,7 +15,7 @@ $myapp = $exedra->build('app', function($app)
 });
 </code></pre>
 <h2>2. Core component</h2>
-<p>Some of the core components are lazily injected on a DI container by default, usable as a public property to application instance.</p>
+<p>Most of the core components are lazily injected into a DI container by default, accessable as a public property on application instance since we use a <a target='_blank' href='http://php.net/manual/en/language.oop5.overloading.php#object.get'>getter</a> for developer convenient.</p>
 <div style="padding:10px; background: white;">
 <?php $dependencies = array(
 	'request' => 'HTTP Request referenced on this property for convenient use in application level.',
@@ -24,7 +24,8 @@ $myapp = $exedra->build('app', function($app)
 	'config' => 'A configuration instance with simple set, get, has functionality. May read dot notation based key.',
 	'session' => 'The instance for handling user session. May read dot notation based key.',
 	'exception' => 'Instance for handling exception on application level.',
-	'path' => 'A path builder for convenient handling of path on application level.'
+	'path' => 'A path builder for convenient handling of path on application level.',
+	'registry' => 'Handles execution registry, like middlewares'
 	);
 ?>
 	<table class='table'>
@@ -55,7 +56,7 @@ $this->di = new \Exedra\Application\Dic(array(
 	));
 </code></pre> -->
 <h2>3. (Re)register component</h2>
-<p>You may later want to re-register the component. Just use the di container, and register the component by the same component's name again. Just make sure you extends the original class.</p>
+<p>You may later want to re-register the component. Just use the di container, and register the component by the same component's name again. Just make sure you extend the original class.</p>
 <pre><code>
 $app->di->register('config', array('\MyClasses\config'));
 </code></pre>
@@ -92,4 +93,9 @@ $app->execute(array(
 <pre><code>
 // dispatch request to the built application.
 $exedra->dispatch();
+</code></pre>
+<h2>5. setFailRoute</h2>
+<p>Set route to handle exception generally on application context.</p>
+<pre><code>
+$app->setFailRoute('error');
 </code></pre>

@@ -10,10 +10,10 @@ $app->map->addRoutes(array(
 	}]
 ));
 </code></pre>
-<p>And it will look for the class called <strong>\App\Controller\User</strong> (namespaced) inside file app/controller/user.php</p>
+<p>And it will look for the class called <strong>\app\controller\User</strong> (namespaced) inside file app/controller/User.php</p>
 <pre><code>
-// app/controller/user.php
-namespace App\Controller\User;
+// app/controller/User.php
+namespace app\controller;
 
 class User
 {
