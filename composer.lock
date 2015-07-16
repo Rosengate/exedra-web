@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "7d19e859b877478b1b118177544c9eab",
+    "packages": [
+        {
+            "name": "rosengate/exedra",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Rosengate/exedra.git",
+                "reference": "29ccaf0efc73f350d334a741ece8267e34065adc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Rosengate/exedra/zipball/29ccaf0efc73f350d334a741ece8267e34065adc",
+                "reference": "29ccaf0efc73f350d334a741ece8267e34065adc",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Exedra\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmad Rahimie Ahmad Zailani",
+                    "email": "newrehmi@gmail.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "Nestful route oriented PHP micro framework",
+            "homepage": "http://github.com/rosengate/exedra",
+            "keywords": [
+                "exedra",
+                "framework",
+                "microframework",
+                "php",
+                "rosengate",
+                "route",
+                "router"
+            ],
+            "time": "2015-07-02 16:25:26"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

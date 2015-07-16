@@ -1,6 +1,6 @@
 <?php
 // require_once "../testexedra/vendor/rosengate/exedra/Exedra/Exedra.php";
-require_once "../exedra/Exedra/Exedra.php";
+require_once "vendor/autoload.php";
 
 $exedra = new \Exedra\Exedra(__DIR__);
 
