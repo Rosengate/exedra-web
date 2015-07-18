@@ -10,7 +10,7 @@ $app = $exedra->build("App", function($app)
 {
 	$app->setFailRoute('doc.error');
 
-	$env = file_get_contents('../env');
+	$env = trim(file_get_contents('../env'));
 
 	// general config.
 	$conf['dev'] = array(
