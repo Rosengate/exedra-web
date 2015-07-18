@@ -1,12 +1,16 @@
 <?php
 // require_once "../testexedra/vendor/rosengate/exedra/Exedra/Exedra.php";
 require_once "vendor/autoload.php";
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
 
 $exedra = new \Exedra\Exedra(__DIR__);
 
 $app = $exedra->build("App", function($app)
 {
 	$app->setFailRoute('doc.error');
+
+	$env = file_get_contents('../env');
 
 	// general config.
 	$conf['dev'] = array(
@@ -19,7 +23,10 @@ $app = $exedra->build("App", function($app)
 		'asset.url'=> 'http://exedra.rosengate.com/assets'
 		);
 
-	$app->config->set($conf[file_get_contents('../env')]);
+	$app->config->set($conf[$env]);
+
+	if($app->loader->has('config/env_config.php'))
+		$app->config->set($app->loader->load('config/env_config.php'));
 
 	$app->registry->addMiddleware(function($exe)
 	{
