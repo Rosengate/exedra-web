@@ -1,30 +1,16 @@
 <?php
-// require_once "../testexedra/vendor/rosengate/exedra/Exedra/Exedra.php";
-require_once "vendor/autoload.php";
-ini_set('display_errors', 'on');
-error_reporting(E_ALL);
-
-$exedra = new \Exedra\Exedra(__DIR__);
-
-$app = $exedra->build("App", function($app)
+return function($app)
 {
 	$app->setFailRoute('doc.error');
 
-	$env = trim(file_get_contents('../env'));
-
-	// general config.
-	$conf['dev'] = array(
-		'app.url'=> 'http://localhost/side/exedra-web',
-		'asset.url'=> 'http://localhost/side/exedra-web/assets',
-		);
-
-	$conf['pro'] = array(
-		'app.url'=> 'http://exedra.rosengate.com',
+	$app->config->set(array(
+		'app.url' => 'http://exedra.rosengate.com/index.php',
 		'asset.url'=> 'http://exedra.rosengate.com/assets'
-		);
+		));
 
-	$app->config->set($conf[$env]);
-
+	// now most config is configured for production.
+	// so, for your own environment, just set up below file, and return the same array of config.
+	// file : app/config/env_config.php
 	if($app->loader->has('config/env_config.php'))
 		$app->config->set($app->loader->load('config/env_config.php'));
 
@@ -41,7 +27,7 @@ $app = $exedra->build("App", function($app)
 			$exe->view->setDefaultData('exe', $exe);
 
 			$data['docsUrl'] = $exe->url->create('doc');
-			
+
 			return $exe->view->create('layout/default', $data)->render();
 		}],
 		"doc"=> ['uri'=>'docs', 'module'=>'docs',
@@ -81,9 +67,5 @@ $app = $exedra->build("App", function($app)
 					}]
 				]]
 		));
-});
-
-$exedra->dispatch();
-
-
+}
 ?>

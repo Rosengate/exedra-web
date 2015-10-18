@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7d19e859b877478b1b118177544c9eab",
+    "hash": "3a1b4149d20ce2e43c476ee2245dabad",
     "packages": [
         {
             "name": "rosengate/exedra",
-            "version": "v0.2.1",
+            "version": "v0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rosengate/exedra.git",
-                "reference": "c274bfbabbaf058ade4db526f09c8490baad8f92"
+                "reference": "2e540efa0fa968398b70299b47983fceaa307e04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Rosengate/exedra/zipball/c274bfbabbaf058ade4db526f09c8490baad8f92",
-                "reference": "c274bfbabbaf058ade4db526f09c8490baad8f92",
+                "url": "https://api.github.com/repos/Rosengate/exedra/zipball/2e540efa0fa968398b70299b47983fceaa307e04",
+                "reference": "2e540efa0fa968398b70299b47983fceaa307e04",
                 "shasum": ""
             },
             "type": "library",
@@ -48,7 +48,7 @@
                 "route",
                 "router"
             ],
-            "time": "2015-07-18 09:30:55"
+            "time": "2015-10-18 06:23:22"
         }
     ],
     "packages-dev": [],
