@@ -1,5 +1,5 @@
 {
     "require": {
-        "rosengate/exedra": "0.2.*"
+        "rosengate/exedra": "dev-master"
     }
 }

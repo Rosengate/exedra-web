@@ -4,6 +4,7 @@ return function($app)
 	$app->setFailRoute('doc.error');
 
 	$app->config->set(array(
+		'env' => 'prod',
 		'app.url' => 'http://exedra.rosengate.com/index.php',
 		'asset.url'=> 'http://exedra.rosengate.com/assets'
 		));

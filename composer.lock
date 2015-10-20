@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a1b4149d20ce2e43c476ee2245dabad",
+    "hash": "9f07b0b1b59ad88931278d24a518a955",
     "packages": [
         {
             "name": "rosengate/exedra",
-            "version": "v0.2.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rosengate/exedra.git",
-                "reference": "2e540efa0fa968398b70299b47983fceaa307e04"
+                "reference": "6cde73c975f87027bd87f8c739c4e2a71504bfc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Rosengate/exedra/zipball/2e540efa0fa968398b70299b47983fceaa307e04",
-                "reference": "2e540efa0fa968398b70299b47983fceaa307e04",
+                "url": "https://api.github.com/repos/Rosengate/exedra/zipball/6cde73c975f87027bd87f8c739c4e2a71504bfc4",
+                "reference": "6cde73c975f87027bd87f8c739c4e2a71504bfc4",
                 "shasum": ""
             },
             "type": "library",
@@ -48,13 +48,15 @@
                 "route",
                 "router"
             ],
-            "time": "2015-10-18 06:23:22"
+            "time": "2015-10-20 14:51:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "rosengate/exedra": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
