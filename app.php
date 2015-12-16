@@ -5,7 +5,7 @@ return function($app)
 
 	$app->config->set(array(
 		'env' => 'prod',
-		'app.url' => 'http://exedra.rosengate.com/index.php',
+		'app.url' => 'http://exedra.rosengate.com',
 		'asset.url'=> 'http://exedra.rosengate.com/assets'
 		));
 
@@ -35,7 +35,7 @@ return function($app)
 			'execute'=> function($exe)
 				{
 					// forward to first topic.
-					return $exe->execute('@doc.default', ['view'=> 'application/boot']);
+					return $exe->execute('@doc.default', ['view'=> 'application/introduction']);
 				},
 			'subroutes'=>[
 				'error'=>['uri'=>false, 'execute'=>function($exe)

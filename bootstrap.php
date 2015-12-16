@@ -7,6 +7,6 @@ error_reporting(E_ALL);
 
 $exedra = new \Exedra\Exedra(__DIR__);
 
-$app = $exedra->build("App", $exedra->loader->load('app.php'));
+$app = $exedra->build("app", $exedra->loader->load('app.php'));
 
 return $app;

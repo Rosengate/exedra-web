@@ -1,7 +1,7 @@
 <?php
 require_once '../bootstrap.php';
 
-$app = $exedra->get('App');
+$app = $exedra->get('app');
 
 if($app->config->get('env') == 'local')
 	$exedra->httpRequest->resolveUri();
