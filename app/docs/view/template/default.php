@@ -23,11 +23,8 @@
 				this.innerHTML	= this.innerHTML.trim();
 			});
 		});
-
-		
 		</script>
 		<style type="text/css">
-			/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);*/
 			
 		</style>
 		<script type="text/javascript">
@@ -47,6 +44,8 @@
 			{
 				$("#content-wrap").load(this.baseUrl+'/'+page, function()
 				{
+					$(window).scrollTop(0);
+
 					// menu
 					$('.menu-content li').removeClass('active');
 					$('.menu-content li#list-'+page.split('/').join('-')).addClass('active');
@@ -84,7 +83,7 @@
 		</script>
 	</head>
 	<body>
-		<div class='container' style="width:80%;">
+		<div class='container' style="width:70%;">
 			<div class="row" id='header'>
 				<div class='col-sm-12'>
 					<div id='docs-title'>Exédra Documentation</div>
@@ -92,12 +91,12 @@
 					<div id='top-menu'>
 						<a href='<?php echo $exe->url->create('@main');?>'>Home</a> | 
 						<a target="_blank" href='http://github.com/rosengate/exedra'>Github</a> | 
-						<a target='_blank' href='http://eimihar.rosengate.com/about' title='Exedra Rocks!'>Author</a></div>
+						<a target='_blank' href='http://github.com/eimihar' title='Exedra Rocks!'>Author</a></div>
 				</div>
 			</div>
 			<!-- Menu -->
 			<div class="row">
-				<div id='menu' class='col-sm-2'>
+				<div id='menu' class='col-sm-3'>
 					<?php foreach($menu as $menuTitle=>$menuContents):?>
 					<?php if(is_string($menuContents) && $menuContents == "main"):?>
 						<div class='menu-title-main'>
@@ -113,7 +112,7 @@
 							<ul>
 							<?php foreach($menuContents as $path=>$name):?>
 								<?php $exist = $exe->view->has($path);?>
-								<?php $selected = implode('/', $exe->param('view')) == $path;?>
+								<?php $selected = $exe->param('view') == $path;?>
 								<?php $paths = explode("/", $path);
 								?>
 								<li id='list-<?php echo str_replace('/', '-', $path);?>' class="<?php echo $exist? 'file-exist':'file-not-exist';?> <?php echo $selected ? 'active' : '';?>">
@@ -125,7 +124,7 @@
 					<?php endif;?>
 					<?php endforeach;?>
 				</div>
-				<div id='content-container' class="col-sm-10" style="padding-bottom:200px;">
+				<div id='content-container' class="col-sm-9 pull-right" style="padding-bottom:200px;">
 					<a href='#' id='menu-toggle' onclick='menu.show();' class="fa fa-bars"></a href='#'>
 					<div id='content-wrap'>
 					<?php $content->render();?>

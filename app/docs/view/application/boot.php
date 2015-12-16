@@ -1,5 +1,5 @@
 <h1>Booting Exedra</h1>
-<p>Exedra uses front-controller pattern, which acts as the main handler for every incoming request. In this case, we'll just use index.php as the main front-controller. But first, make sure you've already cloned exedra somewhere in your disk.</p>
+<p>Exedra uses front-controller pattern, which acts as the main handler for every incoming request. For a simple booting up example, we'll use just <span class='label label-file'>index.php</span> as the main front-controller. But first, make sure you've already cloned exedra somewhere in your disk.</p>
 <h2>1. Includes Exedra and build</h2>
 <p>Require Exedra in your index.php (from wherever you put exedra), and boot your application up just like this : </p>
 <pre><code>
@@ -29,7 +29,10 @@ $myapp = $exedra->build("app", function($app)
 {
 	// the main closure to do all sort of routing.
 	$app->map->addRoutes(array(
-		'first-test'=> array('method'=> 'any','uri'=> 'test', 'execute'=> function()
+		'first-test'=> array(
+			'method'=> 'any',
+			'uri'=> 'test',
+			'execute'=> function()
 			{
 				return "My first route!";
 			})

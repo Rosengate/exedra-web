@@ -1,19 +1,16 @@
 <h1>Routing <span>\Exedra\Application\Map\.</span></h1>
-<p>The main component of exedra, that basically front-route every single request for your application based on your designed map of routes. Every route is unique, and identifable by name. They're reusable to the extend of re-creating a url for the route, or query a route even for your own use. In this page we'll focus on writing them.</p>
-<p>If you're still on learning, please use the same index.php from the last topic.</p>
-<pre><code>
-require_once "../exedra/Exedra/Exedra.php";
-
-$exedra = new \Exedra\Exedra(__DIR__);
-$myapp = $exedra->build("app", function($app)
+<p>The main component of exedra, that basically front-route every single request for your application based on your designed map of routes. Every route is unique, and identifable by name (not really if you're using a <a href='<?php echo $url->create('default', ['view' => 'application/routing/convenient']);?>'>Convenient way of routing</a>). They're reusable to the extend of generating a url for the route, or query a route even for your own use. In this page we'll focus on writing them.</p>
+<p>Let's just assume that we're using an <span class='label label-file'>app.php</span> from the <a href='<?php echo $url->create('default', ['view' => 'application/wizardry/start']);?>'>conjured skeleton</a> topic.</p>
+<pre><span class='code-tag label label-file'>App/app.php</span><code>
+return $exedra->build("App", function($app)
 {
-	// this will be the main place where our routing is written next.
+
 });
 
 $exedra->dispatch();
 </code></pre>
 <h2>1. Basic</h2>
-<p>You may simply add route(s) using a convenient method on Map ($map) instance injected as a property to your Application instance ($app). This method basically uses struct (array), with the <b>key</b> as route name against the <b>parameter(s)</b> of the route.</p>
+<p>You may simply add route(s) using a not really convenient method on <span class='label label-variable'>$app->map</span>, the first <span class='label label-class'>\Exedra\Application\Map\Level</span> instance injected as a property to your <span class='label label-variable'>$app</span> instance. This method basically uses struct (array), with the <b>key</b> as route name against the <b>property(s)</b> of the route.</p>
 <pre><code>
 $app->map->addRoutes(array(
 	'myroute' => array(
@@ -26,13 +23,13 @@ $app->map->addRoutes(array(
 		)
 ));
 </code></pre>
-<h2>2. Available Parameters</h2>
-<p>List of available parameters. All of them are optional. Route matches are dictated by the given HTTP Request internally.</p>
+<h2>2. Available Properties</h2>
+<p>List of available properties. All of them are <b>optional</b>.</p>
 <div style="padding:10px; background: white;">
-<?php $parameters = array(
+<?php $properties = array(
 	'method' => array(
 		'description' => 'An HTTP Method. It can be a single method, or multiple method or any. Not specifying will accept any method.',
-		'value' => array('get, post, put or delete', 'or a combination delimited by \',\'', 'any')
+		'value' => array('string or array', 'get, post, put or delete', 'or a combination delimited by \',\'', 'any')
 		),
 	'uri' => array(
 		'description' => 'A string of URI for this route to be matched with Request URI taken from $_SERVER variable. ($_SERVER[\'REQUEST_URI\'])',
@@ -44,30 +41,32 @@ $app->map->addRoutes(array(
 		),
 	'execute' => array(
 		'description' => 'A todo command if route is matched, once found.',
-		'value' => array('A \\Closure', 'Or an execution pattern')
+		'value' => array(
+			'An execution handler pattern.',
+			'There\'re built in such as : <div style="padding-left: 10px;"><a href="'.$exe->url->create('default', array('view' => 'execution/handlers#Closure')).'">- \Closure</a></div><div style="padding-left: 10px;"><a href="'.$exe->url->create('default', array('view' => 'execution/handlers#controller')).'">- controller handler</a></div>')
 		),
 	'middleware' => array(
-		'description' => 'Bind a middleware on this route. Any route or it\'s child matched will stack a middleware on execution time.',
+		'description' => 'Bind a middleware to this route. Any route or it\'s child matched will stack a middleware on execution time.',
 		'value' => array('A \\Closure', 'Or pattern specifying the handler.')
 		),
 	'subroutes' => array(
 		'description' => 'Add list of routes assigned under the current route.',
-		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.')
+		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.', 'Or a closure with child Level instance passed as the first parameter.')
 		),
 	'module' => array(
-		'description' => 'Name of a module. Anything that executed under this route and it\'s child will be assigned to this module. The controller or view looked by the execution pattern will be prefixed by a folder named by this given module name.',
+		'description' => 'Name of a module. Anything that executed under this route and it\'s child will be assigned to this module. <b>The controller or view looked by the execution pattern will be prefixed by a folder named by this given module name.</b>',
 		'value' => 'String of module name.'
 		)
 );?>
 <table class='table'>
 	<tr>
-		<th>Parameters</th>
-		<th>Description</th>
+		<th>Properties</th>
+		<th style="width: 60%;">Description</th>
 		<th>Value</th>
 	</tr>
-	<?php foreach($parameters as $param => $struct):?>
+	<?php foreach($properties as $property => $struct):?>
 	<tr>
-		<td><?php echo $param;?></td>
+		<td><?php echo $property;?></td>
 		<td><?php echo $struct['description'];?></td>
 		<td>
 			<?php if(is_array($struct['value'])):?>
@@ -87,17 +86,29 @@ $app->map->addRoutes(array(
 <p>On specifying or by any methods : </p>
 <pre><code>
 $app->map->addRoutes(array(
-	'test'	=> ['method'=> 'any', 'uri'=>'test-uri', 'execute'=> function(){ }], //any method
-	'test2' => ['method'=> 'get,post', 'uri'=>'test-uri2', 'execute'=> function(){ }], //only permit GET and POST
-	'test3' => ['uri'=>'lasttest', 'execute'=> function(){ }] //not specifying will set permitted method to any methods.
+	'test'	=> [
+		'method' => 'any',
+		'uri' => 'test-uri',
+		'execute' => function(){ }], //any method
+	'test2' => [
+		'method' => ['get', 'post'],
+		'uri' =>'test-uri2',
+		'execute' => function(){ }], //only permit GET and POST
+	'test3' => [
+		'uri' =>'lasttest',
+		'execute' => function(){ }] //not specifying will set permitted method to any methods.
 ));
 </code></pre>
 <h3>3.2. URI</h3>
 <p>Mocking uri 'my/test' will execute route 'test', and 'my/test/uri' will execute the route 'test2'</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'test' 	=> ['uri'=> 'my/test', 'execute'=> function(){ }],
-	'test2' => ['uri'=> 'my/test/uri', 'execute'=> function(){ }]
+	'test' 	=> [
+		'uri' => 'my/test',
+		'execute' => function(){ }],
+	'test2' => [
+		'uri' => 'my/test/uri',
+		'execute' => function(){ }]
 ));
 </code></pre>
 <h3>3.3. Named Parameter</h3>
@@ -105,10 +116,12 @@ $app->map->addRoutes(array(
 You may then retrieve the value of the named parameter through that instance.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'myroute'=>['uri'=> 'books/[:author]/[:book-title]', 'execute'=> function($exe)
-	{
-		return 'my-name is'. $exe->param('author') .', and i have a books called '. $exe->param('book-title');
-	}]
+	'myroute' => [
+		'uri'=> 'books/[:author]/[:book-title]',
+		'execute'=> function($exe)
+		{
+			return 'my-name is'. $exe->param('author') .', and i have a books called '. $exe->param('book-title');
+		}]
 ));
 </code></pre>
 <h3>3.4. Nested Routing</h3>
@@ -116,12 +129,17 @@ $app->map->addRoutes(array(
 <p>For example :</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'user'=> ['uri'=> 'user/[:username]', 'subroute'=> array(
-		'profile'=> ['uri'=> '', 'execute'=> function($exe){ }],
-		'book'=> ['uri'=> 'book', 'subroute'=> array(
-			'index'=> ['uri'=> '', 'execute'=> function($exe){ }],
-			'view'=> ['uri'=> '[:book-title]', 'execute'=> function($exe){ }]
-		)] // end of user.book
+	'user'=> [
+		'uri'=> 'user/[:username]',
+		'subroutes'=> array(
+			'profile'=> [
+				'uri' => '',
+				'execute' => function($exe){ }],
+			'book'=> ['uri'=> 'book',
+				'subroutes'=> array(
+					'index'=> ['uri'=> '', 'execute'=> function($exe){ }],
+					'view'=> ['uri'=> '[:book-title]', 'execute'=> function($exe){ }]
+			)] // end of user.book
 	)] // end of user
 ));
 </code></pre>
@@ -140,8 +158,12 @@ $app->map->addRoutes(array(
 <p>You may set sub-application as route parameter, using key '<b>module</b>'. This will affect builder like controller and view on the current and following route to use the folder based on sub-application value set.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'admin'=> ['uri'=> 'dashboard', 'module'=> 'admin', 'subroute'=> array(
-		'default'=> ['uri'=> '[:controller]/[**:action]']
+	'admin'=> [
+		'uri' => 'dashboard',
+		'module' => 'admin',
+		'subroutes' => array(
+			'default' => [
+				'uri' => '[:controller]/[**:action]']
 	)]
 ));
 </code></pre>
@@ -150,11 +172,21 @@ $app->map->addRoutes(array(
 <p>You may execute another route within a successful execution handler. Either through the use of application instance, or the exec instance.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'general'=> ['uri'=> '', 'subroute'=> array(
-		'error'=> 	['uri'=> '404', 'execute'=> function(){ return "on error page"}],
-		'by-app'=>	['uri'=> 'by-app', 'execute'=> function($exe) use($app) { return $app->execute('general.error')}],
-		'by-exe'=>	['uri'=> 'firstexe', 'execute'=> function($exe){ return $exe->execute('error')}],
-		'by-exe2'=> ['uri'=> 'secondexe', 'execute'=> function($exe){ return $exe->execute('@general.error')}]
+	'general'=> [
+		'uri'=> '',
+		'subroutes'=> array(
+			'error'=> 	[
+				'uri'=> '404',
+				'execute'=> function(){ return "on error page"}],
+		'by-app'=>	[
+			'uri' => 'by-app',
+			'execute'=> function($exe) use($app) { return $app->execute('general.error')}],
+		'by-exe'=>	[
+			'uri' => 'firstexe',
+			'execute'=> function($exe){ return $exe->execute('error')}],
+		'by-exe2'=> [
+			'uri' => 'secondexe',
+			'execute'=> function($exe){ return $exe->execute('@general.error')}]
 	)]
 ));
 </code></pre>

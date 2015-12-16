@@ -17,7 +17,7 @@ return function($app)
 
 	$app->registry->addMiddleware(function($exe)
 	{
-		$exe->setFailRoute('404');
+		$exe->asset->setBasePath('public/assets');
 		$exe->response->header('Route', $exe->route->getAbsoluteName());
 
 		return $exe->next($exe);
@@ -25,7 +25,7 @@ return function($app)
 
 	$app->map->addRoutes(array(
 		"main"=>['module'=>'web','execute'=> function($exe){
-			$exe->view->setDefaultData('exe', $exe);
+			$exe->view->setDefaultData(array('exe' => $exe, 'url' => $exe->url));
 
 			$data['docsUrl'] = $exe->url->create('doc');
 
@@ -35,24 +35,25 @@ return function($app)
 			'execute'=> function($exe)
 				{
 					// forward to first topic.
-					return $exe->execute('@doc.default', ['view'=> ['application', 'boot']]);
+					return $exe->execute('@doc.default', ['view'=> 'application/boot']);
 				},
 			'subroutes'=>[
 				'error'=>['uri'=>false, 'execute'=>function($exe)
 				{
 					// re-route to error page.
-					return $exe->execute('default', ['view'=>['error',404], 'message'=> $exe->param('exception')->getMessage()]);
+					return $exe->execute('default', ['view'=>'error/404', 'message'=> $exe->param('exception')->getMessage()]);
 				}],
-				'default'=>['uri'=> '[**:view]', 'execute'=> function($exe) {
+				'default'=>['uri'=> '[*:view]', 'execute'=> function($exe) {
 						// set default data for view builder
-						$exe->view->setDefaultData('exe', $exe);
+						$exe->view->setDefaultData(array('exe' => $exe, 'url' => $exe->url));
 
 						// layout.
 						$layout = $exe->view->create("template/default");
 
 						// just create a view. no need a controller.
 						// $view = $exe->param('folder')."/".$exe->param('file');
-						$view = implode("/", $exe->param('view'));
+						// $view = implode("/", $exe->param('view'));
+						$view = $exe->param('view');
 
 						// only return view without template, if request is ajax.
 						if($exe->request->isAjax())

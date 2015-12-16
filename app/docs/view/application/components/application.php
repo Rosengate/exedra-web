@@ -1,21 +1,20 @@
 <h1>Application <span>\Exedra\Application\Application</span></h1>
 <p>The original application instance built by exedra. This is the instance where some core components are based on.</p>
 <p>Most of below topics may have been introduced previously. We'll cover in detail here.</p>
-<h2>1. Building The Instance.</h2>
-<p>Create your application instance with the method <b>build</b>. First argument is your application name. In our examples, we just used <b>app</b> as the name.</p>
+<h2>1. Creating The Instance.</h2>
+<p>Create your application instance with method <b class='label label-method'>\Exedra\Exedra::build()</b>. First argument is <span class='label bg-primary'>your application name</span> which will be the <span class='label bg-primary'>base directory</span> of where your application codes will be located (except public's, of course). In our examples, we just used <b>'App'</b> as the name.</p>
 <pre><code>
-$myapp = $exedra->build('app');
+$app = $exedra->build('App');
 </code></pre>
-<p>You may pass a application closure as second argument while building the instance, which is recomended.</p>
-<p>The closure will give you the app instance as the first parameter.</p>
+<p>You may pass a <span class='label label-class'>\Closure</span> as second argument and expect an <span class='label label-class'>\Exedra\Exedra\Application</span> instance returned as the first parameter of the closure.</p>
 <pre><code>
-$myapp = $exedra->build('app', function($app)
+$app = $exedra->build('App', function(\Exedra\Application\Application $app)
 {
-	// do your application thing.
+
 });
 </code></pre>
 <h2>2. Core component</h2>
-<p>Most of the core components are lazily injected into a DI container by default, accessable as a public property on application instance since we use a <a target='_blank' href='http://php.net/manual/en/language.oop5.overloading.php#object.get'>getter</a> for developer convenient.</p>
+<p>Most of the core components are lazily injected into a <a href='<?php echo $exe->url->create('default', ['view' => 'others/dic']);?>'>DI container</a> by default, accessible as a public accessor on <span class='label label-variable'>$app</span> instance since we use a <a target='_blank' href='http://php.net/manual/en/language.oop5.overloading.php#object.get'>getter</a> for developer convenient.</p>
 <div style="padding:10px; background: white;">
 <?php $dependencies = array(
 	'request' => 'HTTP Request referenced on this property for convenient use in application level.',

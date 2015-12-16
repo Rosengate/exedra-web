@@ -1,7 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 body {
-	font-family: 'Palatino Linotype';
-	background:#f0f0f0;
-	letter-spacing: 1px;
+	font-family: 'Open Sans';
+	/*background:#f0f0f0;*/
 }
 
 #docs-title
@@ -17,11 +18,24 @@ body {
 #menu 
 {
 	padding-top:20px;
-	background: #eaeaea;
+	/*background: #eaeaea;*/
 	border-top:0px;
-	box-shadow: 0px 1px 3px #616161;
+	/*box-shadow: 0px 1px 3px #616161;*/
+	font-size: 1.1em;
 	margin-top:30px;
 	padding-bottom: 20px;
+}
+
+.requirement
+{
+	font-size: 1.1em;
+	padding-bottom: 5px;
+	color: red;
+}
+
+.requirement:before
+{
+	content: 'Requirement : ';
 }
 
 #top-menu
@@ -53,6 +67,10 @@ body {
 	font-weight: bold;
 }
 
+#content-container a
+{
+	font-weight: bold;
+}
 #content-container pre
 {
 	padding:0px;
@@ -67,7 +85,7 @@ body {
 #content-container p
 {
 	color: #494949;
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 #content-container h1
@@ -117,6 +135,46 @@ body {
 #content-container
 {
 	position: relative;
+}
+
+/* bootstrap .label */
+.label.label-class
+{
+	background: #8e8e8e;
+}
+
+.label.label-variable
+{
+	background: #1f8689;
+}
+
+.label.label-method
+{
+	background: #d6d6d6;
+	color: black;
+}
+
+.label.label-file
+{
+	background: #a5773e;
+}
+
+.label.label-dir
+{
+	background: #47668c;
+}
+
+pre
+{
+	position: relative;
+}
+
+pre .code-tag
+{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-size: 1em;
 }
 
 @media (max-width:768px){

@@ -1,7 +1,6 @@
 <h1>Execution <span>\Exedra\Application\Execution\.</span></h1>
-<p>One of the main important layer for your application. The execution layer. Basically this is where a route has successfully been executed, and it's the moment you decide what you're going to do next.</p>
-<p>Like what have been mentioned earlier, you're given the instance of <b>\Exedra\Application\Execution\Exec</b> ($exe) on the execution handler. This instance is relatively tied to few things such as routePrefix or the configured sub-application on the outer layer. (routing)</p>
-<p>This instance also has a <a href='<?php echo $exe->url->create('default', ['view'=>['others','dic']]);?>'>dependendeny injection container</a>, that hold a lot of useful dependencies for your application, such as session, validator, form helper (form), and etc.</p>
+<p>One of the main important layer for your application. The execution layer/context. An \Exedra\Application\Execution\Exec instance is returned when a route has been successfully executed, and handled by a matched <a href='<?php echo $exe->url->create('default', ['view' => 'execution/handlers']);?>'>handler</a>.</p>
+<p>This instance basically serve as a context or container of your execution. It also has a <a href='<?php echo $exe->url->create('default', ['view'=>['others','dic']]);?>'>dependency injection container</a>, that hold a lot of useful dependencies for your application, such as session, validator, form helper (form), and etc.</p>
 <h2>1. Example</h2>
 <p><b>Let's begin with example and a sneak peak of other components :</b></p>
 <pre><code>

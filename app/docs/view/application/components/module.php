@@ -11,11 +11,11 @@ $app->map->addRoutes(array(
 ));
 </code></pre>
 <p>Your folder structure may become like this :</p>
-<pre><code>
-app
-  frontend
-    controller
-    view
+<pre><span class='code-tag label label-dir'>/</span><code>
+App
+  Frontend
+    Controller
+    View
 </pre></code>
 <p>The module will be applied to that route and those nested under it.</p>
 <pre><code>
