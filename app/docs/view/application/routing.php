@@ -1,16 +1,14 @@
 <h1>Routing <span>\Exedra\Application\Map\.</span></h1>
 <p>The main component of exedra, that basically front-route every single request for your application based on your designed map of routes. Every route is unique, and identifable by name (not really if you're using a <a href='<?php echo $url->create('default', ['view' => 'application/routing/convenient']);?>'>Convenient way of routing</a>). They're reusable to the extend of generating a url for the route, or query a route even for your own use. In this page we'll focus on writing them.</p>
-<p>Let's just assume that we're using an <span class='label label-file'>app.php</span> from the <a href='<?php echo $url->create('default', ['view' => 'application/wizardry/start']);?>'>conjured skeleton</a> topic.</p>
+<p>Let's just assume that we're using an <span class='label label-file'>App/app.php</span> from the <a href='<?php echo $url->create('default', ['view' => 'application/wizardry/start']);?>'>conjured skeleton</a> topic.</p>
 <pre><span class='code-tag label label-file'>App/app.php</span><code>
 return $exedra->build("App", function($app)
 {
 
 });
-
-$exedra->dispatch();
 </code></pre>
 <h2>1. Basic</h2>
-<p>You may simply add route(s) using a not really convenient method on <span class='label label-variable'>$app->map</span>, the first <span class='label label-class'>\Exedra\Application\Map\Level</span> instance injected as a property to your <span class='label label-variable'>$app</span> instance. This method basically uses struct (array), with the <b>key</b> as route name against the <b>property(s)</b> of the route.</p>
+<p>You can add route(s) using a not really convenient method on <span class='label label-variable'>$app->map</span>, the first <span class='label label-class'>\Exedra\Application\Map\Level</span> instance injected as a property to your <span class='label label-variable'>$app</span> instance. This method basically uses struct (array), with the <b>key</b> as route name against the <b>property(s)</b> of the route.</p>
 <pre><code>
 $app->map->addRoutes(array(
 	'myroute' => array(
@@ -54,7 +52,7 @@ $app->map->addRoutes(array(
 		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.', 'Or a closure with child Level instance passed as the first parameter.')
 		),
 	'module' => array(
-		'description' => 'Name of a module. Anything that executed under this route and it\'s child will be assigned to this module. <b>The controller or view looked by the execution pattern will be prefixed by a folder named by this given module name.</b>',
+		'description' => 'Name of a module. Anything that executed under this route and it\'s child will be assigned to this module. <b>The controller or view looked by the execution handler pattern will be prefixed by a folder named by this given module name.</b>',
 		'value' => 'String of module name.'
 		)
 );?>

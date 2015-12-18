@@ -1,5 +1,5 @@
 <h1>Instances</h1>
-<p>We use no static when dealing with codes. It's really up to the developer themselves to implement a facade pattern, singleton, multiton any simpler simplification kind of pattern. But here, your codes will live in at most three contexts.</p>
+<p>Exedra uses no static when dealing with codes. It's really up to the developer themselves to implement a facade pattern, singleton, multiton any simplifying kind of pattern. But here, your codes will live in <b>at most three contexts.</b></p>
 <p>On the upcoming topics, you will hear a lot about these instances such as <span class='label label-variable'>$exedra</span>, <span class='label label-variable'>$app</span>, and <span class='label label-variable'>$exe</span>. So, we feel like it's important to foremost mention them here a little.</p>
 <h2>1. Exedra</h2>
 <p><span class='label label-class'>\Exedra\Exedra</span></p>

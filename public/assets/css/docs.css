@@ -5,6 +5,12 @@ body {
 	/*background:#f0f0f0;*/
 }
 
+h2, h3, h4, h5
+{
+	font-weight: bold;
+	color: #4d4d4d;
+}
+
 #docs-title
 {
 	font-size:50px;
@@ -15,13 +21,17 @@ body {
 	letter-spacing: 3px;
 }
 
+#menu, #content-container p
+{
+	font-size: 1em;
+}
+
 #menu 
 {
 	padding-top:20px;
 	/*background: #eaeaea;*/
 	border-top:0px;
 	/*box-shadow: 0px 1px 3px #616161;*/
-	font-size: 1.1em;
 	margin-top:30px;
 	padding-bottom: 20px;
 }
@@ -85,7 +95,6 @@ body {
 #content-container p
 {
 	color: #494949;
-	font-size: 1.1em;
 }
 
 #content-container h1
@@ -143,6 +152,12 @@ body {
 	background: #8e8e8e;
 }
 
+.label.label-property, .label.label-string
+{
+	background: #c7f1f3;
+	color: black;
+}
+
 .label.label-variable
 {
 	background: #1f8689;
@@ -175,6 +190,23 @@ pre .code-tag
 	right: 0px;
 	top: 0px;
 	font-size: 1em;
+}
+
+.container-figure
+{
+	padding-bottom: 30px;
+}
+
+.container-figure img
+{
+	border: 1px solid #dddddd;
+}
+
+.figure-text
+{
+	text-align: center;
+	font-weight: bold;
+	padding: 10px;
 }
 
 @media (max-width:768px){

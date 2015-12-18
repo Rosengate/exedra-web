@@ -12,7 +12,7 @@
 		<script src="<?php echo $exe->url->asset('js/jquery.min.js');?>"></script>
 		<script src="<?php echo $exe->url->asset('js/bootstrap.min.js');?>"></script>
 		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset('devaid/plugins/font-awesome/css/font-awesome.css');?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset("highlight-js/styles/zenburn.css");?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset("highlight-js/styles/foundation.css");?>">
 		<script type="text/javascript" src='<?php echo $exe->url->asset("highlight-js/highlight.pack.js");?>'></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 		<script type="text/javascript">
@@ -83,7 +83,7 @@
 		</script>
 	</head>
 	<body>
-		<div class='container' style="width:70%;">
+		<div class='container' style="width:60%;">
 			<div class="row" id='header'>
 				<div class='col-sm-12'>
 					<div id='docs-title'>Exédra Documentation</div>
@@ -127,7 +127,7 @@
 				<div id='content-container' class="col-sm-9 pull-right" style="padding-bottom:200px;">
 					<a href='#' id='menu-toggle' onclick='menu.show();' class="fa fa-bars"></a href='#'>
 					<div id='content-wrap'>
-					<?php $content->render();?>
+					<?php echo $content->render();?>
 					</div>
 				</div>
 			</div>

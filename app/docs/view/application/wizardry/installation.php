@@ -4,7 +4,6 @@
 <h2>1. Installing Exedra Wizard</h2>
 <p>With an assumption that you <u class='label label-danger'>have git cloned or composer required exedra</u> and <u class='label label-danger'>a clean folder directory</u> (without any code yet),<br> Then please create below files <strong><u>(not folder)</u></strong> under your project root directory :</p>
 <pre><span class='code-tag label label-dir'>/</span><code>
-.
 exedra
 wizard
 </code></pre>

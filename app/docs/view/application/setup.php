@@ -9,6 +9,6 @@ composer require rosengate/exedra dev-master
 </code></pre>
 <h2>1.2. Git clone</h2>
 <p>Or clone exedra using exedra github repository itself.</p>
-<pre><code>
+<pre><code class='nix'>
 git clone https://github.com/rosengate/exedra
 </code></pre>
