@@ -20,18 +20,25 @@
 		"application/components/module" :"Module",
 		"application/components/registry": "Registry"
 	},
-	"Application : Routing":
-	{
-		"application/routing": "Default",
-		"application/routing/convenient": "Convenient Routing",
-		"application/routing/explicit": "Explicit Routing",
-		"application/routing/custom": "Custom Routing"
-	},
 	"Application : Components":
 	{
 		"application/components/config": "Config",
 		"application/components/session": "Session",
 		"application/components/request": "HTTP Request"
+	},
+	"Routing": "main",
+	"Routing : Core":
+	{
+		"application/routing": "Default",
+		"routing/properties": "Route Properties",
+		"routing/convenient": "Convenient Routing",
+		"routing/explicit": "Explicit Routing",
+		"routing/extend": "Extending Routing Components"
+	},
+	"Routing : Contexts":
+	{
+		"routing/context/application": "Application",
+		"routing/context/execution": "Execution"
 	},
 	"Execution": "main",
 	"Execution : Core":
@@ -53,7 +60,6 @@
 		"execution/components/url": "URL builder",
 		"execution/components/session": "Session",
 		"execution/components/flash": "Flash",
-		"execution/components/validator": "Validator",
 		"execution/components/redirection": "Redirection",
 		"execution/components/form": "Form"
 	},

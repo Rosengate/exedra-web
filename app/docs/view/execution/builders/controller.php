@@ -47,11 +47,11 @@ $app->map->addRoutes(array(
 	}]
 ));
 </code></pre>
-<h2>3. By String</h2>
-<p>Specify by the string of execution pattern</p>
+<h2>3. By Handler pattern</h2>
+<p>Specify by the execution handler for controller</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'profile'=>['uri'=> 'user/[:userID]', 'execute'=> 'controller=user@profile']
+	'profile'=>['uri'=> 'user/[:userID]', 'execute'=> 'controller=User@profile']
 ));
 </code></pre>
 <p>Or <b>mention the parameter</b> in the string.</p>

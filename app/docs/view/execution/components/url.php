@@ -1,5 +1,5 @@
 <h1>Url <span>\Exedra\Application\Builder\Url</span></h1>
-<p>In exedra, we do not purely write a url of your specific route, except through a builder, that was based on current execution context. Url is built with route reading capability, since exedra is an heavily route oriented application, you need to specify route name and it's URI named parameter.</p>
+<p>This URL builder helps developer generate a URL by specifying the route by name, or tag. In an execution context, the specified route will usually be based on <span class='label label-property'>base</span> route it's based to. If the context doesn't have one, it will base the route to the parent of current execution route.</p>
 <h2>1. Create a URL</h2>
 <p>Specify route name, and parameters required.</p>
 <p>p/s : consider below routing for the further subtopic.</p>
@@ -23,7 +23,7 @@ $app->map->addRoutes(array(
 	)]
 ));
 </code></pre>
-<p>Within route public.user.index : </p>
+<p>Within handler for route <span class='label label-route'>public.user.index</span> : </p>
 <h3>1.1 Relative Route</h3>
 <pre><code>
 // create public.user.profile url.

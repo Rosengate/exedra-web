@@ -29,8 +29,7 @@ $view->set([
 return $view->render();
 </code></pre>
 <p>Then you may use the passed data in the form of variable.</p>
-<pre><code>
-// app/view/user/profile.php
+<pre><span class='code-tag label label-file'>App/View/User/profile.php</span><code>
 title : &lt;php? echo $title;?&gt; 
 name : &lt;php? echo $username;?&gt;
 age : &lt;php? echo $age;?&gt;
@@ -52,8 +51,7 @@ $exe->layout = $exe->view->create('layout/default')->setRequired(['view']);
 // in the place to render the layout
 $exe->layout->set('view', $exe->view->create('user/profile'))->render();
 </code></pre>
-<pre><code>
-&lt;!--in layout/default.php--&gt;
+<pre><span class='code-tag label label-file'>App/View/layout/default.php</span><code>
 &lt;html&gt;
 	&lt;head&gt;
 	&lt;/head&gt;
@@ -62,13 +60,13 @@ $exe->layout->set('view', $exe->view->create('user/profile'))->render();
 	&lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<pre><code>
-&lt;!--in view/user/profile.php--&gt;
+<pre><span class='code-tag label label-file'>App/View/User/profile.php</span><code>
+&lt;div class="container"&gt;
 Hello world!!!!
+&lt;/div&gt;
 </code></pre>
 <p><b>The rendered result :</b></p>
-<pre><code>
-&lt;!--in layout/default.php--&gt;
+<pre><span class='code-tag label label-dir'>Expected results</span><code>
 &lt;html&gt;
 	&lt;head&gt;
 	&lt;/head&gt;
@@ -95,9 +93,11 @@ $app->map->addRoutes(array(
 	)] // end of public
 ));
 </code></pre>
-At controller :
+<p>In User controller :</p>
 <pre><code>
-class ControllerUser
+namespace App\Controller;
+
+class User
 {
 	public function __construct($exe)
 	{

@@ -1,7 +1,7 @@
 <h1>Module</h1>
 <p>Modularizing you application is just as simple as just defining a parameter <b>module</b> on a route. This feature basically modularize only components like <b>controllers</b> and <b>views</b> into a folder named by the defined module.</p>
 <h2>1. Defining module name</h2>
-<p>You may define it in a route definition, similarly like what we've mentioned previously in routing topic.</p>
+<p>You may define it by one of the route property, similarly with what is mentioned in routing topic.</p>
 <pre><code>
 $app->map->addRoutes(array(
 	'frontend' => array(
@@ -33,7 +33,7 @@ $app->map->addRoutes(array(
 ));
 </code></pre>
 <h2>2. Controller</h2>
-<p>Your controller will be namespaced under the module name. Use the example from previous codes.</p>
+<p>Based on previous routing example, the controller builder will look for a file with path <span class='label label-file'>App/Frontend/Controller/Blog.php</span> and will be namespaced under the namespace <span class='label label-class'>\App\Frontend</span>.</p>
 <pre><code>
 namespace App\Frontend\Controller;
 
@@ -47,7 +47,7 @@ class Blog
 </code></pre>
 <h2>3. View</h2>
 <p>View will also be affected by the defined module.</p>
-<p>Writing this within the modulized execution, will look for <b>\app\frontend\view\foo\bar.php</b></p>
+<p>For example, below code will look for <b class='label label-file'>App/Frontend/View/foo/bar.php</b> in a modularized execution.</p>
 <pre><code>
 $exe->view->create('foo/bar');
 </code></pre>

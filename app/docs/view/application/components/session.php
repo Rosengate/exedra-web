@@ -4,10 +4,10 @@
 <p>Session is basically part of application instance ($app), but you may still retrieve from $exe instance itself.</p>
 <pre><code>
 // by $app instance
-$app->session->set('user', 1);
+$app->session->set('user', 'john');
 
 // by $exe instance
-$exe->session->set('user', 1);
+$exe->session->set('user', 'remi');
 </code></pre>
 <h2>2. has</h2>
 <p>Check whether the session exists or not</p>
