@@ -29,7 +29,7 @@ return function($app)
 
 			$data['docsUrl'] = $exe->url->create('doc');
 
-			return $exe->view->create('layout/default', $data)->render();
+			return $exe->view->create('layout/default_new', $data)->render();
 		}],
 		"doc"=> ['uri'=>'docs', 'module'=>'docs',
 			'execute'=> function($exe)
