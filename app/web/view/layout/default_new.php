@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>Exedra | Route oriented PHP microframework</title>
-  <meta name="description" content="A multi-tier nestful route oriented PHP framework, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A multi-tier nestful route oriented PHP microframework, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing">
   <meta name="author" content="Ahmad Rahimie">    
 
   <link rel="stylesheet" type="text/css" href="<?php echo $url->asset('css/bootstrap.min.css');?>">
@@ -95,17 +96,33 @@ $(document).ready(function()
   {
     font-size: 80px;
   }
+
+  .jumbotron a
+  {
+    color: #555555;
+    letter-spacing: 1px;
+    font-size: 1em;
+  }
+
+  .jumbotron .lead
+  {
+  }
+
+  pre code
+  {
+    font-size: 0.9em;
+  }
 }
 
   </style>
 </head>
 <body>
   <div class='container'>
-    <div class='jumbotron' style="text-align: center; margin-bottom: 80px;">
+    <div class='jumbotron' style="text-align: center; margin-bottom: 120px;">
       <a href='<?php echo $url->create('@doc.default', ['view' => '/']);?>'>Documentation</a> | <a target="_blank" href='https://github.com/rosengate/exedra'>Github</a> | <a href='https://github.com/Rosengate/exedra/archive/master.zip'>Download</a>
       <h1 id='title-exedra'>Exedra</h1>
       <p class='lead'>
-        A multi-tier nestful route oriented <b>PHP framework</b>, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.
+        A multitier nestful route oriented <b>PHP framework (micro)</b>, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.
       </p>
     </div>
     <section class='section-features'>
