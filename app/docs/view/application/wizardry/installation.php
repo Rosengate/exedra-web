@@ -7,9 +7,9 @@
 exedra
 wizard
 </code></pre>
-<p>And write below codes on respectively</p>
+<p>And write below codes within each file respectively</p>
 <pre><span class='code-tag label label-file'>exedra</span><code>
-require 'vendor/autoload.php';
+require 'vendor/autoload.php'; // or wherever exedra is placed
 
 return new \Exedra\Exedra(__DIR__);
 </code></pre>
@@ -18,4 +18,4 @@ $exedra = require 'exedra';
 
 $exedra->wizard($argv);
 </code></pre>
-<p>The first file (<strong>/exedra</strong>) must return an \Exedra\Exedra instance. The second one (<b>/wizard</b>) will be used as a wizard through a CLI which we'll cover on the <a href='<?php echo $exe->url->create('default', ['view' => 'application/wizardry/start']);?>'>next topic</a>.</p>
+<p>The first file (<strong class='label label-file'>exedra</strong>) must return an \Exedra\Exedra instance. The second one (<b class='label label-file'>wizard</b>) will be used as a wizard through a CLI which we'll cover on the <a href='<?php echo $exe->url->create('default', ['view' => 'application/wizardry/start']);?>'>next topic</a>.</p>
