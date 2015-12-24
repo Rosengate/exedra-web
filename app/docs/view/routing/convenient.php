@@ -6,7 +6,7 @@ $app->mapFactory->useConvenientRouting();
 </code></pre>
 <h2>1. HTTP Verbs based methods</h2>
 <h3>1.1 GET, POST, PUT, DELETE</h3>
-<p>The first argument accept <span class='label label-property'>uri</span>. And the second one accept <span class='label label-property'>execute</span> property <b>OR</b> an array of properties, if an array is specified.</p>
+<p>The first argument accept <span class='label label-property'>path</span>. And the second one accept <span class='label label-property'>execute</span> property <b>OR</b> an array of properties, if an array is specified.</p>
 <h5>GET /books with \Closure handler</h5>
 <pre><code>
 $app->map->get('/books', function($exe)
@@ -30,7 +30,7 @@ $app->map->delete('/books/[:id]', array(
 $app->map->put('/books/[:id]', 'controller=Book@update')
 </code></pre>
 <h3>1.2. Specify none</h3>
-<p>Specifying none, equals to a route with empty <span class='label label-property'>uri</span> or <span class='label label-string'>'/'</span>, with no execution handler.</p>
+<p>Specifying none, equals to a route with empty <span class='label label-property'>path</span> or <span class='label label-string'>'/'</span>, with no execution handler.</p>
 <h3>1.2. Any or specify more than one</h3>
 <p>Any kind of method</p>
 <pre><code>

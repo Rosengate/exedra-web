@@ -21,12 +21,12 @@ $myapp = $exedra->get('Myapp');
 </code></pre>
 <h2>3. Exec</h2>
 <p><span class='label label-class'>\Exedra\Application\Execution\Exec</span></p>
-<p>The original execution instance, which we rather keep it short to Exec, and call it <span class='label label-variable'>$exe</span>. This instance is retrievable through whatever handler is handling it. This instance hold a lot of useful functionality injected for your application. Such as builders, and utilities, and you may also retrieve the execution arguments, like uri parameters, and etc. You can read more <a href='<?php echo $exe->url->create('default', ['view'=> 'execution/introduction']);?>'>here</a>.</p>
+<p>The original execution instance, which we rather keep it short to Exec, and call it <span class='label label-variable'>$exe</span>. This instance is retrievable through whatever handler is handling it. This instance hold a lot of useful functionality injected for your application. Such as builders, and utilities, and you may also retrieve the execution arguments, like uri path parameters, and etc. You can read more <a href='<?php echo $exe->url->create('default', ['view'=> 'execution/introduction']);?>'>here</a>.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'myroute'=> array('uri'=> 'myroute/[:myname]', 'execute'=> function($exe)
+	'user'=> array('path'=> 'user/[:user-name]', 'execute'=> function($exe)
 	{
-		return $exe->param('myname');
+		return $exe->param('user-name');
 	})
 ));
 </code></pre>

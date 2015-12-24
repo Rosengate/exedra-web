@@ -6,18 +6,22 @@
 <div>
 <div style="padding:6px 6px 6px 20px;background:white;box-shadow: 0px 0px 5px #c0c0c0;font-size: 0.9em;">
 	<p>Let say we have 3 routes : </p>
-	<p>1. public.user.index</p>
-	<p>2. public.user.view (uri : <b>user/[:username]</b> )</p>
-	<p>3. backend.dashboard</p>
-	<p>And routePrefix set to 'public', on the middleware bound on route <b>public</b>.</p>
+	<p>1. <span class='label label-route'>public.user.index</span></p>
+	<p>2. <span class='label label-route'>public.user.view</span> (uri path : <b class='label label-string'>user/[:username]</b> )</p>
+	<p>3. <span class='label label-route'>backend.dashboard</span></p>
+	<!-- <p>With <span class='label label-property'>base</span> property set to <span class='label label-string'>public</span>.</p> -->
 </div>
-<p style="margin-top:10px;">At <b>public.user.view</b> to <b>public.user.update</b></p>
+<p style="margin-top:10px;">At <b class='label label-route'>public.user.view</b> to <b class='label label-route'>public.user.update</b></p>
 <pre><code>
 return $exe->redirect->to('user.update');
 	</code></pre>
-<p>At <b>backend.dashboard</b> to <b>public.user.view</b></p>
+<p>At <b class='label label-route'>backend.dashboard</b> to <b class='label label-route'>public.user.view</b></p>
 <pre><code>
 return $exe->redirect->to('@public.user.view', ['username'=> 'eimihar']);
+</code></pre>
+<h5>Tagged route example</h5>
+<pre><code>
+return $exe->redirect->to('#userView', ['username' => 'eimihar']);
 </code></pre>
 <h2>2. toUrl</h2>
 <p>This method redirects to the given url.</p>

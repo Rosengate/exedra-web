@@ -5,7 +5,7 @@
 <pre><code>
 $app->map->addRoutes(array(
 	'frontend' => array(
-		'uri' => '/',
+		'path' => '/',
 		'module' => 'frontend'
 		)
 ));
@@ -21,11 +21,11 @@ App
 <pre><code>
 $app->map->addRoutes(array(
 	'frontend' => array(
-		'uri' => '/',
+		'path' => '/',
 		'module' => 'frontend',
 		'subroutes' => array(
 			'blog' => array(
-				'uri' => 'blog',
+				'path' => 'blog',
 				'execute' => 'controller=blog@index' // it will look for \app\frontend\controller\blog.php
 				)
 			)

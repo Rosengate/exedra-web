@@ -2,8 +2,7 @@
 <p>A utility class that help you write a form's input elements. This class is accessible through the $exe instance</p>
 <p>Let say we're passing the $form instance that was taken from the $exe instance to the view.</p>
 <pre><code>
-$data['form'] = $exe->form;
-$view->set($data)->render();
+$view->set('form', $exe->form)->render();
 </code></pre>
 <h2>1. text, password, hidden, textarea, time or date</h2>
 <pre><code>
@@ -17,21 +16,22 @@ echo $form->textarea('description');
 echo $form->date('birthDate');
 echo $form->time('birthTime');
 </code></pre>
-<h3>1.1 Specifiying attribute</h3>
+<h3>1.1 Set value and attributes</h3>
 <pre><code>
-// by string
-echo $form->text('username', 'class="form-control"');
-
-// by array
-echo $form->password('password', ['class'=>'form-control']);
+echo $form->text('username', 'luckylucy777', 'class="form-control"');
 </code></pre>
-<h3>1.2 Set value</h3>
-<p>For text, password, hidden or textarea input type. You may set value as 3rd argument.</p>
+<h5>Chained</h5>
 <pre><code>
-echo $form->text('username', null, 'lucy');
+echo $form->textarea('about')
+		->value('a silver haired lady')
+		->attr(['placeholder' => 'Your secret all about']);
+</code></pre>
+<h5>Overwrite id</h5>
+<pre><code>
+echo $form->password('password')->id('form-password');
 </code></pre>
 <h2>2. Select</h2>
-<p>You'll need an associated array containing value=>label for this select element</p>
+<p>You'll need an associated array containing key value pairs for this select element</p>
 <pre><code>
 $countries = array[
 	'my'=>'malaysia',
@@ -40,20 +40,57 @@ $countries = array[
 	'id'=> 'indonesia'];
 
 echo $form->select('seaCountry', $countries, 'class="form-control"');
-/* will print 
+</code></pre>
+<h5>Chained</h5>
+<pre><code>
+echo $form->select('seaCountry')->options($countries)->attr('class="form-control"');
+</code></pre>
+<p>Both example will print something similar like :</p>
+<pre><code>
 &lt;select class="form-control" name="seaContry" id="seaContry" &gt;
-	&lt;option&gt;malaysia&lt;/option&gt;
-	&lt;option&gt;philipphine&lt;/option&gt;
-	&lt;option&gt;singapore&lt;/option&gt;
-	&lt;option&gt;indonesia&lt;/option&gt;
+	&lt;option value="my" &gt;malaysia&lt;/option&gt;
+	&lt;option value="ph" &gt;philipphine&lt;/option&gt;
+	&lt;option value="sg" &gt;singapore&lt;/option&gt;
+	&lt;option value="id" &gt;indonesia&lt;/option&gt;
 &lt;/select&gt;
-*/
+</code></pre>
+<h3>2.1 Optgroup</h3>
+<pre><code>
+echo $form->select('food', array(
+	'Arabian' => array(
+		'shawarma' => 'Shawarma',
+		'arabianrice' => 'Arabian Rice',
+		'lamb' => 'Lamb'
+		),
+	'Asian' => array(
+		'nasilemak' => 'Nasi Lemak',
+		'tomyam' => 'Tom yam'
+		)
+	));
+</code></pre>
+<p>Will print something similar like :</p>
+<pre><code>
+&lt;select class="form-control" name="food" id="food" &gt;
+	&lt;optgroup label="Arabian"&gt;
+		&lt;option value="shawarma" &gt;Shawarma&lt;/option&gt;
+		&lt;option value="arabianrice" &gt;Arabian Rice&lt;/option&gt;
+		&lt;option value="lamb" &gt;Lamb&lt;/option&gt;
+	&lt;/optgroup&gt;
+	&lt;optgroup label="Asian"&gt;
+		&lt;option value="nasilemak" &gt;Nasi Lemak&lt;/option&gt;
+		&lt;option value="tomyam" &gt;Tom Yam&lt;/option&gt;
+	&lt;/optgroup&gt;
+&lt;/select&gt;
 
 </code></pre>
 <h3>2.1 Set value</h3>
-<p>For select, you may pass value as 4th argument.</p>
+<p>For select, you may pass value as third argument.</p>
 <pre><code>
-echo $form->select('seaCountry', $countries, null, 'my');
+echo $form->select('seaCountry', $countries, 'my');
+</code></pre>
+<p>Or chained if you like</p>
+<pre><code>
+echo $form->select('country', $countries)->value('my');
 </code></pre>
 <h2>3. Pre-populating form</h2>
 <p>You may populate the form's inputs with your data before they are even printed</p>
@@ -69,21 +106,29 @@ $exe->form->set([
 <pre><code>
 $exe->form->set('website', 'http://facebook.com/adam');
 </code></pre>
+<p>Populate list based input</p>
+<pre><code>
+$exe->form->setOptions('countries', array(
+	'my'=>'malaysia',
+	'ph'=>'philippine',
+	'sg'=> 'singapore',
+	'id'=> 'indonesia'));
+</code></pre>
 <h2>4. Flash</h2>
 <p>A utility method to flash the inputs with existing _POST data (on default), that it would populate all the inputs with them, on the next request.</p>
 <pre><code>
-if($exe->request->post)
+if($exe->request->isMethod('post'))
 {
 	$exe->form->flash();
 	return $exe->redirect->refresh();
 }
 </code></pre>
-<p>Basically it does what below code is doing :</p>
+<p>The <span class='label label-variable'>$exe->form->flash()</span> basically does what below code is doing :</p>
 <pre><code>
-$exe->flash->set('form_data', $this->exe->request->post);
+$exe->flash->set('form_data', $this->exe->request->post());
 </code></pre>
 <h3>4.1 Retrieving flashed form data</h3>
-<p><u>Just in case</u> if you want to retrieve the flashed data, you may do this way :</p>
+<p><u>Just in case</u> if you want to retrieve the flashed form data from flash instance directly, you may do this way :</p>
 <pre><code>
 $username = $exe->flash->get('form_data.username');
 </code></pre>

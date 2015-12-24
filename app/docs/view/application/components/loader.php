@@ -11,7 +11,7 @@ $exedra = new \Exedra\Exedra($dir);
 <h3>1.2. Application</h3>
 <p>For this instance, the loader will be based on app folder name.</p>
 <pre><code>
-$myapp = $exedra->build('app', function($app)
+$myapp = $exedra->build('App', function($app)
 {
 	// the root of loader would be under folder /app/
 
@@ -20,10 +20,10 @@ $myapp = $exedra->build('app', function($app)
 <h3>1.3. Exec</h3>
 <p>And for this instance, the loader will be based on <a href='<?php echo $exe->url->create('default', ['view' => ['application', 'components', 'module']]);?>'><b>module</b></a> parameter configured in routing, if there's no module configured, it will use the application directory instead.</p>
 <pre><code>
-$myapp = $exedra->build('app', function($app)
+$myapp = $exedra->build('App', function($app)
 {
 	$app->map->addRoutes(array(
-		'test'=> ['uri'=> 'test', 'module'=> 'backend', 'execute'=> function($exe)
+		'test' => ['path'=> 'test', 'module'=> 'backend', 'execute'=> function($exe)
 		{
 			// the loader will be based on /app/backend/
 		}]

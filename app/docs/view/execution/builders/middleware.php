@@ -1,17 +1,18 @@
 <h1>Middleware <span>\Exedra\Application\Builder\Middleware</span></h1>
+<p style="color: red;">This component is going for some upcoming changes.</p>
 <p>This layer is actually part of the execution layer. It lives and encapsulate the original execution layer. They're also known as filter in other frameworks.</p>
 <p>You may bind a middleware at the routing layer.</p>
 <h2>1. next()</h2>
 <p><b>Next</b> method basically resembles the handler for the next closure it's executing.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'user'=>['uri'=>'user/[:username]', 'middleware'=>function($exe)
+	'user'=>['path' =>'user/[:username]', 'middleware'=>function($exe)
 		{
 			// this next() encapsulates/handles the execution closure on user.profile
 			return $exe->next($exe);
 		}, 
 		'subroute'=> array(
-		'profile'=>['uri'=>'', 'execute'=> function()
+		'profile'=>['path' =>'', 'execute'=> function()
 		{
 
 		}] //user.profile
@@ -22,7 +23,7 @@ $app->map->addRoutes(array(
 <p>You may also bind the middleware to which class should handle it.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'user'=>['uri'=>'user/[:username]', 'middleware'=>'middleware=user',
+	'user'=>['path' =>'user/[:username]', 'middleware'=>'middleware=user',
 	//... 
 </code></pre>
 <p>For this example, basically it will look for a middleware class, called <strong>App\Middleware\User</strong> (namespaced), in default path app\middleware\user.php</p>
@@ -41,14 +42,14 @@ class User
 <p>To specify the method name, you may do like this.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'user'=>['uri'=>'user/[:username]', 'middleware'=>'middleware=user@myhandle',
+	'user'=>['path' =>'user/[:username]', 'middleware'=>'middleware=user@myhandle',
 	//... 
 </code></pre>
 <h2>3. Bind by path</h2>
 <p>You may also specify a path, so it may load a path that should contain a handler (closure)</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'user'=>['uri'=>'user/[:username]', 'middleware'=>'middleware:user',
+	'user'=>['path' =>'user/[:username]', 'middleware'=>'middleware:user',
 	//... 
 </code></pre>
 <p>And it will look for a handler in a file called user at app/middleware/user.php</p>

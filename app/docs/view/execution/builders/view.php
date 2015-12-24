@@ -3,7 +3,7 @@
 <h2>1. Create a view</h2>
 <pre><code>
 $app->map->addRoutes(array(
-	'profile'=> ['uri'=> 'user/[:username]', 'execute'=> function($exe)
+	'profile'=> ['path'=> 'user/[:username]', 'execute'=> function($exe)
 	{
 		$view = $exe->view->create("user/profile");
 		return $view->render();
@@ -80,15 +80,15 @@ Hello world!!!!
 <p>For example, create a layout within route 'public'. So, every route nested under it, would have the layout. </p>
 <pre><code>
 $app->map->addRoutes(array(
-	'public'=> ['uri'='', 'middleware'=> function($exe)
+	'public'=> ['path'='', 'middleware'=> function($exe)
 	{
 		$exe->layout = $exe->view->create('layout/default');
 		$exe->layout->setRequired(['view']);
 		return $exe->next($exe);
 	}, 
 	'subroute'=>array(
-		'user'=> ['uri'=>'user', 'subroute'=> array(
-			'profile'=> ['uri'=>'[:username]', 'execute'=> 'controller=user@profile']
+		'user'=> ['path'=>'user', 'subroute'=> array(
+			'profile'=> ['path'=>'[:username]', 'execute'=> 'controller=user@profile']
 		)] // end of public.user
 	)] // end of public
 ));

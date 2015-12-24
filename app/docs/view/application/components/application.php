@@ -57,12 +57,12 @@ $this->di = new \Exedra\Application\Dic(array(
 <h2>3. (Re)register component</h2>
 <p>You may later want to re-register the component. Just use the di container, and register the component by the same component's name again. Just make sure you extend the original class.</p>
 <pre><code>
-$app->di->register('config', array('\MyClasses\config'));
+$app->container->register('config', array('\MyClasses\config'));
 </code></pre>
 <p>Or by array</p>
 <pre><code>
-$app->di->register(array(
-	'event'=> session('\MyClasses\Event'),
+$app->container->register(array(
+	'event'=> array('\MyClasses\Event'),
 	'cache'=> array('\MyClasses\Cache')
 ));
 
@@ -72,7 +72,7 @@ $app->event;
 // or 
 $app->cache;
 </code></pre>
-<p>For more information, take a look at DI class</p>
+<p>For more information, take a look at the container class</p>
 <p>p/s : just make sure that the classes are available. If you're using composer, good. Else, use our autoloader, or your own.</p>
 <h2>4. execute</h2>
 <p>Execute application, by the given string of route name or an associative array of a query</p>
@@ -83,8 +83,8 @@ $app->execute('public.user', ['username'=> 'eimihar']);
 <h3>4.2. By an associative array of query</h3>
 <pre><code>
 $app->execute(array(
-	'uri'=> 'user/eimihar',
-	'method'=> 'get'
+	'method'=> 'get',
+	'path'=> 'user/eimihar'
 ));
 </code></pre>
 <p>Most of the time, you don't usually use the second method unless for testing. The first method of execution, is good for executing another route.</p>

@@ -6,9 +6,9 @@
 		'description' => 'An HTTP Method. It can be a single method, or multiple method or any. Not specifying any will set the method to <span class="label label-string">any</span>.',
 		'value' => array('string or array', 'get, post, put or delete', 'or a combination delimited by \',\'', 'any')
 		),
-	'uri' => array(
-		'description' => 'A string of URI for this route to be matched with Request URI taken from $_SERVER variable. ($_SERVER[\'REQUEST_URI\'])',
-		'value' => array('String of matchable URI.', ' Or false boolean')
+	'path' => array(
+		'description' => 'A string of URI path for this route to be matched with URI path taken from $_SERVER variable. ($_SERVER[\'REQUEST_URI\'])',
+		'value' => array('String of matchable URI path.', ' Or false boolean')
 		),
 	'ajax' => array(
 		'description' => 'Boolean whether will only accept ajax request or not.',

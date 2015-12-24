@@ -1,4 +1,5 @@
 <h1>HTTP Request <span>\Exedra\HTTP\Request</span></h1>
+<p style="color: red;">Need a major overhaul. Going to adapt PSR-7 message interfaces.</p>
 <p>HTTP request actually live in the scope of exedra itself, but is retrievable through the application instance, or the exe instance itself. This is to ease the developer(s) without writing too long chain of instances, in order to just get this component.</p>
 <h2>1. Retrieving Request Parameter</h2>
 <h3>1.1. param</h3>
@@ -42,6 +43,7 @@ if($exe->request->isAjax())
 </code></pre>
 <h2>4. getUri</h2>
 <p>Get <b>URI</b> of the request</p>
+<p style="color: red;">To be renamed to getUriPath</p>
 <pre><code>
 $uri = $exe->request->getUri();
 </code></pre>

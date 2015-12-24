@@ -5,18 +5,18 @@
 <p>p/s : consider below routing for the further subtopic.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'public'=> ['uri'=>'', 'subroute'=> array(
-		'user'=> ['uri'=>'user', 'subroute'=>array(
-			'index'=> ['uri'=> '', 'execute'=> function()
+	'public'=> ['path' =>'', 'subroute'=> array(
+		'user'=> ['path' =>'user', 'subroute'=>array(
+			'index'=> ['path' => '', 'execute'=> function()
 			{
 				// public.user.index
 			}],
-			'profile'=> ['uri'=> '[:username]', function()
+			'profile'=> ['path' => '[:username]', function()
 			{
 				// public.user.profile
 			}]
 		)],
-		'page'=> ['uri'=>'page', 'execute'=>function()
+		'page'=> ['path' =>'page', 'execute'=>function()
 		{
 			// public.page
 		}]
@@ -46,24 +46,24 @@ $url = $exe->url->create('@public.page');
 <p>p/s : It's best to set a route prefix in a middleware.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'public'=> ['uri'=>'','middleware'=>function($exe){
+	'public'=> ['path' =>'','middleware'=>function($exe){
 
 		// prefix all the nested route with 'public'
 		$exe->setRoutePrefix('public');
 		return $exe->next($exe);
 	}, 
 	'subroute'=> array(
-		'user'=> ['uri'=>'user', 'subroute'=>array(
-			'index'=> ['uri'=> '', 'execute'=> function()
+		'user'=> ['path' =>'user', 'subroute'=>array(
+			'index'=> ['path' => '', 'execute'=> function()
 			{
 				// public.user.index
 			}],
-			'profile'=> ['uri'=> '[:username]', function()
+			'profile'=> ['path' => '[:username]', function()
 			{
 				// public.user.profile
 			}]
 		)], // end of public.user
-		'page'=> ['uri'=>'page', 'execute'=>function()
+		'page'=> ['path' =>'page', 'execute'=>function()
 		{
 			// public.page
 		}]
@@ -90,11 +90,11 @@ $exe->url->setAsset('http://localhost/myproject/assets');
 require_once "../exedra/Exedra/Exedra.php";
 
 $exedra = new \Exedra\Exedra(__DIR__);
-$myapp = $exedra->build("app", function($app)
+$myapp = $exedra->build("App", function($app)
 {
 	$app->config->set([
-		'baseUrl'=> 'http://localhost/myproject',
-		'assetUrl'=> 'http://localhost/myproject/assets'
+		'app.url'=> 'http://localhost/myproject',
+		'asset.url'=> 'http://localhost/myproject/assets'
 	]);
 });
 

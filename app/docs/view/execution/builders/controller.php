@@ -4,7 +4,7 @@
 <p>You may retrieve the builder from $exe instance.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'profile'=>['uri'=> 'user/[:userID]', 'execute'=> function($exe)
+	'profile'=>['path' => 'user/[:userID]', 'execute'=> function($exe)
 	{
 		return $exe->controller->execute('user', 'profile', [$exe->param['userID']]);
 	}]
@@ -41,7 +41,7 @@ public function __construct(\Exedra\Application\Execution\Exec $exe)
 <p>The common controller/action/p1/p2/p3 routing.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'default'=>['uri'=> '[:controller]/[**:action]', 'execute'=> function($exe)
+	'default'=>['path' => '[:controller]/[**:action]', 'execute'=> function($exe)
 	{
 		return $exe->controller->execute($exe->param('controller'), $exe->param('action'));
 	}]
@@ -51,12 +51,12 @@ $app->map->addRoutes(array(
 <p>Specify by the execution handler for controller</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'profile'=>['uri'=> 'user/[:userID]', 'execute'=> 'controller=User@profile']
+	'profile'=>['path' => 'user/[:userID]', 'execute'=> 'controller=User@profile']
 ));
 </code></pre>
 <p>Or <b>mention the parameter</b> in the string.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'default'=> ['uri'=> '[:controller]/[**:action]', 'execute'=> 'controller={controller}@{action}']
+	'default'=> ['path' => '[:controller]/[**:action]', 'execute'=> 'controller={controller}@{action}']
 ));
 </code></pre> 

@@ -6,7 +6,7 @@
 <pre><code>
 $app->map->addRoutes(array(
 	'books' => array(
-		'uri' => '/books',
+		'path' => '/books',
 		'execute' => function($exe)
 		{
 
@@ -25,7 +25,7 @@ $app->map->get('/faq', function($exe)
 <pre><code>
 $app->map->addRoutes(array(
 	'author' => array(
-		'uri' => '/authors/[:action]',
+		'path' => '/authors/[:action]',
 		'execute' => 'controller=Author@{action}'
 	)
 ));
@@ -34,7 +34,7 @@ $app->map->addRoutes(array(
 <pre><code>
 $app->map->addRoutes(array(
 	'author' => array(
-		'uri' => '/authors/[:action]',
+		'path' => '/authors/[:action]',
 		'execute' => function($exe)
 		{
 			return $exe->controller->execute('Author', $exe->param('action'));

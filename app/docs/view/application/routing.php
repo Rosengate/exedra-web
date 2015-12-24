@@ -15,7 +15,7 @@ return $exedra->build("App", function($app)
 $app->map->addRoutes(array(
 	'book' => array(
 		'method' => 'get',
-		'uri' => '/book',
+		'path' => '/book',
 		'execute' => function()
 			{
 				return 'a list of books.';
@@ -33,26 +33,26 @@ $app->map->addRoutes(array(
 $app->map->addRoutes(array(
 	'test'	=> [
 		'method' => 'any',
-		'uri' => 'test-uri',
+		'path' => 'test-uri',
 		'execute' => function(){ }], //any method
 	'test2' => [
 		'method' => ['get', 'post'],
-		'uri' =>'test-uri2',
+		'path' =>'test-uri2',
 		'execute' => function(){ }], //only permit GET and POST
 	'test3' => [
-		'uri' =>'lasttest',
+		'path' =>'lasttest',
 		'execute' => function(){ }] //not specifying will set permitted method to any methods.
 ));
 </code></pre>
-<h3>3.2. URI/path</h3>
-<p>Mocking uri <span class='label label-uri'>my/test</span> will execute route <span class='label label-route'>test</span>, and <span class='label label-uri'>my/test/uri</span> will execute the route <span class='label label-route'>test2</span></p>
+<h3>3.2. URI path</h3>
+<p>Mocking uri path <span class='label label-uri'>my/test</span> will execute route <span class='label label-route'>test</span>, and <span class='label label-uri'>my/test/path</span> will execute the route <span class='label label-route'>test2</span></p>
 <pre><code>
 $app->map->addRoutes(array(
 	'test' 	=> [
-		'uri' => 'my/test',
+		'path' => 'my/test',
 		'execute' => function(){ }],
 	'test2' => [
-		'uri' => 'my/test/uri',
+		'path' => 'my/test/path',
 		'execute' => function(){ }]
 ));
 </code></pre>
@@ -62,7 +62,7 @@ You may then retrieve the value of the named parameter through that instance wit
 <pre><code>
 $app->map->addRoutes(array(
 	'author-book' => [
-		'uri'=> 'books/[:author]/[:book-title]',
+		'path'=> 'books/[:author]/[:book-title]',
 		'execute'=> function($exe)
 		{
 			return 'my-name is'. $exe->param('author') 
@@ -76,15 +76,15 @@ $app->map->addRoutes(array(
 <pre><code>
 $app->map->addRoutes(array(
 	'user'=> [
-		'uri'=> 'user/[:username]',
+		'path'=> 'user/[:username]',
 		'subroutes'=> array(
 			'profile'=> [
-				'uri' => '',
+				'path' => '',
 				'execute' => function($exe){ }],
-			'book'=> ['uri'=> 'book',
+			'book'=> ['path'=> 'book',
 				'subroutes'=> array(
-					'index'=> ['uri'=> '', 'execute'=> function($exe){ }],
-					'view'=> ['uri'=> '[:book-title]', 'execute'=> function($exe){ }]
+					'index'=> ['path'=> '', 'execute'=> function($exe){ }],
+					'view'=> ['path'=> '[:book-title]', 'execute'=> function($exe){ }]
 			)] // end of user.book
 	)] // end of user
 ));
@@ -93,11 +93,11 @@ $app->map->addRoutes(array(
 2. Executing URI <span class='label label-uri'>user/john-doe/book</span> will execute route <b class='label label-route'>user.book.index</b><br>
 3. Executing URI <span class='label label-uri'>user/john-doe/book/alcataraz</span> will execute route <b class='label label-route'>user.book.view</b></p>
 
-<h3>3.5. False URI</h3>
-<p>Setting up false flag on <span class='label label-property'>uri</span>, will deny an HTTP request entry into that route. This may be good, if you want the route to solely be used somewhere.</p>
+<h3>3.5. False URI path</h3>
+<p>Setting up false flag on <span class='label label-property'>path</span>, will deny an HTTP request entry into that route. This may be good, if you want the route to solely be used somewhere.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'error'=> ['uri'=>false, 'execute'=> function(){ }]
+	'error'=> ['path'=>false, 'execute'=> function(){ }]
 ));
 </code></pre>
 <h3>3.6. Module</h3>
@@ -105,11 +105,11 @@ $app->map->addRoutes(array(
 <pre><code>
 $app->map->addRoutes(array(
 	'admin'=> [
-		'uri' => 'dashboard',
+		'path' => 'dashboard',
 		'module' => 'admin',
 		'subroutes' => array(
 			'default' => [
-				'uri' => '[:controller]/[**:action]']
+				'path' => '[:controller]/[**:action]']
 	)]
 ));
 </code></pre>
@@ -119,19 +119,19 @@ $app->map->addRoutes(array(
 <pre><code>
 $app->map->addRoutes(array(
 	'general'=> [
-		'uri'=> '',
+		'path'=> '',
 		'subroutes'=> array(
 			'error'=> 	[
-				'uri'=> '404',
+				'path'=> '404',
 				'execute'=> function(){ return "on error page"}],
 		'by-app'=>	[
-			'uri' => 'by-app',
+			'path' => 'by-app',
 			'execute'=> function($exe) use($app) { return $app->execute('general.error')}],
 		'by-exe'=>	[
-			'uri' => 'firstexe',
+			'path' => 'firstexe',
 			'execute'=> function($exe){ return $exe->execute('error')}],
 		'by-exe2'=> [
-			'uri' => 'secondexe',
+			'path' => 'secondexe',
 			'execute'=> function($exe){ return $exe->execute('@general.error')}]
 	)]
 ));
