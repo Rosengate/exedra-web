@@ -24,6 +24,17 @@ return function($app)
 	});
 
 	$app->map->addRoutes(array(
+		'git-pull' => ['path' => 'git-pull', 'execute' => function($exe)
+		{
+			// because nobody should know what does the hash mean.
+			if(md5($exe->request->getHeader('X-Hub-Signature')) != 'bef2bfa72bdd28ad033a17a5a69a3fc7')
+				return 'Sorry, no proper response for you.';
+
+			// pull from latest
+			chdir(__DIR__);
+			exec('git remote update');
+			exec('git reset --hard origin/master');
+		}],
 		"main"=>['module'=>'web','execute'=> function($exe){
 			$exe->view->setDefaultData(array('exe' => $exe, 'url' => $exe->url));
 
@@ -31,19 +42,19 @@ return function($app)
 
 			return $exe->view->create('layout/default_new', $data)->render();
 		}],
-		"doc"=> ['uri'=>'docs', 'module'=>'docs',
+		"doc"=> ['path'=>'docs', 'module'=>'docs',
 			'execute'=> function($exe)
 				{
 					// forward to first topic.
 					return $exe->execute('@doc.default', ['view'=> 'application/introduction']);
 				},
 			'subroutes'=>[
-				'error'=>['uri'=>false, 'execute'=>function($exe)
+				'error'=>['path'=> false, 'execute'=>function($exe)
 				{
 					// re-route to error page.
 					return $exe->execute('default', ['view'=>'error/404', 'message'=> $exe->param('exception')->getMessage()]);
 				}],
-				'default'=>['uri'=> '[*:view]', 'execute'=> function($exe) {
+				'default'=>['path'=> '[*:view]', 'execute'=> function($exe) {
 						// set default data for view builder
 						$exe->view->setDefaultData(array('exe' => $exe, 'url' => $exe->url));
 
