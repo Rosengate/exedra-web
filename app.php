@@ -26,8 +26,18 @@ return function($app)
 	$app->map->addRoutes(array(
 		'git-pull' => ['path' => 'git-pull', 'execute' => function($exe)
 		{
+			if(!($signature = $exe->request->getHeader('X-Hub-Signature')))
+				return 'Bad request';
+
+			// Split signature into algorithm and hash
+			list($algo, $hash) = explode('=', $signature, 2);
+
+			$payload = file_get_contents('php://input');
+
+			$payloadHash = hash_hmac($algo, $payload, 'gitisthebest');
+
 			// because nobody should know what does the hash mean.
-			if(md5($exe->request->getHeader('X-Hub-Signature')) != 'bef2bfa72bdd28ad033a17a5a69a3fc7')
+			if($hash != $payloadHash)
 				return 'Sorry, no proper response for you.';
 
 			// pull from latest
