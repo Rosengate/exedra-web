@@ -187,6 +187,8 @@ $app->map->addRoutes(array(
 </code></pre>
 <div class='example-title'><span class='fa fa-share-alt'></span> Convenient Routing</div>
 <pre><code>
+$app->mapFactory->useConvenientRouting();
+
 $app->map->any('/books')->group(function($group)
 {
     $group->get('/', 'controller=Book@index')
