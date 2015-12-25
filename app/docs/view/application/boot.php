@@ -21,9 +21,9 @@ $app = $exedra->build("App", function($app)
 <p>The <b>first argument</b> of exedra::build passed is supposed to be your application folder name (in this case <span class='label label-string'>'App'</span>). <br>We'll <a href='<?php echo $exe->url->create('default', ['view'=>['application','components', 'application']]);?>'>cover this later</a>. <br>Okay, to test the application, we can <b>mock the application</b>, without dispatching any HTTP request yet.<br><br>
 Write below code outside of the main closure, and <u>expect the simple thrown exception</u> because no routing has been done yet.</p>
 <pre><code>
-echo $app->execute(array('method' => 'GET', 'uri' => 'test'));
+echo $app->execute(array('method' => 'GET', 'path' => 'test'));
 </code></pre>
-<p>Then, let us write a simple routing, to fit the exact URI. Refresh the page, and expect the returned result.</p>
+<p>Then, let us write a simple routing, to match the exact URI path. Refresh the page, and expect the returned result.</p>
 <pre><code>
 $app = $exedra->build("App", function($app)
 {
