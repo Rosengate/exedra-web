@@ -17,7 +17,7 @@ return function($app)
 
 	$app->registry->addMiddleware(function($exe)
 	{
-		$exe->asset->setBasePath('public/assets');
+		// $exe->asset->setBasePath('public/assets');
 		$exe->response->header('Route', $exe->route->getAbsoluteName());
 
 		return $exe->next($exe);

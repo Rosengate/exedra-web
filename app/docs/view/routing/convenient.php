@@ -73,7 +73,10 @@ $app->map->get('/authors')->setProperties(array(
 <p>Currently only <span class='label label-method'>execute</span>, <span class='label label-method'>tag</span>, and <span class='label label-method'>group</span> represent as alias for the property setting method respectively. While, you can still use the original <span class='label label-class'>Route</span> property setting method with no problem at all.</p>
 <pre><code>
 $app->map->any()
-	->setMiddlware('load=App\Middleware\Auth'))
+	->setMiddleware(function($exe)
+	{
+		return $exe->next($exe);
+	})
 	->setTag('root')
 	->setExecute('controller=Landing@index')
 	->setSubroutes(function($group)
