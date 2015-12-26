@@ -44,14 +44,14 @@
 	"Execution : Core":
 	{
 		"execution/introduction": "Execution",
-		"execution/handlers": "Handlers"
+		"execution/handlers": "Handlers",
+		"execution/builders/middleware": "Middleware"
 	},
 	"Execution : Builders":
 	{
 		"execution/builders/controller":"Controller",
 		"execution/builders/view":"View",
 		"execution/builders/model":"Model",
-		"execution/builders/middleware": "Middleware",
 		"execution/builders/path": "Path"
 	},
 	"Execution : Components":
