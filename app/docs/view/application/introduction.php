@@ -4,8 +4,8 @@
 <h4>1.1. Nestable routing</h4>
 <p>Routes are nestable, and each one is unique, at least if you're giving them a name. And no routes are eager-loaded, until validated on HTTP URI level, unless if you loop the map of the routes, using it's own internal method. For example :</p>
 <div class='container-figure'>
-	<img style="border: 1px solid #dddddd; width: 100%;" src="<?php echo $exe->url->asset('images/exedra-map.jpg');?>">
-	<div class='figure-text'>Figure Routing Map 1</div>
+	<img style="border: 1px solid #dddddd; width: 100%; " src="<?php echo $exe->url->asset('images/exedra-map-2.png');?>">
+	<div class='figure-text'>Figure Routing Map Example 1</div>
 </div>
 <h4>1.2. Adaptive components</h4>
 <div style="padding-left: 10px;">
