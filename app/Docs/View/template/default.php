@@ -49,9 +49,11 @@
 		{
 			this.baseUrl = '<?php echo $exe->url->route("@doc");?>';
 
-			this.load = function(page, unpushed)
+			this.load = function(page, unpushed, absolute)
 			{
-				$("#content-wrap").load(this.baseUrl+'/'+page, function()
+				var url = absolute ? page : this.baseUrl + '/' + page;
+
+				$("#content-wrap").load(url, function()
 				{
 					$(window).scrollTop(0);
 
@@ -83,12 +85,9 @@
 		// handle state backward/forward navigation
 		$(window).on('popstate',function()
 		{
-			var url = docs.baseUrl;
 			var href = window.location.href;
 
-			var page = href.replace(url, '');
-			
-			docs.load(page.ltrim('/'), true);
+			docs.load(href, true, true);
 		});
 		</script>
 	</head>
