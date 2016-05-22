@@ -29,6 +29,14 @@
 		</style>
 		<script type="text/javascript">
 
+		// https://www.sitepoint.com/trimming-strings-in-javascript/
+		String.prototype.ltrim = function(charlist) {
+		  if (charlist === undefined)
+		    charlist = "\s";
+
+		  return this.replace(new RegExp("^[" + charlist + "]+"), "");
+		};
+
 		var menu = new function()
 		{
 			this.show = function()
@@ -39,7 +47,8 @@
 
 		var docs = new function()
 		{
-			this.baseUrl = '<?php echo $exe->url->parent();?>';
+			this.baseUrl = '<?php echo $exe->url->route("@doc");?>';
+
 			this.load = function(page, unpushed)
 			{
 				$("#content-wrap").load(this.baseUrl+'/'+page, function()
@@ -76,9 +85,10 @@
 		{
 			var url = docs.baseUrl;
 			var href = window.location.href;
-			var page = href.split(url+'/').join('');
 
-			docs.load(page, true);
+			var page = href.replace(url, '');
+			
+			docs.load(page.ltrim('/'), true);
 		});
 		</script>
 	</head>

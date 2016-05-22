@@ -119,7 +119,7 @@ $(document).ready(function()
 <body>
   <div class='container'>
     <div class='jumbotron' style="text-align: center; margin-bottom: 120px;">
-      <a href='<?php echo $url->create('@doc.default', ['view' => '/']);?>'>Documentation</a> | <a target="_blank" href='https://github.com/rosengate/exedra'>Github</a> | <a href='https://github.com/Rosengate/exedra/archive/master.zip'>Download</a>
+      <a href='<?php echo $url->create('@doc.default', ['view' => '/']);?>'>Documentation</a> | <a target="_blank" href='https://github.com/rosengate/exedra'>Github</a> | <a href='<?php echo $url->route('@doc.default', ['view' => 'introduction/installation']);?>'>Installation</a>
       <h1 id='title-exedra'>Exedra</h1>
       <p class='lead'>
         A multitier nestful route oriented <b>PHP microframework</b>, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.
@@ -174,11 +174,11 @@ $(document).ready(function()
 $app->map->addRoutes(array(
   'person' => array(
       'method' => 'any',
-      'uri' => '/persons',
+      'path' => '/persons',
       'subroutes' => array(
         'list' => array(
             'method' => 'get',
-            'uri' => '/',
+            'path' => '/',
             'execute' => 'controller=Person@index'
         )
       )
@@ -252,7 +252,7 @@ $exe->session->destroy('facebook');
       </div><!-- row ends -->
     </section>
     <div class='footer'>
-      <div>Copyright 2016 <a href='https://github.com/rosengate' target="_blank">Rosengate</a> | <a target="_blank" href='https://github.com/eimihar'>Ahmad Rahimie bin Ahmad Zailani</a> | Free to use under MIT license</div>
+      <div>Copyright 2016 <a href='http://rosengate.com' target="_blank">Rosengate</a> | <a target="_blank" href='https://github.com/eimihar'>Ahmad Rahimie bin Ahmad Zailani</a> | Free to use under MIT license</div>
     </div>
   </div> <!-- container ends -->
 </body>
