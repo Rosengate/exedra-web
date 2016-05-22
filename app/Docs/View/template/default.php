@@ -105,7 +105,7 @@
 			</div>
 			<!-- Menu -->
 			<div class="row" style="position: relative;">
-				<div id='menu' style="position: absolute; left: -240px; width: 230px;">
+				<div id='menu'>
 					<?php foreach($menu as $menuTitle=>$menuContents):?>
 					<?php if(is_string($menuContents) && $menuContents == "main"):?>
 						<div class='menu-title-main'>
@@ -134,7 +134,7 @@
 					<?php endforeach;?>
 					</div>
 				<div id='content-container' class="pull-right col-sm-12">
-					<a href='#' id='menu-toggle' onclick='menu.show();' class="fa fa-bars"></a href='#'>
+					<a href='javascript:void(0);' id='menu-toggle' onclick='menu.show();' class="fa fa-bars"></a href='#'>
 					<div id='content-wrap'>
 					<?php echo $content->render();?>
 					</div>
