@@ -26,14 +26,14 @@ $app->map->middleware(function($exe)
 });
 
 $app->map->addRoutes(array(
-	"main"=>['module'=>'web','execute'=> function($exe){
+	"main"=>['module' => 'Web','execute'=> function($exe){
 		$exe->view->setDefaultData(array('exe' => $exe, 'url' => $exe->url));
 
 		$data['docsUrl'] = $exe->url->create('doc');
 
 		return $exe->view->create('layout/default_new', $data)->render();
 	}],
-	"doc"=> ['uri'=>'docs', 'module'=>'docs',
+	"doc"=> ['uri'=>'docs', 'module'=>'Docs',
 		'execute'=> function($exe)
 			{
 				// forward to first topic.
