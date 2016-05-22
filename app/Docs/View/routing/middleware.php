@@ -22,20 +22,13 @@ $app->map->any('/dashboard')->middleware(function($exe)
 
 	return $exe->next($exe);
 });
-
-$app->map->add(['GET', 'POST'], '/auth')->tag('auth')->execute(function($exe)
-{
-	return $exe->view
-		->create('auth')
-		->render();
-});
 </code></pre>
 <p>Example on default routing</p>
 <pre><code>
 $app->map->addRoutes(array(
 	'api' => array(
 		'path' => '/admin',
-		'middleware' => ['api-auth', 'rateLimiter', 'admin.php'] // refer the topic 3. 
+		'middleware' => ['api-auth', 'rateLimiter', 'admin.php'] // refer the lookup registry 
 	)
 ));
 </code></pre>

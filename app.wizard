@@ -1,4 +1,0 @@
-<?php
-$app = require_once 'bootstrap.php';
-
-$app->wizard($argv);

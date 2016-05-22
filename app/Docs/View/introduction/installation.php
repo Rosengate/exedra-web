@@ -2,8 +2,7 @@
 <p>You may install exedra using any of the following ways.</p>
 <p>But, first create your project folder and change directory into the folder.</p>
 <h2>Composer</h2>
-<p>Composer is a modern tool that helps you with packages management, if you don't have one yet, please do so by visiting their site and install.</p>
-<p>And require the repo using your favorite CLI.</p>
+<p>Composer is a modern tool that helps you with package management, if you don't have one yet, please do so by visiting their site and install. It's recommended to do this way.</p>
 <pre><code>
 composer require rosengate/exedra dev-master
 </code></pre>
