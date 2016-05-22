@@ -3,6 +3,7 @@
 body {
 	font-family: 'Open Sans';
 	/*background:#f0f0f0;*/
+	background: #333333;
 }
 
 h2, h3, h4, h5
@@ -11,14 +12,45 @@ h2, h3, h4, h5
 	color: #4d4d4d;
 }
 
+#content-container
+{
+	background: white;
+	padding: 0 20px 20px 20px;
+	margin-bottom: 100px;
+	margin-top: 20px;
+}
+
+#content-container h2
+{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #dddddd;
+}
+
+#content-container h2 span
+{
+	font-size: 13px;
+	float: right;
+	opacity:0.6;
+}
+
+#content-container h2:before
+{
+	content: '# ';
+}
+
 #docs-title
 {
 	font-size:50px;
-	color: #494949;
+	color: #c4c4c4;
 	/*text-shadow:0px 0px 5px #3f3f3f, 0px 2px 6px #3f3f3f;*/
 	padding:5px;
 	padding-top: 10px;
 	letter-spacing: 3px;
+}
+
+#docs-description
+{
+	color: #c4c4c4;
 }
 
 #menu, #content-container p
@@ -55,7 +87,7 @@ h2, h3, h4, h5
 
 #top-menu a
 {
-	color: #3f3f3f;
+	color: #c4c4c4;;
 }
 
 .menu-content ul
@@ -69,6 +101,11 @@ h2, h3, h4, h5
 	border-bottom:1px dashed #a4a4a4;
 	padding:3px;
 	padding-left:10px;
+}
+
+.menu-content li a
+{
+	color: #A2B6C7;
 }
 
 .menu-content ul li.active a
@@ -102,7 +139,7 @@ h2, h3, h4, h5
 	border-bottom: 2px dashed #909090;
 	padding:10px;
 	padding-left: 0px;
-	color: #494949;
+	color: #be5656;
 	text-transform: uppercase;
 	font-weight: bold;
 }
@@ -133,9 +170,16 @@ h2, h3, h4, h5
 	text-decoration: none;
 }
 
+.menu-title
+{
+	color: #e18b82;
+	/*font-size: 20px;*/
+}
+
 .menu-title-main
 {
 	font-size: 1.3em;
+	color: #d15143;
 	font-weight: bold;
 	padding-bottom: 3px;
 	padding-top: 5px;
@@ -149,23 +193,26 @@ h2, h3, h4, h5
 /* bootstrap .label */
 .label.label-class
 {
-	background: #8e8e8e;
+	background: #d9fec7;
+	color: #405322;
 }
 
 .label.label-property
 {
-	background: #c7f1f3;
+	background: #d6d9fc;
 	color: black;
 }
 
 .label.label-string
 {
-	background: #d56a00;
+	color: #d56a00;
+	background: #ffeedd;
 }
 
 .label.label-variable
 {
-	background: #1f8689;
+	background: #dbf5f7;
+	color: #155c62;
 }
 
 .label.label-method
@@ -176,7 +223,7 @@ h2, h3, h4, h5
 
 .label.label-file
 {
-	background: #343325;
+	background: black;
 }
 
 .label.label-dir
@@ -186,13 +233,14 @@ h2, h3, h4, h5
 
 .label.label-uri
 {
-	background: #658149;
+	background: #f8b6f2;
+	color: #502736;
 }
 
 .label.label-route
 {
-	background: #c2f4c1;
-	color: #30461c;
+	background: #ffecec;
+	color: #c72e2e;
 }
 
 pre

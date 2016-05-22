@@ -1,21 +1,23 @@
-<h1>View <span>\Exedra\Application\Builder\View</span></h1>
-<p>In exedra, we have no templating engine but php itself. But, it's more than creating a simple php file. You're given a builder that is based on $exe instance, that enable to properly design your view login, required data, and even build a layout dan can contain a view.</p>
-<h2>1. Create a view</h2>
+<h1>View <span>\Exedra\Factory\View</span></h1>
+<p>A simple View factory to help on templating, design your view logic, required data, and even build a layout dan can contain a view.</p>
+<h2>Create a view</h2>
 <pre><code>
 $app->map->addRoutes(array(
 	'profile'=> ['path'=> 'user/[:username]', 'execute'=> function($exe)
 	{
 		$view = $exe->view->create("user/profile");
+
 		return $view->render();
 	}]
 ));
 </code></pre>
-<p>Then it may search for a file with path <b>app/view/user/profile.php</b></p>
-<h2>2. Passing a data</h2>
+<p>Then it may search for a file with path <span class='label label-file'>app/View/user/profile.php</span></p>
+<h2>Passing a data</h2>
 <p>Example of passing a data</p>
 <pre><code>
 // within the execution handler.
 $view = $exe->view->create("user/profile");
+
 $view->set('title', "User Profile");
 </code></pre>
 <p>Or by array</p>
@@ -26,23 +28,25 @@ $view->set([
 	"age"=> 26,
 	"email"=> "newrehmi@gmail.com"
 ]);
+
 return $view->render();
 </code></pre>
 <p>Then you may use the passed data in the form of variable.</p>
-<pre><span class='code-tag label label-file'>App/View/User/profile.php</span><code>
+<pre><span class='code-tag label label-file'>app/View/user/profile.php</span><code>
 title : &lt;php? echo $title;?&gt; 
 name : &lt;php? echo $username;?&gt;
 age : &lt;php? echo $age;?&gt;
 email : &lt;php? echo $email;?&gt;
 </code></pre>
-<h2>3. Required Data</h2>
-<p>You may define a required data, that is useful especially in validating the existence of the data before it can be rendered. Else, the application will throw an exception. This is useful in writing up a layout, that can be re-useable over your set of application.</p>
+<h2>Required Data</h2>
+<p>Defining a required data sets a contract about what your view needed before it can render.</p>
 <pre><code>
 $view = $exe->view->create("user/profile");
+
 $view->setRequiredData(['title','description', 'image']);
 </code></pre>
-<h2>4. Building up a layout</h2>
-<p>There's no distinct in creating up a layout, than simply creating a view and render another view within it.</p>
+<h2>Building up a layout</h2>
+<p>There's no difference in creating a layout, than simply creating a view and render another view within it.</p>
 <pre><code>
 // you may use the $exe instance, and store the variable layout for later user, like in controller.
 $exe->layout = $exe->view->create('layout/default')->setRequired(['view']);
@@ -51,44 +55,46 @@ $exe->layout = $exe->view->create('layout/default')->setRequired(['view']);
 // in the place to render the layout
 $exe->layout->set('view', $exe->view->create('user/profile'))->render();
 </code></pre>
-<pre><span class='code-tag label label-file'>App/View/layout/default.php</span><code>
+<pre><span class='code-tag label label-file'>app/View/layout/default.php</span><code>
 &lt;html&gt;
 	&lt;head&gt;
 	&lt;/head&gt;
 	&lt;body&gt;
-		&lt;php? $view->render();?&gt; 
+		&lt;php? echo $view->render();?&gt; 
 	&lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<pre><span class='code-tag label label-file'>App/View/User/profile.php</span><code>
+<pre><span class='code-tag label label-file'>app/View/user/profile.php</span><code>
 &lt;div class="container"&gt;
 Hello world!!!!
 &lt;/div&gt;
 </code></pre>
-<p><b>The rendered result :</b></p>
+<p>The rendered result :</p>
 <pre><span class='code-tag label label-dir'>Expected results</span><code>
 &lt;html&gt;
 	&lt;head&gt;
 	&lt;/head&gt;
-	&lt;body&gt;
-		Hello world!!!!! 
-	&lt;/body&gt;
+	&lt;div class="container"&gt;
+	Hello world!!!!
+	&lt;/div&gt;
 &lt;/html&gt;
 </code></pre>
-<h2>5. Use Case</h2>
-<p>The best place to create a layout instance, is within your a middleware.</p>
-<p>For example, create a layout within route 'public'. So, every route nested under it, would have the layout. </p>
+<h2>Use Case</h2>
+<p>The best place to create a layout instance, is probably your a middleware.</p>
+<p>For example, create a layout within route <span class='label label-route'>public</span>. So, every route nested under it, would have the layout. </p>
 <pre><code>
 $app->map->addRoutes(array(
-	'public'=> ['path'='', 'middleware'=> function($exe)
+	'public' => ['path'='', 'middleware'=> function($exe)
 	{
 		$exe->layout = $exe->view->create('layout/default');
 		$exe->layout->setRequired(['view']);
 		return $exe->next($exe);
 	}, 
-	'subroute'=>array(
-		'user'=> ['path'=>'user', 'subroute'=> array(
-			'profile'=> ['path'=>'[:username]', 'execute'=> 'controller=user@profile']
+	'subroutes' => array(
+		'user' => ['path'=>'/user', 'subroutes'=> array(
+			'profile' => [
+				'path'=>'/[:username]',
+				'execute'=> 'controller=User@profile']
 		)] // end of public.user
 	)] // end of public
 ));

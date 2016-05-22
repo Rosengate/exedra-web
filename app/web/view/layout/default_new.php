@@ -122,7 +122,7 @@ $(document).ready(function()
       <a href='<?php echo $url->create('@doc.default', ['view' => '/']);?>'>Documentation</a> | <a target="_blank" href='https://github.com/rosengate/exedra'>Github</a> | <a href='https://github.com/Rosengate/exedra/archive/master.zip'>Download</a>
       <h1 id='title-exedra'>Exedra</h1>
       <p class='lead'>
-        A multitier nestful route oriented <b>PHP framework (micro)</b>, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.
+        A multitier nestful route oriented <b>PHP microframework</b>, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.
       </p>
     </div>
     <section class='section-features'>
@@ -187,8 +187,6 @@ $app->map->addRoutes(array(
 </code></pre>
 <div class='example-title'><span class='fa fa-share-alt'></span> Convenient Routing</div>
 <pre><code>
-$app->mapFactory->useConvenientRouting();
-
 $app->map->any('/books')->group(function($group)
 {
     $group->get('/', 'controller=Book@index')
@@ -204,10 +202,10 @@ $app->map->any('/books')->group(function($group)
 <div class='example-title'><span class='fa fa-link'></span> URL Generator</div>
 <pre><code>
 // absolute route
-echo $exe->url->create('@person.list');
+echo $exe->url->route('@person.list');
 
 // search tagged route
-echo $exe->url->create('#bookList');
+echo $exe->url->route('#bookList');
 </code></pre>
 <div class='example-title'><span class='fa fa-cog'></span> Creating a view</div>
 <pre><code>
@@ -228,15 +226,15 @@ echo $exe->form->select('gender')
 </code></pre>
         </div>
         <div class='col-sm-4'>
-<div class='example-title'><span class='fa fa-code-fork'></span> File handling</div>
+<div class='example-title'><span class='fa fa-code-fork'></span> Path handling</div>
 <pre><code>
-$path = $exe->path->create('Logs/message.log');
+$file = $exe->path->file('Logs/message.log');
 
 // get contents
-$contents = $path->getContents();
+$contents = $file->getContents();
 
 // put contents
-$path->putContents('message from mars');
+$file->putContents('message from mars');
 </code></pre>
 <div class='example-title'><span class='fa fa-save'></span> Session</div>
 <pre><code>

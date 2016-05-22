@@ -12,7 +12,7 @@
 		<script src="<?php echo $exe->url->asset('js/jquery.min.js');?>"></script>
 		<script src="<?php echo $exe->url->asset('js/bootstrap.min.js');?>"></script>
 		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset('devaid/plugins/font-awesome/css/font-awesome.css');?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset("highlight-js/styles/foundation.css");?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo $exe->url->asset("highlight-js/styles/zenburn.css");?>">
 		<script type="text/javascript" src='<?php echo $exe->url->asset("highlight-js/highlight.pack.js");?>'></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 		<script type="text/javascript">
@@ -95,8 +95,8 @@
 				</div>
 			</div>
 			<!-- Menu -->
-			<div class="row">
-				<div id='menu' class='col-sm-3'>
+			<div class="row" style="position: relative;">
+				<div id='menu' style="position: absolute; left: -240px; width: 230px;">
 					<?php foreach($menu as $menuTitle=>$menuContents):?>
 					<?php if(is_string($menuContents) && $menuContents == "main"):?>
 						<div class='menu-title-main'>
@@ -123,8 +123,8 @@
 						</div>
 					<?php endif;?>
 					<?php endforeach;?>
-				</div>
-				<div id='content-container' class="col-sm-9 pull-right" style="padding-bottom:200px;">
+					</div>
+				<div id='content-container' class="pull-right col-sm-12">
 					<a href='#' id='menu-toggle' onclick='menu.show();' class="fa fa-bars"></a href='#'>
 					<div id='content-wrap'>
 					<?php echo $content->render();?>

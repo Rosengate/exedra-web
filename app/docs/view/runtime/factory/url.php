@@ -1,47 +1,73 @@
-<h1>Url <span>\Exedra\Application\Builder\Url</span></h1>
-<p>This URL builder helps developer generate a URL by specifying the route by name, or tag. In an execution context, the specified route will usually be based on <span class='label label-property'>base</span> route it's based to. If the context doesn't have one, it will base the route to the parent of current execution route.</p>
-<h2>1. Create a URL</h2>
+<h1>Url <span>\Exedra\Factory\Url, \Exedra\Runtime\Factory\Url</span></h1>
+<p>A URL generator to help with the creation of URL</p>
+<h2>Create a URL</h2>
+<h3>to()</h3>
+<p>Create a url with the given path</p>
+<pre><code>
+$url = $exe->url->to('/foo/bar');
+</code></pre>
+<h3>current()</h3>
+<p>Create a current url</p>
+<pre><code>
+$url = $exe->url->current();
+</code></pre>
+<p>Create with an appended query string</p>
+<pre><code>
+$url = $exe->url->current(array('page' => 1, 'search' => 'texts'));
+</code></pre>
+<h3>previous()</h3>
+<p>Create a previous url</p>
+<pre><code>
+$url = $exe->url->previous();
+</code></pre>
+<h3>route()</h3>
 <p>Specify route name, and parameters required.</p>
 <p>p/s : consider below routing for the further subtopic.</p>
 <pre><code>
-$app->map->addRoutes(array(
-	'public'=> ['path' =>'', 'subroute'=> array(
-		'user'=> ['path' =>'user', 'subroute'=>array(
-			'index'=> ['path' => '', 'execute'=> function()
-			{
-				// public.user.index
-			}],
-			'profile'=> ['path' => '[:username]', function()
-			{
-				// public.user.profile
-			}]
-		)],
-		'page'=> ['path' =>'page', 'execute'=>function()
+
+$app->map->any('/')->name('public')->execute(function($public)
+{
+	$public->any('/user')->name('user')->any(function($user)
+	{
+		$user->get('/')->name('index')->execute(function()
 		{
-			// public.page
-		}]
-	)]
-));
+
+		});
+
+		$user->get('/[:username]')->name('profile')->execute(function()
+		{
+
+		});
+	});
+
+	$public->any('/page')->name('page')->execute(function()
+	{
+
+	});
+});
 </code></pre>
 <p>Within handler for route <span class='label label-route'>public.user.index</span> : </p>
-<h3>1.1 Relative Route</h3>
+<h4>Relative Route</h4>
+<p>create <span class='label label-route'>public.user.profile</span> url</p>
 <pre><code>
-// create public.user.profile url.
-$url = $exe->url->create('profile', ['username'=> 'eimihar']);
+$user->get('/')->name('index')->execute(function()
+{
+	$url = $exe->url->route('profile', ['username'=> 'eimihar']);
+});
 </code></pre>
-<pre><code>
-// create public.page (will return an error, unable to create url)
-$url = $exe->url->create('page');
+<p>create <span class='label label-route'>public.page</span> (will throw an error, unable to create url)</p>
+<pre><code class='php'>
+$url = $exe->url->route('page');
 </code></pre>
 <p>The second example will throw an error, due to inablity to find route named 'page' under the prefix 'public.user'.</p>
-<h3>2. Absolute Route</h3>
+<h4>Absolute Route</h4>
 <p>To specify the absolute route, do this (while following the same scenario as above):</p>
-<pre><code>
-// create url for route public.page
-$url = $exe->url->create('@public.page');
+<p>create url for route public.page</p>
+<pre><code class='php'>
+$url = $exe->url->route('@public.page');
 </code></pre>
 <p>Above pattern will not care on what route you're currently on.</p>
-<h2>2. Url with route prefixing</h2>
+<h2>Url with route prefixing</h2>
 <p>Like we've been mentioned earlier, route prefixing would basically affect on how route would be read on creating a URL. Every route mentioned in the first parameter of the URL would be prefixed with the configured route prefix. Consider below routing : </p>
 <p>p/s : It's best to set a route prefix in a middleware.</p>
 <pre><code>
@@ -74,16 +100,17 @@ $app->map->addRoutes(array(
 <p>Inside route <strong>public.user.index</strong></p>
 <pre><code>
 // get url for public.user.profile
-$url = $exe->url->create('user.profile', ['username'=>'eimihar']);
+$url = $exe->url->route('user.profile', ['username'=>'eimihar']);
 
 // get url for public.page
-$url = $exe->url->create('page');
+$url = $exe->url->route('page');
 </code></pre>
-<h2>4. Base And Asset Url</h2>
-<p>You may configure a base url with on the url builder itself ($exe->url).</p>
+<h2>Base And Asset Url</h2>
+<p>There may be a time that you want to configure a base url for app and asset url. You can do so through config.</p>
 <pre><code>
-$exe->url->setBase('http://localhost/myproject');
-$exe->url->setAsset('http://localhost/myproject/assets');
+$app->config->set('app.url', 'http://www.example.com/my-project');
+
+$app->config->set('asset.url', 'http://www.example.com/my-project/assets');
 </code></pre>
 <p>Or through application configuration : </p>
 <pre><code>

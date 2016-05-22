@@ -7,15 +7,15 @@
 		'value' => array('string or array', 'get, post, put or delete', 'or a combination delimited by \',\'', 'any')
 		),
 	'path' => array(
-		'description' => 'A string of URI path for this route to be matched with URI path taken from $_SERVER variable. ($_SERVER[\'REQUEST_URI\'])',
-		'value' => array('String of matchable URI path.', ' Or false boolean')
+		'description' => 'A string of URI path for this route to be matched with URI path. A false boolean will disallow request dispatch on the route.',
+		'value' => array('String of matchable URI path.', ' Boolean false')
 		),
 	'ajax' => array(
 		'description' => 'Boolean whether will only accept ajax request or not.',
-		'value' => 'boolean of true or false'
+		'value' => 'boolean'
 		),
 	'execute' => array(
-		'description' => 'An handler pattern to be executed if route is matched, once found.',
+		'description' => 'An handler pattern to be executed once a route is found.',
 		'value' => array(
 			'An execution handler pattern.',
 			'There\'re built in such as : <div style="padding-left: 10px;"><a href="'.$exe->url->create('default', array('view' => 'execution/handlers#Closure')).'">- \Closure</a></div><div style="padding-left: 10px;"><a href="'.$exe->url->create('default', array('view' => 'execution/handlers#controller')).'">- controller handler</a></div>')
@@ -39,7 +39,7 @@
 );?>
 <table class='table'>
 	<tr>
-		<th>Properties</th>
+		<th>Property</th>
 		<th style="width: 60%;">Description</th>
 		<th>Value</th>
 	</tr>

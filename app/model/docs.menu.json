@@ -1,70 +1,47 @@
 {
 	"Introduction":
 	{
-		"application/introduction": "Introduction",
-		"application/setup": "Setup and Installation",
-		"application/boot": "Booting Up",
-		"application/scope": "Instances"
+		"introduction/about": "About",
+		"introduction/installation": "Installation",
+		"introduction/boot": "Booting Up"
 	},
-	"Wizardry":
+	"Application":
 	{
-		"application/wizardry/installation": "Installation",
-		"application/wizardry/start": "Skeleton conjuration"
+		"application/overview": "Overview",
+		"application/container": "As a Container",
+		"application/execution": "Application Execution",
+		"application/config": "Config",
+		"application/path": "Paths"
 	},
-	"Application": "main",
-	"Application : Core":
-	{
-		"application/components/application": "Application",
-		"application/components/structure": "Structure",
-		"application/components/loader": "Loader",
-		"application/components/module" :"Module",
-		"application/components/registry": "Registry"
+	"Routing": {
+		"routing/routing": "Overview",
+		"routing/convenient": "Convenient",
+		"routing/properties": "Properties",
+		"routing/middleware": "Middleware"
 	},
-	"Application : Components":
+	"Runtime": "main",
+	"Execution":
 	{
-		"application/components/config": "Config",
-		"application/components/session": "Session",
-		"application/components/request": "HTTP Request"
+		"runtime/overview": "Overview",
+		"runtime/container": "A Container",
+		"runtime/handlers": "Handlers"
 	},
-	"Routing": "main",
-	"Routing : Core":
-	{
-		"application/routing": "Default",
-		"routing/properties": "Route Properties",
-		"routing/convenient": "Convenient Routing",
-		"routing/explicit": "Explicit Routing",
-		"routing/extend": "Extending Routing Components"
+	"Factory as a service": {
+		"runtime/factory/controller": "Controller",
+		"runtime/factory/view": "View",
+		"runtime/factory/url": "Url",
+		"runtime/form": "Form"
 	},
-	"Routing : Contexts":
-	{
-		"routing/context/application": "Application",
-		"routing/context/execution": "Execution"
+	"Session": {
+		"application/session": "Session",
+		"application/flash": "Flash"
 	},
-	"Execution": "main",
-	"Execution : Core":
-	{
-		"execution/introduction": "Execution",
-		"execution/handlers": "Handlers",
-		"execution/builders/middleware": "Middleware"
+	"Others": "main",
+	"Http": {
+		"application/http": "Request & Response",
+		"other/redirection": "Redirection as a service"
 	},
-	"Execution : Builders":
-	{
-		"execution/builders/controller":"Controller",
-		"execution/builders/view":"View",
-		"execution/builders/model":"Model",
-		"execution/builders/path": "Path"
-	},
-	"Execution : Components":
-	{
-		"execution/components/config": "Config",
-		"execution/components/url": "URL builder",
-		"execution/components/session": "Session",
-		"execution/components/flash": "Flash",
-		"execution/components/redirection": "Redirection",
-		"execution/components/form": "Form"
-	},
-	"Others":
-	{
-		"others/dic": "DI Container"
+	"Service Provider": {
+		"other/provider": "Service Provider"
 	}
 }
