@@ -1,5 +1,0 @@
-<h1>About Exedra</h1>
-<p>A nestable route-oriented PHP Micro-framework, capable of letting you design the map and routes of your application hierarchically, while being flexible and contextual at the sametime, without much interfering with how your application is supposed to work.</p>
-<p>As a microframework, there aren't much services/components you can expect. It's an alternative to anyone who seeks much minimal design yet expandable, a container based microframework, although there might be some steep learning, considering that it didn't meant to be much pragmatic, but explicit.</p>
-<h2>Why ?</h2>
-<p>URI routing, one of the most wonderful component in modern web development, or specifically a web service development. There're already tons of framework/microframework doing this, but couldn't find the exact one that does a nestful routing at an extreme measure.</p>
