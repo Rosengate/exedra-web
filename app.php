@@ -63,7 +63,7 @@ $app->map->addRoutes(array(
 					}
 					else
 					{
-						$layout->set('menu', json_decode($exe->path['app']->getContents('model/docs.menu.json'), true));
+						$layout->set('menu', json_decode($exe->path['app']->getContents('Model/docs.menu.json'), true));
 
 						$layout->set('content', $exe->view->create($view));
 						
