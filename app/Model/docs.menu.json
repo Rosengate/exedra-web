@@ -11,7 +11,7 @@
 		"application/container": "As a Container",
 		"application/execution": "Application Execution",
 		"application/config": "Config",
-		"application/path": "Paths"
+		"application/path": "Path Registry"
 	},
 	"Routing": {
 		"routing/routing": "Overview",
@@ -39,9 +39,12 @@
 	"Others": "main",
 	"Http": {
 		"application/http": "Request & Response",
-		"other/redirection": "Redirection as a service"
+		"other/redirection": "Redirection"
 	},
 	"Service Provider": {
 		"other/provider": "Service Provider"
+	},
+	"DI Container": {
+		"other/container": "Overview"
 	}
 }

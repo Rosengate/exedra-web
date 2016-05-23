@@ -194,7 +194,17 @@ h2, h3, h4, h5
 }
 
 /* bootstrap .label */
+.label
+{
+	font-size: 0.9em;
+}
 .label.label-class
+{
+	background: #d9fec7;
+	color: #405322;
+}
+
+.label.label-type
 {
 	background: #d9fec7;
 	color: #405322;
@@ -220,7 +230,7 @@ h2, h3, h4, h5
 
 .label.label-method
 {
-	background: #d6d6d6;
+	background: #f3f3f3;
 	color: black;
 }
 

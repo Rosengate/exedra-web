@@ -1,5 +1,11 @@
 <h1>Overview</h1>
 <p>In exedra application lifecycle, runtime is the actual moment an application gets executed, either through request dispatch(), or execute() method as explained in previous topic.</p>
+<pre><code>
+$app->map->get('/')->execute(function($exe)
+{
+	//.. the runtime
+});
+</code></pre>
 <h2>Behind the scene</h2>
 <p>Anything happened in the back, stay in the back.</p>
 <h4>\Exedra\Application::dispatch()</h4>

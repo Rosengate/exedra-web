@@ -38,7 +38,7 @@ $app->map->addRoutes(array(
 <h3>\Closure</h3>
 <pre><code>
 $app->map->middleware(function($exe) {
-
+	return $exe->next($exe);
 });
 </code></pre>
 <h3>Fully qualified class name</h3>

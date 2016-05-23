@@ -1,5 +1,5 @@
 <h1>Config</h1>
-<p>A configuration bag, with sets of common methods. A dot notation array capable.</p>
+<p>A dot notation configuration bag, with sets of common methods.</p>
 <h2>get</h2>
 <p>Get a configuration value</p>
 <pre><code>

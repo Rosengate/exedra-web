@@ -1,7 +1,7 @@
 <h1>A container</h1>
 <h2>\Exedra\Runtime\Exe as a container</h2>
 <p>Similar like <span class='label label-class'>\Exedra\Application</span>, <span class='label label-class'>\Exedra\Runtime\Exe</span> is also also built as a container, for the convenience of registering services on developer own terms.</p>
-<h4>The question of wiring up the container</h4>
+<h4>Wiring up the container</h4>
 <p>So, if it begins by the moment your application gets executed, where does one wire up the runtime based services?</p>
 <p>The goal of exedra, about actually being hierarchical and nestful in design, are partly achieved through the leveraged use of middleware. And middleware, being the layer that encompasses, is the most suitable place to wire up the container.</p>
 <h4>Example on registering some services</h4>
