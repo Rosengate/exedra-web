@@ -71,8 +71,8 @@ if($app->path->has('env')){
 	
 }
 </code></pre>
-<h4>autoloadPsr4</h4>
-<p><em style='opacity: 0.5;'>Void</em> Autoload given path.</p>
+<h4><em style='opacity: 0.5;'>Void</em> autoloadPsr4</h4>
+<p>Autoload given path.</p>
 <pre><code>
 $app->path->autoloadPsr4('Myriad', 'src/Myriad');
 </code></pre>
