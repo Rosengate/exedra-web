@@ -286,6 +286,12 @@ pre .code-tag
 	padding: 10px;
 }
 
+.h-type
+{
+	font-style: italic;
+	opacity: 0.7;
+}
+
 @media (max-width:768px){
 	#docs-title
 	{
@@ -303,12 +309,29 @@ pre .code-tag
 		width: 98% !important;
 	}
 
+	/*#menu
+	{
+		display: none;
+		background: #2c2c2c;
+		box-shadow: 0px 0px 5px #2c2c2c;
+		position: absolute;
+		top: 0px;
+		padding: 10px;
+		left: 0px;
+		z-index: 1;
+		padding-left: 10px;
+	}*/
+
 	#menu
 	{
 		display: none;
 		background: inherit;
 		box-shadow: none;
 		position: static;
+		top: 0px;
+		padding: 10px;
+		left: 0px;
+		z-index: 1;
 		padding-left: 10px;
 	}
 

@@ -11,7 +11,8 @@
 		"application/container": "As a Container",
 		"application/execution": "Application Execution",
 		"application/config": "Config",
-		"application/path": "Path Registry"
+		"application/path": "Path Registry",
+		"application/http": "Request & Response"
 	},
 	"Routing": {
 		"routing/routing": "Overview",
@@ -26,21 +27,18 @@
 		"runtime/container": "A Container",
 		"runtime/handlers": "Handlers"
 	},
-	"Factory as a service": {
+	"Services": {
 		"runtime/factory/controller": "Controller",
 		"runtime/factory/view": "View",
 		"runtime/factory/url": "Url",
-		"runtime/form": "Form"
+		"runtime/form": "Form",
+		"runtime/redirection": "Redirection"
 	},
 	"Session": {
 		"application/session": "Session",
 		"application/flash": "Flash"
 	},
 	"Others": "main",
-	"Http": {
-		"application/http": "Request & Response",
-		"other/redirection": "Redirection"
-	},
 	"Service Provider": {
 		"other/provider": "Service Provider"
 	},
