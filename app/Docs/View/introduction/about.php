@@ -5,17 +5,17 @@
 <p>URI oriented routing; one of the most wonderful component in modern web development, or specifically a web service development. There're already tons of framework/microframework doing this, but couldn't find the exact one that does a nestful routing hierarchically.</p>
 <p>Imagine about having list of APIs, most of them repetitively written in a nearly similar pattern.</p>
 <pre><code>
-GET /api/users
+GET  /api/users
 POST /api/users
-GET /api/users/:id
+GET  /api/users/:id
 POST /api/users/:id
-GET /api/users/:id/settings
+GET  /api/users/:id/settings
 POST /api/users/:id/settings
-GET /api/users/:id/settings/:key
+GET  /api/users/:id/settings/:key
 POST /api/users/:id/settings/:key
 </code></pre>
 <p>Imagine growing this list to 5-10 times larger and maintaining them all.</p>
-<p>The idea is, how about maintaining them hierarchically. Imagine about every segment of URI path, as a node. A node you can expand, validate, authenticate, maintain, without worrying about other places.</p>
+<p>The idea is, how about maintaining them hierarchically. Imagine about every segment of URI path, as a node. A node you can expand, validate, authenticate, maintain, without worrying about other places. See this <a href='<?php echo $url->route('@doc.default', ['view' => 'introduction/example']);?>'>example</a> about writing these APIs hierarchically.</p>
 <h3>How about performance</h3>
 <p>The routing map isn't wholly constructed unless traversed. A route along with the group/subroutes beneath it will not be traversed, if the initial path segment didn't match.</p>
 <h2>Is it REST capable?</h2>
