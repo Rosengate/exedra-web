@@ -5,7 +5,6 @@
         "This file is @generated automatically"
     ],
     "hash": "9f07b0b1b59ad88931278d24a518a955",
-    "content-hash": "49131079849175ecac324af5c9acd8b4",
     "packages": [
         {
             "name": "rosengate/exedra",
@@ -13,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rosengate/exedra.git",
-                "reference": "e6251a0daba65e13b66e9b7b46b8edd2a2fa952e"
+                "reference": "b3c08ade7b2352420d3f8aea4beef69d43f635b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Rosengate/exedra/zipball/e6251a0daba65e13b66e9b7b46b8edd2a2fa952e",
-                "reference": "e6251a0daba65e13b66e9b7b46b8edd2a2fa952e",
+                "url": "https://api.github.com/repos/Rosengate/exedra/zipball/b3c08ade7b2352420d3f8aea4beef69d43f635b0",
+                "reference": "b3c08ade7b2352420d3f8aea4beef69d43f635b0",
                 "shasum": ""
             },
             "type": "library",
@@ -49,7 +48,7 @@
                 "route",
                 "router"
             ],
-            "time": "2016-05-16 07:53:52"
+            "time": "2016-06-12 09:52:12"
         }
     ],
     "packages-dev": [],

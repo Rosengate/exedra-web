@@ -33,7 +33,17 @@ $app->map->addRoutes(array(
 
 		return $exe->view->create('layout/default_new', $data)->render();
 	}],
-	"doc"=> ['uri'=>'docs', 'module'=>'Docs',
+	"doc"=> ['uri'=>'docs',
+		'middleware' => function($exe)
+		{
+			$exe['service']->set('view', function()
+			{
+				return $this->module['Docs']->view;
+			});
+
+			return $exe->next($exe);
+		},
+		'module'=>'Docs',
 		'execute'=> function($exe)
 			{
 				// forward to first topic.

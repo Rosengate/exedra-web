@@ -23,7 +23,7 @@ $app->dispatch();
 <h3>Re-register</h3>
 <p>If you needed to register it around our application codes, it's best to do so as a registry.</p>
 <pre><code>
-$app['services']->set('request', function()
+$app['service']->set('request', function()
 {
 	$request = new \Exedra\Http\ServerRequest::createFromGlobals();
 

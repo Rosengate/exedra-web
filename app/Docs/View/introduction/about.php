@@ -15,6 +15,8 @@ GET /api/users/:id/settings/:key
 POST /api/users/:id/settings/:key
 </code></pre>
 <p>Imagine growing this list to 5-10 times larger and maintaining them all.</p>
-<p>The idea is, how about maintaining those lists hierarchically. Imagine about every segment of URI path, as a node. A node you can expand, validate, authenticate, maintain, without worrying about other places.</p>
+<p>The idea is, how about maintaining them hierarchically. Imagine about every segment of URI path, as a node. A node you can expand, validate, authenticate, maintain, without worrying about other places.</p>
 <h3>How about performance</h3>
 <p>The routing map isn't wholly constructed unless traversed. A route along with the group/subroutes beneath it will not be traversed, if the initial path segment didn't match.</p>
+<h2>Is it REST capable?</h2>
+<p>It is if you can design it. The routing interface is already http verb oriented, the rest is designing the response, authentication, application design which is all up to developer themselves.</p>

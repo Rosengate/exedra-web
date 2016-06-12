@@ -19,7 +19,7 @@
 <p>A service last for the lifetime of the application, and return the same value each time.</p>
 <p>An example on adding a service with add() method.</p>
 <pre><code>
-$app['services']->add('db', function()
+$app['service']->add('db', function()
 {
 	$db = $this->config['db'];
 
@@ -37,7 +37,7 @@ $statment = $app->db->query('SELECT * FROM foo');
 <h3>Factory</h3>
 <p>A factory helps you create the dependency you needed.</p>
 <pre><code>
-$app['factories']->add('rest-controller', function($name, $action, array $params = array())
+$app['factory']->add('rest-controller', function($name, $action, array $params = array())
 {
 	$controller = new '\\App\\Controller\\'.ucfirst($name);
 
@@ -52,7 +52,7 @@ $app->create('rest-controller', array('book', 'list'));
 </code></pre>
 <h3>Callable</h3>
 <pre><code>
-$app['callables']->add('@log', function($message)
+$app['callable']->add('@log', function($message)
 {
 	$this->log->create($mesasge);
 });
@@ -65,7 +65,7 @@ $app->log('Something not well.');
 <p>By design, the execution runtime itself is a subset of an application context, but the context itself isn't the same one as application's, so it's not possible to retrieve the dependency <u>directly</u> on the execution context, except through a shared registry.</p>
 <p>The registry is done on the application context, and have the name prefixed with '@' character. For example :</p>
 <pre><code>
-$app['callables']->add('@query', function($query)
+$app['callable']->add('@query', function($query)
 {
 	return $this->db->query($query);
 });
@@ -109,5 +109,5 @@ $app->dispatch();
 <h3>Overwriting existing registry</h3>
 <p>A similar method to add(), but it does not throw any exception if the registry already exist.</p>
 <pre><code>
-$app['services']->set('session', '\Foo\SessionManager');
+$app['service']->set('session', '\Foo\SessionManager');
 </code></pre>

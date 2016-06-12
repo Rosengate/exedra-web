@@ -13,15 +13,15 @@ $container = new \Exedra\Container\Container;
 <h4>add(<em>String</em> $name, <em>mixed</em> $value)</h4>
 <p>The second argument can be a <span class='label label-type'>string</span> of a fully qualified class name.</p>
 <pre><code>
-$container['services']->add('task', '\App\TaskManager');
+$container['service']->add('task', '\App\TaskManager');
 </code></pre>
 <p>Or an <span class='label label-type'>array</span> with first element as the class name, and second as an array of construct arguments in the form of dependency names.</p>
 <pre><code>
-$container['services']->add('session', array('cron', array('\App\CronRegistry', array('self.task'))));
+$container['service']->add('session', array('cron', array('\App\CronRegistry', array('self.task'))));
 </code></pre>
 <p>Or a <span class='label label-type'>\Closure</span>.</p>
 <pre><code>
-$container['services']->add('db', function()
+$container['service']->add('db', function()
 {
 	$config = $this->dbconfig;
 
@@ -36,7 +36,7 @@ $container['services']->add('db', function()
 <h3>Factory</h3>
 <p>A factory helps you create the dependency you needed.</p>
 <pre><code>
-$container['factories']->add('rest-controller', function($name, $action, array $params = array())
+$container['factory']->add('rest-controller', function($name, $action, array $params = array())
 {
 	$controller = new '\\App\\Controller\\'.ucfirst($name);
 
@@ -53,7 +53,7 @@ $container->create('rest-controller', array('book', 'list'));
 <h3>Callable</h3>
 <p>A 'dynomagically' create a callable method on the container itself.</p>
 <pre><code>
-$container['callables']->add('@log', function($message)
+$container['callable']->add('@log', function($message)
 {
 	$this->log->create($mesasge);
 });

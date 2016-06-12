@@ -8,12 +8,14 @@
 <pre><code>
 $app->map->middleware(function($exe)
 {
+	// exe->layout
 	$exe['services']->add('layout', function()
 	{
 		return $this->view->create('layout/default');
 	});
 
-	$exe['callables']->add('render', function($view, array $data = array())
+	// exe->render()
+	$exe['callable']->add('render', function($view, array $data = array())
 	{
 		$view = $this->view
 			->create($view)
