@@ -29,7 +29,7 @@ echo (string) $app->path['routes'];
 <h2>Path registry</h2>
 <h4>Register a path</h4>
 <p>Register a new path directly under root path.</p>
-<p>The first argument receieve path registry name, and the second receieve a directory, relative to the path.root.</p>
+<p>The first argument receive path registry name, and the second receive a directory, relative to the path.root.</p>
 <pre><code>
 $app->path->register('storage', 'storage');
 </code></pre>
@@ -46,32 +46,32 @@ $app->path->register('vault', new \Exedra\Path($absolutePath));
 <pre><code>
 $storagePath = $app->path->get('storage');
 </code></pre>
-<p>Or get it as an array offset.</p>
+<p><b>Or</b> get it through an array offset.</p>
 <pre><code>
 $serverPath = $app->path['server'];
 </code></pre>
 <h2>Operations</h2>
 <p>Number of useful methods.</p>
-<h4><em style='opacity: 0.5;'>String</em> to</h4>
+<h4><em style='opacity: 0.5;'>String</em> to(<em>string</em> $path)</h4>
 <p>Get absolute path to the given argument in string</p>
 <pre><code>
 $pdf = $app->path->to('public/files/love-letter.pdf');
 
 $image = $app->path['public']->to('images/love.png');
 </code></pre>
-<h4><em style='opacity: 0.5;'>Mixed</em> load</h4>
+<h4><em style='opacity: 0.5;'>Mixed</em> load(<em>string</em> $path)</h4>
 <p>Require given path</p>
 <pre><code>
 $conf = $app->path['storage']->load('caches/conf.json');
 </code></pre>
-<h4><em style='opacity: 0.5;'>Boolean</em> has</h4>
+<h4><em style='opacity: 0.5;'>Bool</em> has(<em>string</em> $path)</h4>
 <p>Check whether path exists</p>
 <pre><code>
 if($app->path->has('env')){
 	
 }
 </code></pre>
-<h4><em style='opacity: 0.5;'>Void</em> autoloadPsr4</h4>
+<h4><em style='opacity: 0.5;'>Void</em> autoloadPsr4(<em>string</em> $namespace, <em>string</em> $path, <em>bool</em> $relative = true)</h4>
 <p>Autoload given path.</p>
 <pre><code>
 $app->path->autoloadPsr4('Myriad', 'src/Myriad');
@@ -80,12 +80,12 @@ $app->path->autoloadPsr4('Myriad', 'src/Myriad');
 <pre><code>
 $app->path->autoloadPsr4('Slim', '/var/packages/slim/src', false);
 </code></pre>
-<h4><em style='opacity: 0.5;'>\Exedra\File</em> file</h4>
+<h4><em style='opacity: 0.5;'>\Exedra\File</em> file(<em>string</em> $path)</h4>
 <p>Create <span class='label label-class'>\Exedra\File</span> object. A subclass of <span class='label label-class'>\SplFileInfo</span>.</p>
 <pre><code>
 $schema = $app->path['config']->file('db/schema.php');
 </code></pre>
-<h4><em style='opacity: 0.5;'>\Exedra\Path</em> create</h4>
+<h4><em style='opacity: 0.5;'>\Exedra\Path</em> create(<em>string</em> $path)</h4>
 <p>Create a new <span class='label label-class'>\Exedra\Path</span> relatively.</p>
 <pre><code>
 $newPath = $app->path->create('path/to/newpath');

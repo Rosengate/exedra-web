@@ -13,8 +13,8 @@ $app->config->set(array(
 // now most config is configured for production.
 // so, for your own environment, just set up below file, and return the same array of config.
 // file : app/config/env_config.php
-if($app->loader->has('config/env_config.php'))
-	$app->config->set($app->loader->load('config/env_config.php'));
+if($app->path->has('config/env_config.php'))
+	$app->config->set($app->path->load('config/env_config.php'));
 
 $app->map->middleware(function($exe)
 {
@@ -26,24 +26,18 @@ $app->map->middleware(function($exe)
 });
 
 $app->map->addRoutes(array(
-	"main"=>['module' => 'Web','execute'=> function($exe){
+	"main"=>['module' => 'Web', 'execute'=> function($exe){
 		$exe->view->setDefaultData(array('exe' => $exe, 'url' => $exe->url));
 
 		$data['docsUrl'] = $exe->url->create('doc');
 
 		return $exe->view->create('layout/default_new', $data)->render();
 	}],
-	"doc"=> ['uri'=>'docs',
+	"doc"=> ['uri'=>'docs', 'module' => 'Docs',
 		'middleware' => function($exe)
 		{
-			$exe['service']->set('view', function()
-			{
-				return $this->module['Docs']->view;
-			});
-
 			return $exe->next($exe);
 		},
-		'module'=>'Docs',
 		'execute'=> function($exe)
 			{
 				// forward to first topic.

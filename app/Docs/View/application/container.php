@@ -16,7 +16,7 @@
 <h2>Register your own dependency</h2>
 <p>Having the same behaviour of the container it inherited, there're three 3 types of dependency they could be registered as. A service, factory, or callable.</p>
 <h3>Service</h3>
-<p>A service last for the lifetime of the application, and return the same value each time.</p>
+<p>A service last for the lifetime of the application context, and yield the same value each time.</p>
 <p>An example on adding a service with add() method.</p>
 <pre><code>
 $app['service']->add('db', function()
@@ -32,7 +32,7 @@ $app['service']->add('db', function()
 </code></pre>
 <p>And reuse the service later.</p>
 <pre><code>
-$statment = $app->db->query('SELECT * FROM foo');
+$statement = $app->db->query('SELECT * FROM foo');
 </code></pre>
 <h3>Factory</h3>
 <p>A factory helps you create the dependency you needed.</p>
@@ -62,8 +62,8 @@ $app['callable']->add('@log', function($message)
 $app->log('Something not well.');
 </code></pre>
 <h2>Share dependency</h2>
-<p>By design, the execution runtime itself is a subset of an application context, but the context itself isn't the same one as application's, so it's not possible to retrieve the dependency <u>directly</u> on the execution context, except through a shared registry.</p>
-<p>The registry is done on the application context, and have the name prefixed with '@' character. For example :</p>
+<p>By design, the execution runtime itself is a subset of an application context, but the context itself isn't the same one as application's, so it's not possible to retrieve the dependency <u>directly</u> on the execution context, except as a shared registry.</p>
+<p>The registry is done on the application context, and have the name prefixed with <b>[@]</b> character. For example :</p>
 <pre><code>
 $app['callable']->add('@query', function($query)
 {
@@ -83,12 +83,10 @@ $app->dispatch();
 <p>There're number of services and factories already defined internally, and of course it's overwriteable on the start of your application :</p>
 <h4>Services</h4>
 <table class='table-container'>
-	<tr><th style="width: 150px;">Name</th><th style="width: 130px;">Registry name</th><th>Description</th></tr>
-	<tr><td>Map factory</td><td>$app->mapFactory</td><td>A routing factory, that manage the creation of objects</td></tr>
+	<tr><th style="width: 150px;">Name</th><th style="width: 200px;">Registry name</th><th>Description</th></tr>
+	<tr><td>Map factory</td><td>$app->get('routing.factory')</td><td>A routing factory, that manage the creation of objects</td></tr>
 	<tr><td>Initial Routing Level</td><td>$app->map</td><td>Initial routing group/level</td></tr>
-	<tr><td>Execution registry</td><td>$app->execution</td><td>A registry handling information on how to handle execution.</td></tr>
-	<tr><td>Middleware registry</td><td>$app->middleware</td><td>A middleware lookup registry</td></tr>
-	<tr><td>Http Request</td><td>$app->request</td><td>Http Server Request Instance</td></tr>
+	<tr><td>Http Request</td><td>$app->request</td><td>Default http Server Request Instance</td></tr>
 	<tr><td>Url Generator</td><td>$app->url</td><td>Handle url generation</td></tr>
 	<tr><td>@Session</td><td>$app->session</td><td>A php native session service.</td></tr>
 	<tr><td>@Flash</td><td>$app->flash</td><td>A flash instance built on top session service</td></tr>

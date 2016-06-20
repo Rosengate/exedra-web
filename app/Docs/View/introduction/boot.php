@@ -10,6 +10,8 @@
 require_once __DIR__.'/vendor/autoload.php';
 
 $app = new \Exedra\Application(__DIR__);
+
+return $app;
 </code></pre>
 <p>Basically it's the same as doing below :</p>
 <pre><span class='code-tag label label-file'>/app.php</span><code class='php'>
@@ -30,8 +32,12 @@ return $app;
 <h2>Additional Set up</h2>
 <p>Additionally you can set up these files if you want.</p>
 <h3>/app</h3>
-<p>Contain most of your codes, your domain logic, and most importantly your application code. It's autoloaded with the configured namespace. The name can be changed by the specified path.app path. At the beginning, this directory will be empty.</p>
-<p>But, you may create it if you want.</p>
+<p>This directory contain most of your codes, your domain logic, and most importantly your application code. It's <b>autoloaded</b> with the configured namespace. The directory name can be changed by the specified path.app path. At the beginning, this directory will be empty.</p>
+<h3>/app/Routes</h3>
+<p>The default lookup routes for the routing factory. It's changeable either at the construct of your application, or later on :</p>
+<pre><code>
+$app->path['routes'] = 'routes'; // will be available under {root}/routes
+</code></pre>
 <h3>/wizard</h3>
 <p>Exedra came out with a little and simple collection of console commands called wizard.</p>
 <p>Create a file named <span class='label label-file'>wizard</span> under the root <span class='label label-dir'>/</span> directory.</p>
