@@ -72,7 +72,7 @@ $exe->view->setDefaultData('esc', function($content)
 &lt?= $esc($article);?>
 </code></pre>
 <h2>Prepare</h2>
-<p>View in exedra uses an output buffering before the actual render happened. To buffer your input without rendering yet, use prepare method.</p>
+<p>View in exedra uses an output buffering before being returned as a string of contents. To buffer your input without executing the render() method, use prepare() method.</p>
 <pre><code>
 $view = $exe->view->create('about');
 
