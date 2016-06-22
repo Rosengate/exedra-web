@@ -34,7 +34,7 @@ $container['service']->add('db', function()
 </code></pre>
 <p>For \Closure type, <span class='label label-property'>$this</span> refer to the container itself, and must return the dependency.</p>
 <h3>Factory</h3>
-<p>A factory helps you create the dependency you needed.</p>
+<p>Helps with the type creation.</p>
 <pre><code>
 $container['factory']->add('rest-controller', function($name, $action, array $params = array())
 {
@@ -45,13 +45,13 @@ $container['factory']->add('rest-controller', function($name, $action, array $pa
 	return call_user_func_array(array($controller, $action), $params);
 });
 </code></pre>
-<h4>create(<em>String</em> $name, <em>Array</em> $args)</h4>
-<p>And you may create the dependency through the <span class='label label-method'>create()</span> method. The first argument receive the name of the dependency. The second receives an array of argument.</p>
+<h4>create(<em>string</em> $name, <em>array</em> $args)</h4>
+<p>And you may create the dependency through the <span class='label label-method'>create()</span> method. The first argument receive the name of the dependency. The second receives the array of arguments for the factory.</p>
 <pre><code>
 $container->create('rest-controller', array('book', 'list'));
 </code></pre>
 <h3>Callable</h3>
-<p>A 'dynomagically' create a callable method on the container itself.</p>
+<p>A 'dynamagically' create a callable method on the container itself.</p>
 <pre><code>
 $container['callable']->add('@log', function($message)
 {

@@ -1,7 +1,7 @@
 <h1>Controller <span>\Exedra\Factory\Controller</span></h1>
 <p>A simple factory to help with the creation of controller. You may actually code everything in routing, but having a planned controllers may structure your codes well.</p>
 <h2>Executing a controller</h2>
-<p>The factory is retrievable as a service from <span class='label label-class'>\Exedra\Runtime\Exe instance</span>.</p>
+<p>The factory is retrievable as a service from <span class='label label-class'>\Exedra\Runtime\Exe</span> instance.</p>
 <pre><code>
 $app->map->get('/user/[:userId]')->execute(function($exe)
 {

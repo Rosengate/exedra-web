@@ -1,7 +1,7 @@
-<h1>Http Message</h1>
+<h1>Http Messages</h1>
 <p>The core and fundemental of web development.</p>
 <h2>Http Request</h2>
-<p>In exedra, it plays a role in routing dispatch, especially a request URI and method.</p>
+<p>An Http message received at the beginning of your application, an entity dispatchable unto the map of routing.</p>
 <p>This instance initially available as a service on application context itself, created from global server variable.</p>
 <pre><code>
 $app = new \Exedra\Application(__DIR__);
@@ -21,7 +21,7 @@ $app->request->getUri()->setPath(str_replace('/test-path', '', $uri->getPath()))
 $app->dispatch();
 </code></pre>
 <h3>Re-register</h3>
-<p>If you needed to register it around our application codes, it's best to do so as a registry.</p>
+<p>If you need to register it around our application codes, it's best to do so as a registry.</p>
 <pre><code>
 $app['service']->set('request', function()
 {
@@ -35,7 +35,7 @@ $app['service']->set('request', function()
 <h3>Runtime</h3>
 <p>This http request is also indirectly accessible on runtime level, depending on which instance was dispatched.</p>
 <p>For example, if you dispatched different type of request:</p>
-<pre><code>
+<pre><code class='php'>
 $app->dispatch(\App\Http\MyServerRequest::createFromGlobals());
 </code></pre>
 <p>On runtime level,</p>

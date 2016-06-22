@@ -15,17 +15,17 @@
 		"application/http": "Request & Response"
 	},
 	"Routing": {
-		"routing/routing": "Overview",
-		"routing/convenient": "Convenient",
+		"routing/convenient": "Overview",
 		"routing/properties": "Properties",
-		"routing/middleware": "Middleware"
+		"routing/middleware": "Middleware",
+		"routing/handler": "Handlers"
 	},
 	"Runtime": "main",
 	"Execution":
 	{
 		"runtime/overview": "Overview",
 		"runtime/container": "A Container",
-		"runtime/handlers": "Handlers"
+		"routing/handler": "Handlers"
 	},
 	"Services": {
 		"runtime/factory/controller": "Controller",

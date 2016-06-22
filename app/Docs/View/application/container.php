@@ -105,7 +105,7 @@ $app->dispatch();
 	<tr><td>Execution handlers</td><td>execution.handlers</td><td></td></tr>
 </table>
 <h3>Overwriting existing registry</h3>
-<p>A similar method to add(), but it does not throw any exception if the registry already exist.</p>
+<p>A similar method to add(), but does not throw any exception if the registry already exist.</p>
 <pre><code>
 $app['service']->set('session', '\Foo\SessionManager');
 </code></pre>

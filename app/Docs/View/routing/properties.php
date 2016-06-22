@@ -21,19 +21,23 @@
 			'There\'re built in such as : <div style="padding-left: 10px;"><a href="'.$exe->url->create('default', array('view' => 'execution/handlers#Closure')).'">- \Closure</a></div><div style="padding-left: 10px;"><a href="'.$exe->url->create('default', array('view' => 'execution/handlers#controller')).'">- controller handler</a></div>')
 		),
 	'middleware' => array(
-		'description' => 'Bind a middleware to this route. Any route or it\'s child matched will stack a middleware on execution time.',
+		'description' => 'Bind a middleware to this route. Any route or it\'s childs matched will stack a middleware on runtime.',
 		'value' => array('A \\Closure', 'Or pattern specifying the handler.')
 		),
 	'subroutes' => array(
 		'description' => 'Nest into the current route, another list/array of routes, or path to the routes, or \Closure',
 		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.', 'Or a \Closure with child Level instance passed as the first parameter.')
 		),
+	'tag' => array(
+		'description' => 'A referable tag for latter route lookup, like through url generator or route based execution.',
+		'value' => array('string')
+		),
 	'module' => array(
-		'description' => 'Name of a module. Anything executed under this route and it\'s childs will be assigned to this module. <b>The controller or view looked by the execution handler pattern will be prefixed by a folder named by this given module name.</b>',
+		'description' => 'Name of a module. Anything executed under this route and it\'s childs will be assigned to this module. By default, the runtime will point view and controller services to the specified module\'s services.</b>',
 		'value' => 'String of module name.'
 		),
 	'base' => array(
-		'description' => 'The base of routing the subroutes will be based on, on finding them within execution context',
+		'description' => 'The base of routing the subroutes will be based on, on finding them within execution context like url generation, and route name based execution. If boolean true is specified, it will based the finding on the current route.',
 		'value' => array('Boolean true', 'String route name')
 		)
 );?>

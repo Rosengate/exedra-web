@@ -36,6 +36,11 @@ $app->map->addRoutes(array(
 	"doc"=> ['uri'=>'docs', 'module' => 'Docs',
 		'middleware' => function($exe)
 		{
+			$exe->url->register('docs', function($path)
+			{
+				return $this->create('@doc.default', array('view' => $path));
+			});
+
 			return $exe->next($exe);
 		},
 		'execute'=> function($exe)

@@ -9,7 +9,7 @@
 $app->map->middleware(function($exe)
 {
 	// exe->layout
-	$exe['services']->add('layout', function()
+	$exe['service']->add('layout', function()
 	{
 		return $this->view->create('layout/default');
 	});
@@ -37,4 +37,22 @@ $app->map->middleware(function($exe)
 <table class='table-container'>
 	<tr><th style="width: 150px;">Name</th><th style="width: 130px;">Registry name</th><th>Description</th></tr>
 	<tr><td>View Factory</td><td>$exe->view</td><td>A view factory, helps with the creation of view.</td></tr>
+	<tr><td>Controller Factory</td><td>$exe->controller</td><td>Helps with the creation or execution of controller.</td></tr>
+	<tr><td>Config</td><td>$exe->config</td><td>A cloned application config, to preserve the immutability state.</td></tr>
+	<tr><td>Url Generator</td><td>$exe->url</td><td>Handle URL generation.</td></tr>
+	<tr><td>Redirect</td><td>$exe->redirect</td><td>Helps with redirection.</td></tr>
+	<tr><td>Form</td><td>$exe->form</td><td>Excellently help with form inputs' creations.</td></tr>
+	<tr><td>Request</td><td>$exe->request</td><td>Executed http request. Returns null if the route was executed without a request.</td></tr>
+	<tr><td>Response</td><td>$exe->response</td><td>An empty http reponse.</td></tr>
+	<tr><td>Path</td><td>$exe->path</td><td>An uncloned application path.</td></tr>
 </table>
+<h4>Factories</h4>
+<table>
+	<tr><th style="width: 150px;">Name</th><th style="width: 130px;">Registry name</th><th>Description</th></tr>
+	<tr><td>Url</td><td>factory.url</td><td></td></tr>
+</table>
+<h3>Overwriting existing registry</h3>
+<p>A similar method to add(), but does not throw any exception if the registry already exist.</p>
+<pre><code>
+$exe['service']->set('session', '\Foo\SessionManager');
+</code></pre>

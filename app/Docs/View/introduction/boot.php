@@ -1,10 +1,10 @@
 <h1>Booting Up Application</h1>
 <p>There's little to minimal configuration to get your application running.</p>
 <h2>Application Boot</h2>
-<p>Your application begin the soon it's instantiated.</p>
+<p>Your application begin as soon as it's instantiated.</p>
 <h3>/app.php</h3>
 <p>Let's create a file called <span class='label label-file'>app.php</span> just under your root <span class='label label-dir'>/</span> directory.</p>
-<p>You can place this boot-file anywhere if you want, as long as you understand several path configuration initially needed to be set up.</p>
+<p>It's the beginning of your application lifecycle. You can place this boot-file anywhere if you want, as long as you understand several path configuration initially needed to be set up.</p>
 <pre><span class='code-tag label label-file'>/app.php</span><code>
 &lt;php
 require_once __DIR__.'/vendor/autoload.php';
@@ -32,9 +32,9 @@ return $app;
 <h2>Additional Set up</h2>
 <p>Additionally you can set up these files if you want.</p>
 <h3>/app</h3>
-<p>This directory contain most of your codes, your domain logic, and most importantly your application code. It's <b>autoloaded</b> with the configured namespace. The directory name can be changed by the specified path.app path. At the beginning, this directory will be empty.</p>
+<p>This directory contain most of your codes, your domain logic, and most importantly your application code. It's <b>autoloaded</b> with the configured namespace. The directory name can be changed by the specified path.app path.</p>
 <h3>/app/Routes</h3>
-<p>The default lookup routes for the routing factory. It's changeable either at the construct of your application, or later on :</p>
+<p>The default lookup routes for the routing factory. It's editable either at the construct of your application, or later on :</p>
 <pre><code>
 $app->path['routes'] = 'routes'; // will be available under {root}/routes
 </code></pre>

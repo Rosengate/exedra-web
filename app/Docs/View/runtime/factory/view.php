@@ -49,6 +49,28 @@ $view = $exe->view->create("user/profile");
 
 $view->setRequiredData(['title','description', 'image']);
 </code></pre>
+<h2>Default data</h2>
+<p>Set default data on view factory, for all of the created views.</p>
+<pre><code>
+$exe->view->setDefaultData('exe', $exe);
+</code></pre>
+<h2>Output escaping</h2>
+<p>Security wise, escaping user outputs is something every developer need to consider. Exedra does not automagically escape your view's data at all. Always be conscious of what and when the user data is being outputted to.</p>
+<p>A simple html output escape :</p>
+<pre><code>
+echo htmlspecialchars($article);
+</code></pre>
+<p>Or you can set a default function on view factory</p>
+<pre><code>
+$exe->view->setDefaultData('esc', function($content)
+{
+	return htmlspecialchars($content, ENT_QUOTES | ENT_HTML401);
+});
+</code></pre>
+<p>And use it in one of your view.</p>
+<pre><code>
+&lt?= $esc($article);?>
+</code></pre>
 <h2>Prepare</h2>
 <p>View in exedra uses an output buffering before the actual render happened. To buffer your input without rendering yet, use prepare method.</p>
 <pre><code>
@@ -88,7 +110,7 @@ $exe->layout->set('view', $view)->render();
 &lt;/html&gt;
 </code></pre>
 <pre><span class='code-tag label label-file'>app/View/user/profile.php</span><code>
-&lt;?php$this->set('title', 'About Me');?&gt;
+&lt;?php $this->set('title', 'About Me');?&gt;
 &lt;div class="container"&gt;
 Hello world!!!!
 &lt;/div&gt;
