@@ -1,215 +1,166 @@
 <h1>Routing <span>\Exedra\Routing\.</span></h1>
-<p>The main component of exedra, that basically front-route every single request for your application based on your designed map of routes. Every route is unique, and identifable by name. They're reusable to the extent of generating a url for the route, doing a route based execution, or query a route even for your own use. In this page we'll focus on writing them.</p>
+<p>The main component of exedra, the entry point of a request dispatch. Every route is unique, and identifable by name, taggable and findable. They're reusable to the extent of generating a url for the route, doing a route based execution, or query a route even for your own use. In this page we'll focus on writing them.</p>
 <h2>Overview</h2>
-<p>Throughout the documentation, you'll often find routing begins with <span class='label label-property'>$app->map</span>. This instance or <span class='label label-class'>\Exedra\Routing\Level</span> as we call it, is the first group/level of routes, unbounded to any route. It's registered as a service on application context itself.</p>
-<h2>Default Routing <span>\Exedra\Routing\Level::addRoutes()</span></h2>
-<p>In this topic, we'll be using a single method to add an array of routes, called <span class='label label-method'>\Exedra\Routing\Level::addRoutes()</span>. There's another much convenient way of routing, but they will be in the <a href='<?php echo $url->route('default', ['view' => 'routing/convenient']);?>'>next topic</a>.</p>
-<h2>Basic</h2>
-<p>The array structure consists of an associative list of routes with the <span class='label label-string'>key</span> as the compulsary route <span class='label label-property'>name</span>, against an array of properties for the route. Example :</p>
+<p>Throughout the documentation, you'll often find most routing begins with <span class='label label-property'>$app->map</span>. This instance or <span class='label label-class'>\Exedra\Routing\Level</span> as we call it, is the first group/level of routes, unbounded to any route. It's registered as a service on application context itself.</p>
+<h2>Http Request Verbs</h2>
+<h3>GET, POST, PUT, PATCH, DELETE</h3>
+<p>The first argument accept <span class='label label-property'>path</span>.</p>
+<h5>GET /books with \Closure handler</h5>
 <pre><code>
-$app->map->addRoutes(array(
-	'book' => array(
-		'method' => 'GET',
-		'path' => '/books',
-		'ajax' => false,
-		'execute' => function()
-		{
-			return 'a list of books.';
-		})
-));
-</code></pre>
-<h2>Available Properties</h2>
-<p>List of route properties is available in this <a href='<?php echo $url->create('default', ['view' => 'routing/properties']);?>'>page</a>. All of them are <b>optional</b>.</p>
-<h2>Http Request method</h2>
-<p>Accepting any method</p>
-<pre><code>
-$app->map->addRoutes(array(
-	'book'	=> [
-		'method' => 'any',
-		'path' => '/book',
-		'execute' => function(){ }],
-	'authors' => [
-		'path' => '/authors',
-		'execute' => function(){ }]
-	]
-));
-</code></pre>
-<p>Specifying a single method</p>
-<pre><code>
-$app->map->addRoutes(array(
-	'book'	=> [
-		'method' => 'GET',
-		'path' => '/book',
-		'execute' => function(){ }]
-));
-</code></pre>
-<p>Specifying array of methods</p>
-<pre><code>
-$app->map->addRoutes(array(
-	'book' => [
-		'method' => ['GET', 'POST'],
-		'path' =>'/book',
-		'execute' => function(){ }]
-));
-</code></pre>
-<h2>Execute handler</h2>
-<p>A property about how an execution should be handled. More on <a href='<?php echo $url->route('default', ['view' => 'runtime/handlers']);?>'>runtime/handlers</a>.</p>
-<pre><code>
-$app->map->addRoutes(array(
-	'library' => [
-		'method' => 'any',
-		'path' => '/libraries'
-		'execute' => $handler // an intermediate variable for example purpose
-	]
-));
-</code></pre>
-<p>This property represent the final handler in our stack of execution, preceded by an array of middlewares.</p>
-<p>More on <a href='<?php echo $url->route('default', ['view' => 'runtime/handlers']);?>'>runtime/handlers</a>.</p>
-<h2>URI path</h2>
-<p>Mocking uri path <span class='label label-uri'>my/test</span> will execute route <span class='label label-route'>test</span>, and <span class='label label-uri'>my/test/path</span> will execute the route <span class='label label-route'>test2</span></p>
-<pre><code>
-$app->map->addRoutes(array(
-	'test' 	=> [
-		'path' => 'my/test',
-		'execute' => function(){ }],
-	'test2' => [
-		'path' => 'my/test/path',
-		'execute' => function(){ }]
-));
-</code></pre>
-<h4>False URI path</h4>
-<p>Setting up false flag on <span class='label label-property'>path</span>, will deny any HTTP request entry into that route. This may be good, if you want the route to solely be used somewhere.</p>
-<pre><code>
-$app->map->addRoutes(array(
-	'error'=> ['path'=>false, 'execute'=> function(){ }]
-));
-</code></pre>
-<h2>Named Parameter</h2>
-<p>A segment of the URI path that can be named through routing, that can be retrieved as a parameter through <span class='label label-class'>\Exedra\Runtime\Exe</span> instance.</p>
-<pre><code>
-$app->map->addRoutes(array(
-	'author-book' => [
-		'path'=> '/books/[:author]/[:book-title]',
-		'execute'=> function($exe)
-		{
-			return 'my-name is'. $exe->param('author') 
-			.',and i have a books called '. $exe->param('book-title');
-		}]
-));
-</code></pre>
-<h3>Named parameter pattern validation</h3>
-<h4>Accept any form</h4>
-<pre><code>
-$app->map->any('/[:book-title]')->execute(function(){ });
-</code></pre>
-<h4>Catch remaining path(s)</h4>
-<pre><code>
-$app->map->any('/[*:foos]')->execute(function($exe){ 
-	return $exe->param('foos');
+$app->map->get('/books')->execute(function($exe)
+{
+	return $exe->controller->execute('Book', 'index');
 });
 </code></pre>
-<p>A dispatch on <span class='label label-uri'>/bar/baz/qux</span>, will print a string <span class='label label-string'>bar/baz/qux</span></p>
-<h2>Nested Routing</h2>
-<p>The main dish of exedra. Basically, exedra lets you nest a route into another route, then nest a route into another route, infinitely. The idea is, you can write a nestful and resource oriented URI design, and control the structure as per route node, through a bound middleware.</p>
-<p>A default example :</p>
+<h5>POST /books with controller handler pattern</h5>
 <pre><code>
-$app->map->addRoutes(array(
-	'user'=> [
-		'path'=> 'user/[:username]',
-		'subroutes'=> array(
-			'profile'=> [
-				'path' => '',
-				'execute' => function($exe){ }],
-			'book'=> ['path'=> 'book',
-				'subroutes'=> array(
-					'index'=> ['path'=> '', 'execute'=> function($exe){ }],
-					'view'=> ['path'=> '[:book-title]', 'execute'=> function($exe){ }]
-			)] // end of user.book
-	)] // end of user
-));
+$app->map->post('/books')->execute('controller=Book@add');
 </code></pre>
-<p>1. Mocking path <span class='label label-uri'>/user/john-doe</span> will execute route <b class='label label-route'>user.profile</b><br>
-2. A path <span class='label label-uri'>/user/john-doe/book</span> will execute route <b class='label label-route'>user.book.index</b><br>
-3. A path <span class='label label-uri'>/user/john-doe/book/alcataraz</span> will execute route <b class='label label-route'>user.book.view</b></p>
-<h3>Specifying routing path</h3>
-<p>It can be a convoluted mess in the beginning, so, you can explicitly specify a path of file of where it should look the nested routing at.</p>
+<h5>DELETE /books/[:id]</h5>
 <pre><code>
-$app->map->addRoutes(array(
-	'authors' => [
-		'path' => '/authors',
-		'subroutes' => 'authors.php'
-	],
-	'books' => [
-		'path' => '/books',
-		'subroutes' => 'books.php'
-	]
-));
+$app->map->delete('/books/[:id]')->execute('controller=Book@delete');
 </code></pre>
-<p>The file MUST return a \Closure</p>
-<pre><span class='code-tag label label-file'>/app/Routes/authors.php</span><code>
-&lt;?php return function($authors)
+<h5>PUT /books/[:id]</h5>
+<pre><code>
+$app->map->put('/books/[:id]')->execute('controller=Book@update');
+</code></pre>
+<h5>PATCH /books/[:id]/glossary</h5>
+<pre><code>
+$app->map->patch('/book/[:id]/glossary')->execute('controller=Book@updateGlossary');
+</code></pre>
+<h3>Any method or specify more than one</h3>
+<p>Accept to any method. Expect the first argument as the string of route path.</p>
+<pre><code>
+$app->map->any('/books/[:action]')->execute('controller=Book@{action}');
+</code></pre>
+<p>Accept specified (case insensitive) methods.</p>
+<pre><code>
+$app->map->method(array('GET', 'post'), '/books/[:action]')->execute('controller=Book@{action}'	);
+</code></pre>
+<p>These <span class='label label-method'>get()</span>, <span class='label label-method'>post()</span>, <span class='label label-method'>put()</span>, <span class='label label-method'>delete()</span>, <span class='label label-method'>any()</span> and <span class='label label-method'>method()</span> api returns <span class='label label-class'>\Exedra\Routing\Route</span> instance.</p>
+<h2>Route naming</h2>
+<p>Create a named route through an array offset of the route level. Route name is useful on route finding functionality for url generator, and route based execution.</p>
+<pre><code>
+// returns \Exedra\Routing\Route
+$app->map['api']->any('/api')->group(function($api)
 {
-	// convenient routing
-	$authors->any('/[:id]')->group(function($author)
+	$api['author']->get('/author')->execute(function(){ });
+});
+</code></pre>
+<p>Usage sample</p>
+<pre><code>
+echo $app->url->route('api.author'); // returns http://example.com/api/author
+</code></pre>
+<h4>Route tagging</h4>
+<p>Similar with naming, but may even route finding by given tag only.</p>
+<pre><code>
+$app->map['api']->any('/api')->group(function($api)
+{
+	$api->post('/api/products')->tag('add-product')->execute(function(){ });
+});
+</code></pre>
+<p>Usage sample</p>
+<pre><code>
+echo $app->url->route('#add-product');
+</code></pre>
+<p>Or prefix for more search specific.</p>
+<pre><code>
+echo $app->url->route('api.#add-product');
+</code></pre>
+</code></pre>
+<h2>Route execute</h2>
+<p>An handle for the runtime execution.</p>
+<pre><code>
+$app->map->any('/web')->execute(function(){ });
+</code></pre>
+<p>The <span class='label label-method'>execute()</span> method accept any type of value. Initially it accepts only a <span class='label label-class'>\Closure</span> and string of controller lookup. More information on <a href='javascript:docs.load("routing/handler");'>this topic.</a></p>
+<h2>Named Parameter</h2>
+<p>A segment of the URI path that can be named through routing, retrievable as a parameter through <span class='label label-class'>\Exedra\Runtime\Exe</span> instance.</p>
+<p>Matches <span class='label label-string'>/web/about-us</span></p>
+<pre><code>
+$app->map['web']->any('/web/[:page]')->execute(function($exe)
+{
+	$page = $exe->param('page'); // about-us
+});
+</code></pre>
+<h4>Optional parameter</h4>
+<p>Matches <span class='label label-string'>/report</span> and <span class='label label-string'>/report/download</span></p>
+<pre><code>
+$app->map['admin']->any('/[:controller]/[:action?]')->execute(function($exe)
+{
+	$controller = $exe->param('controller');
+
+	$action = $exe->param('action', 'index');
+});
+</code></pre>
+<h4>Catch remaining path(s)</h4>
+<p>Matches <span class='label label-string'>/book/edit/1/3/6</span></p>
+<pre><code>
+$app->map->any('/[:controller]/[*:action?]')->execute(function($exe)
+{
+	$action = $exe->param('action'); // will return 'edit/1/3/6'
+});
+</code></pre>
+<h2>Nested Routing</h2>
+<p>Setting <span class='label label-property'>subroutes</span> property by using <span class='label label-method'>group</span> method on the returned <span class='label label-class'>\Exedra\Routing\Route</span> instance.</p>
+<pre><code>
+$app->map->any('/api')->group(function($group)
+{
+	$group->any('/books')->group(function(\Exedra\Routing\Router $books)
 	{
-		$author->addRoutes(array(
-			'books' => array(
-				'method' => 'GET',
-				'path' => '/books',
-				'execute' => function()
-				{
-					//.. return a list of books owned by this author!
-				}
-			)
-		));
+		$books->get('/', 'controller=Api\Book@index');
+
+		$books->any('/[:id]', 'controller=Api\Book@view');
 	});
+});
+</code></pre>
+<p>This <span class='label label-method'>\Exedra\Routing\Route::group()</span> method is basically an alias to <span class='label label-method'>Route::setSubroutes()</span> method.</p>
+<h4>Routing lookup</h4>
+<p>Explicitly specify the routes to be looked up on.</p>
+<pre><code>
+$app->map->any('/admin')->group('admin.php');
+</code></pre>
+<p>The routing will by default find the routes in {root}/app/Routes directory.</p>
+<pre><span class='code-tag label label-file'>/app/Routes/admin.php</span><code>
+&lt?php
+return function(\Exedra\Routing\Router $admin)
+{
+	$admin->any('/[:controller]/[*:action?]')
+		->execute('controller={controller}@{action}');
 };
 </code></pre>
 <h4>Routes lookup path</h4>
-<p>The path of the location based routes is relative to the on configured in the beginning of your application. By default, it's under <span class='label label-dir'>/{path.app}/Routes</span>. Initially you can however set like this.</p>
+<p>The path of the file for the routes is relative to the one configured in the beginning of your application. By default, it's under <span class='label label-dir'>/{path.app}/Routes</span>. Initially you can however set like this.</p>
 <pre><code>
 $app->path['routes'] = 'path/to/routes/';
 </code></pre>
-<p>And it'll define your path to <span class='label label-dir'>/path/to/routes</span>, relative to your root directory. More on <a href='<?php echo $url->route('default', ['view' => 'application/path']);?>'>path</a>.</p>
-<h2>Module</h2>
-<p>You may set sub-application as route parameter, using property <b class='label label-property'>module</b>. This will affect builder like controller and view on the current and following route to use the folder based on sub-application value set.</p>
+<p>This path must be configured before any routing is done.</p>
+<h2>Chainable API</h2>
+<p>Most route property setter methods return the same instance, making it capable of chaining methods.</p>
 <pre><code>
-$app->map->addRoutes(array(
-	'admin'=> [
-		'path' => 'dashboard',
-		'module' => 'admin',
-		'subroutes' => array(
-			'default' => [
-				'path' => '[:controller]/[**:action]']
-	)]
-));
+$app->map->get('/books')->execute('controller=Book@Index')->tag('bookList');
 </code></pre>
+<p>There's also a public method on the default <span class='label label-method'>Route</span> class to set properties you can use.</p>
+<pre><code>
+$app->map->get('/authors')->setProperties(array(
+	'name' => 'author',
+	'ajax' => true,
+	'execute' => function()
+	{
 
-<h2>Re-Routing</h2>
-<p>You may execute another route within a successful execution. Either through the use of application instance, or the exec instance.</p>
-<pre><code>
-$app->map->addRoutes(array(
-	'general'=> [
-		'path'=> '',
-		'subroutes'=> array(
-			'error'=> 	[
-				'path'=> '404',
-				'execute'=> function(){ return "on error page"}],
-		'by-app'=>	[
-			'path' => 'by-app',
-			'execute'=> function($exe) use($app) { return $app->execute('general.error')}],
-		'by-exe'=>	[
-			'path' => 'firstexe',
-			'execute'=> function($exe){ return $exe->execute('error')}],
-		'by-exe2'=> [
-			'path' => 'secondexe',
-			'execute'=> function($exe){ return $exe->execute('@general.error')}]
-	)]
+	}
 ));
 </code></pre>
-<h4>Behaviour</h4>
-1. By default, the <span class='label label-variable'>$exe</span> instance is relatively referred to the current <span class='label label-property'>base</span> route. <span class='label label-property'>base</span> can be set, else, it will use the parent route as the base route. Such affected component(s) are like <a href='<?php echo $url->create('default', ['view' => 'execution/components/url']);?>'>URL builder</a>.</p>
-<p>
-2. To escape and use the absolute route by the <span class='label label-variable'>$exe</span> instance, just use <b class='label label-string'>@</b> at the beginning of route.<br>
-Example can be shown on route <span class='label label-route'>general.by-exe2</span>
-</p>
+<p>Most properties are available as a setter method respectively.</p>
+<pre><code>
+$app->map->any()->middleware(function($exe)
+	{
+		return $exe->next($exe);
+	})
+	->tag('root')
+	->execute('controller=Landing@index')
+	->group(function($group)
+	{
+		$group->get('/about-us', 'controller=Landing@about');
+	});
+</code></pre>

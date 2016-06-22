@@ -15,7 +15,7 @@
 		"application/http": "Request & Response"
 	},
 	"Routing": {
-		"routing/convenient": "Overview",
+		"routing/routing": "Overview",
 		"routing/properties": "Properties",
 		"routing/middleware": "Middleware",
 		"routing/handler": "Handlers"
