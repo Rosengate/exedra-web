@@ -16,7 +16,7 @@ GET  /api/articles/:article-id/comments/:comment-id
 <h3>How about performance</h3>
 <p>The routing map isn't wholly constructed unless traversed. A route along with the group/subroutes beneath it will not be traversed, if the initial validation like route methods, path segments didn't match.</p>
 <h2>Route based middleware</h2>
-<p>Once called <b>a before</b> and <b>after</b> filter in web development, middleware is an encompassing layer within request/response lifecycles, on which you can operate, maintain and leverage. In exedra, the use of middleware has been localized unto request-runtime-reponse lifecycle, on which they are even highly applicable on routing level.</p>
+<p>Once called <b>a before</b> and <b>after</b> filter in web development, middleware is an encompassing layer within request/response lifecycles, on which you can operate, maintain and leverage. In exedra, the use of middleware has been localized unto request-runtime-reponse lifecycle, on which they are even highly applicable on routing group.</p>
 <pre><code>
 $app->map->middleware(\App\Middleware\All::class)
 

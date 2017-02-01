@@ -1,7 +1,7 @@
 <h1>Routing <span>\Exedra\Routing\.</span></h1>
 <p>The main component of exedra, the entry point of a request dispatch. Every route is unique, and identifable by name, taggable and findable. They're reusable to the extent of generating a url for the route, doing a route based execution, or query a route even for your own use. In this page we'll focus on writing them.</p>
 <h2>Overview</h2>
-<p>Throughout the documentation, you'll often find most routing begins with <span class='label label-property'>$app->map</span>. This instance or <span class='label label-class'>\Exedra\Routing\Level</span> as we call it, is the first group/level of routes, unbounded to any route. It's registered as a service on application context itself.</p>
+<p>Throughout the documentation, you'll often find most routing begins with <span class='label label-property'>$app->map</span>. This instance or <span class='label label-class'>\Exedra\Routing\Group</span> as we call it, is the first group of routes, unbounded to any route. It's registered as a service on application context itself.</p>
 <h2>Http Request Verbs</h2>
 <h3>GET, POST, PUT, PATCH, DELETE</h3>
 <p>The first argument accept <span class='label label-property'>path</span>.</p>
@@ -39,7 +39,7 @@ $app->map->method(array('GET', 'post'), '/books/[:action]')->execute('controller
 </code></pre>
 <p>These <span class='label label-method'>get()</span>, <span class='label label-method'>post()</span>, <span class='label label-method'>put()</span>, <span class='label label-method'>delete()</span>, <span class='label label-method'>any()</span> and <span class='label label-method'>method()</span> api returns <span class='label label-class'>\Exedra\Routing\Route</span> instance.</p>
 <h2>Route naming</h2>
-<p>Create a named route through an array offset of the route level. Route name is useful on route finding functionality for url generator, and route based execution.</p>
+<p>Create a named route through an array offset of the route group. Route name is useful on route finding functionality for url generator, and route based execution.</p>
 <pre><code>
 // returns \Exedra\Routing\Route
 $app->map['api']->any('/api')->group(function($api)
@@ -106,7 +106,7 @@ $app->map->any('/[:controller]/[*:action?]')->execute(function($exe)
 <pre><code>
 $app->map->any('/api')->group(function($group)
 {
-	$group->any('/books')->group(function(\Exedra\Routing\Router $books)
+	$group->any('/books')->group(function(\Exedra\Routing\Group $books)
 	{
 		$books->get('/', 'controller=Api\Book@index');
 
@@ -123,7 +123,7 @@ $app->map->any('/admin')->group('admin.php');
 <p>The routing will by default find the routes in {root}/app/Routes directory.</p>
 <pre><span class='code-tag label label-file'>/app/Routes/admin.php</span><code>
 &lt?php
-return function(\Exedra\Routing\Router $admin)
+return function(\Exedra\Routing\Group $admin)
 {
 	$admin->any('/[:controller]/[*:action?]')
 		->execute('controller={controller}@{action}');

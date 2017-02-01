@@ -39,7 +39,7 @@
 		"application/flash": "Flash"
 	},
 	"Others": "main",
-	"Service Provider": {
+	"Package Development": {
 		"other/provider": "Service Provider"
 	},
 	"DI Container": {

@@ -26,7 +26,7 @@
 		),
 	'subroutes' => array(
 		'description' => 'Nest into the current route, another list/array of routes, or path to the routes, or \Closure',
-		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.', 'Or a \Closure with child Level instance passed as the first parameter.')
+		'value' => array('Array of routes', 'Or path specifying the location of the sub-routes for lazy loading functionality.', 'Or a \Closure that receives a routing group.')
 		),
 	'tag' => array(
 		'description' => 'A referable tag for latter route lookup, like through url generator or route based execution.',

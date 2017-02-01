@@ -84,8 +84,8 @@ $app->dispatch();
 <h4>Services</h4>
 <table class='table-container'>
 	<tr><th style="width: 150px;">Name</th><th style="width: 200px;">Registry name</th><th>Description</th></tr>
-	<tr><td>Map factory</td><td>$app->get('routing.factory')</td><td>A routing factory, that manage the creation of objects</td></tr>
-	<tr><td>Initial Routing Level</td><td>$app->map</td><td>Initial routing group/level</td></tr>
+	<tr><td>Initial Routing Group</td><td>$app->map</td><td>Initial routing group</td></tr>
+	<tr><td>Routing factory</td><td>$app->map->factory</td><td>A routing factory, that manage the creation of objects</td></tr>
 	<tr><td>Http Request</td><td>$app->request</td><td>Default http Server Request Instance</td></tr>
 	<tr><td>Url Generator</td><td>$app->url</td><td>Handle url generation</td></tr>
 	<tr><td>@Session</td><td>$app->session</td><td>A php native session service.</td></tr>

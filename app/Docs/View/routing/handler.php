@@ -22,8 +22,8 @@ $app->map->get('/about-us')->execute(function($exe) {
 $app->map['author']->path('/authors/[:action]')->execute('controller=Author@{action}');
 </code></pre>
 <h2>Registering your own handler</h2>
-<h5>Exedra\Routing\Level::handler(<em>string</em> $handler, <em>string</em> $className)</h5>
-<p>And sometime you need a very custom tailored string based handler, and exedra couldn't provide you that except on your own terms. It's encouraged to write your own handler. But the cool thing about writing an handler is, it's registered on routing level, and you can have a different sets of handlers on different sets of routing, all tailorable to the context of your application.</p>
+<h5>Exedra\Routing\Group::handler(<em>string</em> $handler, <em>string</em> $className)</h5>
+<p>And sometime you need a very custom tailored string based handler, and exedra couldn't provide you that except on your own terms. It's encouraged to write your own handler. But the cool thing about writing an handler is, it's registered on routing group, and you can have a different sets of handlers on different sets of routing, all tailorable to the context of your application.</p>
 <h3>Handler registry</h3>
 <p>Register a definite handler by a class name.</p>
 <pre><code>
