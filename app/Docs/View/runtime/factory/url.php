@@ -1,4 +1,4 @@
-<h1>Url <span>\Exedra\Factory\Url, \Exedra\Runtime\Factory\Url</span></h1>
+<h1>Url <span>\Exedra\Url, \Exedra\Url\UrlFactory</span></h1>
 <p>A URL generator to help with the creation of URL</p>
 <h2>Create a URL</h2>
 <h3>to()</h3>
@@ -112,20 +112,3 @@ $app->config->set('app.url', 'http://www.example.com/my-project');
 
 $app->config->set('asset.url', 'http://www.example.com/my-project/assets');
 </code></pre>
-<p>Or through application configuration : </p>
-<pre><code>
-require_once "../exedra/Exedra/Exedra.php";
-
-$exedra = new \Exedra\Exedra(__DIR__);
-$myapp = $exedra->build("App", function($app)
-{
-	$app->config->set([
-		'app.url'=> 'http://localhost/myproject',
-		'asset.url'=> 'http://localhost/myproject/assets'
-	]);
-});
-
-$exedra->dispatch();
-</code></pre>
-<p>This configuration will be applied across your executed application.</p>
-<p>p/s : you may later retrieve any configured parameter through $app instance. Refer <a href='<?php echo $exe->url->create('@doc.default', array('view' => array('application', 'components', 'config')));?>'>config</a> for more details.</p>

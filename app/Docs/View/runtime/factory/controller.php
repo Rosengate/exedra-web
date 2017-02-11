@@ -3,7 +3,7 @@
 <h2>Executing a controller</h2>
 <p>The factory is retrievable as a service from <span class='label label-class'>\Exedra\Runtime\Exe</span> instance.</p>
 <pre><code>
-$app->map->get('/user/[:userId]')->execute(function($exe)
+$app->map->get('/user/:userId')->execute(function($exe)
 {
 	return $exe->controller->execute('User', 'profile', [$exe->param['userID']]);
 });
@@ -39,7 +39,7 @@ public function __construct(\Exedra\Application\Execution\Exec $exe)
 <p>The typical controller/action/* routing.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'default'=>['path' => '[:controller]/[*:action]', 'execute'=> function($exe)
+	'default'=>['path' => '/:controller/*:action', 'execute'=> function($exe)
 	{
 		return $exe->controller->execute($exe->param('controller'), $exe->param('action'));
 	}]
@@ -49,12 +49,12 @@ $app->map->addRoutes(array(
 <p>Specify by the execution handler for controller</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'profile'=>['path' => 'user/[:userID]', 'execute'=> 'controller=User@profile']
+	'profile'=>['path' => '/user/:userID', 'execute'=> 'controller=User@profile']
 ));
 </code></pre>
 <p><b>mention the route parameter</b> in the string.</p>
 <pre><code>
 $app->map->addRoutes(array(
-	'default'=> ['path' => '[:controller]/[*:action]', 'execute'=> 'controller={controller}@{action}']
+	'default'=> ['path' => '/:controller/*:action', 'execute'=> 'controller={controller}@{action}']
 ));
 </code></pre> 

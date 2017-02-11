@@ -16,26 +16,26 @@ $app->map->get('/books')->execute(function($exe)
 <pre><code>
 $app->map->post('/books')->execute('controller=Book@add');
 </code></pre>
-<h5>DELETE /books/[:id]</h5>
+<h5>DELETE /books/:id</h5>
 <pre><code>
-$app->map->delete('/books/[:id]')->execute('controller=Book@delete');
+$app->map->delete('/books/:id')->execute('controller=Book@delete');
 </code></pre>
-<h5>PUT /books/[:id]</h5>
+<h5>PUT /books/:id</h5>
 <pre><code>
-$app->map->put('/books/[:id]')->execute('controller=Book@update');
+$app->map->put('/books/:id')->execute('controller=Book@update');
 </code></pre>
-<h5>PATCH /books/[:id]/glossary</h5>
+<h5>PATCH /books/:id/glossary</h5>
 <pre><code>
-$app->map->patch('/book/[:id]/glossary')->execute('controller=Book@updateGlossary');
+$app->map->patch('/book/:id/glossary')->execute('controller=Book@updateGlossary');
 </code></pre>
 <h3>Any method or specify more than one</h3>
 <p>Accept to any method. Expect the first argument as the string of route path.</p>
 <pre><code>
-$app->map->any('/books/[:action]')->execute('controller=Book@{action}');
+$app->map->any('/books/:action')->execute('controller=Book@{action}');
 </code></pre>
 <p>Accept specified (case insensitive) methods.</p>
 <pre><code>
-$app->map->method(array('GET', 'post'), '/books/[:action]')->execute('controller=Book@{action}'	);
+$app->map->method(array('GET', 'post'), '/books/:action')->execute('controller=Book@{action}'	);
 </code></pre>
 <p>These <span class='label label-method'>get()</span>, <span class='label label-method'>post()</span>, <span class='label label-method'>put()</span>, <span class='label label-method'>delete()</span>, <span class='label label-method'>any()</span> and <span class='label label-method'>method()</span> api returns <span class='label label-class'>\Exedra\Routing\Route</span> instance.</p>
 <h2>Route naming</h2>
@@ -78,7 +78,7 @@ $app->map->any('/web')->execute(function(){ });
 <p>A segment of the URI path that can be named through routing, retrievable as a parameter through <span class='label label-class'>\Exedra\Runtime\Exe</span> instance.</p>
 <p>Matches <span class='label label-string'>/web/about-us</span></p>
 <pre><code>
-$app->map['web']->any('/web/[:page]')->execute(function($exe)
+$app->map['web']->any('/web/:page')->execute(function($exe)
 {
 	$page = $exe->param('page'); // about-us
 });
@@ -86,7 +86,7 @@ $app->map['web']->any('/web/[:page]')->execute(function($exe)
 <h4>Optional parameter</h4>
 <p>Matches <span class='label label-string'>/report</span> and <span class='label label-string'>/report/download</span></p>
 <pre><code>
-$app->map['admin']->any('/[:controller]/[:action?]')->execute(function($exe)
+$app->map['admin']->any('/:controller/:action?')->execute(function($exe)
 {
 	$controller = $exe->param('controller');
 
@@ -96,7 +96,7 @@ $app->map['admin']->any('/[:controller]/[:action?]')->execute(function($exe)
 <h4>Catch remaining path(s)</h4>
 <p>Matches <span class='label label-string'>/book/edit/1/3/6</span></p>
 <pre><code>
-$app->map->any('/[:controller]/[*:action?]')->execute(function($exe)
+$app->map->any('/:controller/*:action?')->execute(function($exe)
 {
 	$action = $exe->param('action'); // will return 'edit/1/3/6'
 });
@@ -108,9 +108,9 @@ $app->map->any('/api')->group(function($group)
 {
 	$group->any('/books')->group(function(\Exedra\Routing\Group $books)
 	{
-		$books->get('/', 'controller=Api\Book@index');
+		$books->get('/')->execute('controller=Api\Book@index');
 
-		$books->any('/[:id]', 'controller=Api\Book@view');
+		$books->any('/:id')->execute('controller=Api\Book@view');
 	});
 });
 </code></pre>
@@ -125,7 +125,7 @@ $app->map->any('/admin')->group('admin.php');
 &lt?php
 return function(\Exedra\Routing\Group $admin)
 {
-	$admin->any('/[:controller]/[*:action?]')
+	$admin->any('/:controller/*:action?')
 		->execute('controller={controller}@{action}');
 };
 </code></pre>

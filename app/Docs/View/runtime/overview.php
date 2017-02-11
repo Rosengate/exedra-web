@@ -31,7 +31,7 @@ $app->map->any('/')->group(function($group) {
 
 		});
 
-		$users->get('/[:id]')->execute(function() {
+		$users->get('/:id')->execute(function() {
 
 		});
 	});
@@ -42,7 +42,7 @@ $app->map->any('/')->group(function($group) {
 
 	$books->middleware(\App\Middleware\Books::class);
 
-	$books->get('/[:id]')->execute(function() {
+	$books->get('/:id')->execute(function() {
 
 	});
 

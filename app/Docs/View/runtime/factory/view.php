@@ -140,7 +140,7 @@ $app->map->middleware(function($exe)
 $app->map->any('/')->group(function($any)
 {
 	// controller handler
-	$any->get('/user/[:username]')->execute('controller=User@profile');
+	$any->get('/user/:username')->execute('controller=User@profile');
 });
 </code></pre>
 <p>In User controller :</p>

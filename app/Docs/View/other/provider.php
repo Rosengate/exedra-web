@@ -1,12 +1,12 @@
 <h1>Service Provider</h1>
 <p>There might be a moment you want to create a package for exedra, or as provider to bridge with existing packages out there.</p>
 <h2>Registering a service provider</h2>
-<p>Each registered provider must implement <span class='label label-type'>\Exedra\Provider\ProviderInterface</span></p>
+<p>Each registered provider must implement <span class='label label-type'>\Exedra\Contracts\Provider\Provider</span></p>
 <pre><code class="php">
 //.. sample provider
 namespace Taskful\Support;
 
-class Provider implements \Exedra\Provider\ProviderInterface
+class Provider implements \Exedra\Contracts\Provider\Provider
 {
 	public function register(\Exedra\Application $app)
 	{

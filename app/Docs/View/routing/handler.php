@@ -19,7 +19,7 @@ $app->map->get('/about-us')->execute(function($exe) {
 <h3>2. String based controller</h3>
 <p>A string based controller handle. Sometime you just need a simpler way of specifying the controller.</p>
 <pre><code>
-$app->map['author']->path('/authors/[:action]')->execute('controller=Author@{action}');
+$app->map['author']->path('/authors/:action')->execute('controller=Author@{action}');
 </code></pre>
 <h2>Registering your own handler</h2>
 <h5>Exedra\Routing\Group::handler(<em>string</em> $handler, <em>string</em> $className)</h5>
