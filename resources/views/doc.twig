@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Exedra | Route oriented PHP microframework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A multi-tier nestful route oriented PHP microframework, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing">
+    <meta name="author" content="Ahmad Rahimie">
+    <link rel="stylesheet" type="text/css" href="{{ url.asset('css/bootstrap.min.css') }}">
+    <script src="{{ url.asset('js/jquery.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url.asset('devaid/plugins/font-awesome/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{  url.asset("highlight-js/styles/foundation.css") }}">
+    <script type="text/javascript" src='{{ url.asset("highlight-js/highlight.pack.js") }}'></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("pre code").each(function(i, block) {
+                this.innerHTML  = this.innerHTML.trim();
+            });
+        });
+
+    </script>
+    <style type="text/css">
+        .container {
+            position: relative;
+            margin-bottom: 200px;
+        }
+
+        .left-nav {
+            position: absolute;
+            width: 200px;
+            left: -200px;
+        }
+
+        .left-nav ul {
+        }
+
+        .container {
+            margin-top: 70px;
+        }
+
+        .left-nav {
+            padding-top: 20px;
+        }
+
+        .left-nav ul {
+            list-style: none;
+            padding: 0px;
+        }
+
+        .left-nav ul li {
+            padding-left: 10px;
+            border-bottom: 1px solid #f3f3f3;
+            padding: 1px 0 1px 10px;
+        }
+
+        .left-nav ul li a {
+            display: block;
+        }
+
+        .content-body > h1:first-child {
+            border-bottom: 1px solid #f3f3f3;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-nav">
+            <ul>
+                {% for title, submenu in menu %}
+                <li>
+                    <h4>{{ title }}</h4>
+                    <ul>
+                        {% for path, name in submenu %}
+                        <li>
+                            <a href="{{ url.route('@web.docs.default', {'view': path}) }}">{{ name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="header" style="text-align: right;">
+            <a href="{{ url.route('@web') }}">Home</a> |
+            <a href="https://github.com/rosengate/exedra" target="_blank">Github</a>
+        </div>
+        <div class="content-body">
+            {% if twig_path %}
+                {% include twig_path %}
+            {% endif %}
+            {% if contents %}
+                {{ contents|raw }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

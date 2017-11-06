@@ -2,3 +2,4 @@
 vendor/*
 app/config/env_config.php
 *.old
+old/*

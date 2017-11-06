@@ -1,5 +1,14 @@
 {
     "require": {
-        "rosengate/exedra": "dev-master"
+        "rosengate/exedra": "dev-master",
+        "twig/twig": "~1.0",
+        "exedron/routeller": "dev-master",
+        "symfony/console": "~3.0",
+        "erusev/parsedown": "1.6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Exedra\\Web\\": "src"
+        }
     }
 }
