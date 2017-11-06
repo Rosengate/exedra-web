@@ -24,3 +24,9 @@ require_once __DIR__.'/path/to/Exedra/Path.php';
 
 \Exedra\Support\Autoloader::getInstance()->autoloadPsr4('Exedra\\', __DIR__ . '/path/to/exedra/src');
 ```
+
+## Autoloading your sources
+You can also use our autoloading mechanic to load your `src`
+```
+\Exedra\Support\Autoloader::getInstance()->autoloadPsr4('CoolApp\\', __DIR__ . '/src');
+```

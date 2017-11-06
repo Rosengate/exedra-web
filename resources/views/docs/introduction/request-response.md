@@ -30,10 +30,10 @@ Get a merged query / parsed body parameters.
 $username = $context->request->param('username');
 ```
 
-### `ServerRequest::getUploadedFiles()`
-Get `Exedra\Http\UploadedFile[]`. This http component defines a normalized $_FILES information.
+### `ServerRequest::getUploadedFile(string key)`
+Get `Exedra\Http\UploadedFile`. This http component defines a normalized `$_FILES[key]` information.
 ```
-$uploadedFile = $context->request->getUploadedFiles()['my_image'];
+$uploadedFile = $context->request->getUploadedFile('my_image');
 
 if(in_array($uploadedFile->getType(), ['image/png'])) {
     $uploadedFile->moveTo($context->path->to('uploads/my_image.png'));
@@ -60,7 +60,7 @@ Get header information
 $type = $context->request->getHeaderLine('Content-Type');
 ```
 
-For more information, refer `Exedra\Http\ServerRequest` component itself.
+For more information, refer `Exedra\Http\ServerRequest` component or `\Psr\Http\Message\ServerRequestInterface` itself.
 
 ## Response
 `Exedra\Runtime\Response`

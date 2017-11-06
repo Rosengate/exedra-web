@@ -61,6 +61,7 @@ Sample usage
 echo $app->url->route('api.author'); // returns http://example.com/api/author
 ```
 #### Route Tagging
+##### `Route::tag(string name)`
 Similar with naming, except method this allow a quick routing search, without knowing a full name.
 ```
 $app->map['api']->any('/api')->group(function($api)
@@ -74,6 +75,7 @@ echo $app->url->route('#add-product');
 ```
 
 ## Route execute
+### `Route::execute(mixed handle)`
 The route handle execution method
 ```
 $app->map->any('/web')->execute(function() {});
@@ -124,7 +126,25 @@ $app->map['api']->any('/api')->group(function(Group $group)
 });
 ```
 
+## Attributes
+### `Route::attr(string key, mixed value)`
+Set the route key value attribute
+```
+use Exedra\Runtime\Context;
+
+// .. some codes
+
+$app->map['admin']->any('/')
+    ->attr('check_session', true)
+    ->execute(function(Context $context) {
+        if($context->attr('check_session')) {
+            // etc2
+        }
+    });
+```
+
 ## Set properties
+Set whole routing properties
 ```
 $app->map->get('/authors')->setProperties(array(
 	'name' => 'author',
