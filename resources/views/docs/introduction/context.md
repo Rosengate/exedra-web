@@ -1,8 +1,8 @@
 # Context
 Known as ```Exedra\Runtime\Context```. 
 
-This object available only within a runtime; through an application ```dispatch()``` or ```execute()``` method.
-This object contains information about the request and response instance, the executed route, their named parameters, the route attributes and so on.
+This object is available only within a runtime; through an application ```dispatch()``` or ```execute()``` method.
+It contains information about the request and response instance, the executed route, their named parameters, the route attributes and so on.
 
 ### Preview
 ```php
@@ -20,8 +20,42 @@ $app->dispatch();
 ```
 Running ```/hello/world``` in your browser would yield \````world```\` response
 
-### Utilities
-This object also act as a ```Exedra\Container\Container```. Initially, it has number of useful basic components, such as :
-- 
-- 
-- 
+
+## Utilities
+### `Context::param(string key, mixed default = null)`
+
+Get route named param
+
+```
+$foo = $context->param('foo', 'bar');
+```
+
+### `Context::params(array keys = [])`
+
+Get params
+
+```
+$data = $context->params();
+```
+
+Get params with specified names
+
+```
+$data = $context->params(['comment-id', 'article-id']);
+```
+
+### `Context::attr(string key, mixed default = null)`
+
+Get routing attribute
+
+```
+$access = $context->attr('access_level');
+```
+
+### `Context::forward(string $route, array $params = [])`
+
+Forward current request to the specified route
+
+```
+return $context->forward('@foo.404');
+```

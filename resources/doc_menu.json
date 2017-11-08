@@ -8,12 +8,12 @@
     "introduction/request-response": "Request & Response"
   },
   "Routing": {
-    "routing/Usage": "Usage",
+    "routing/usages": "Usages",
     "routing/properties": "Properties",
     "routing/middleware": "Middleware"
   },
   "Utilities": {
-    "utilities/url-factory": "Url Factory",
+    "utilities/url-factory": "URL Factory",
     "utilities/redirection": "Redirection",
     "utilities/config": "Config",
     "utilities/path": "Path",

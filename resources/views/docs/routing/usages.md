@@ -159,7 +159,7 @@ $app->map->get('/authors')->setProperties(array(
 ## Dependency injection
 List name of registered services to be injected into the runtime handle.
 ```
-// sample with \Pdo
+// define a pdo sample service
 $app->set('@pdo', function(\Exedra\Application $app) {
     $db = $app->config['db'];
         

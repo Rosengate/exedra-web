@@ -21,3 +21,19 @@ Check existence
 if($app->config->has('env'))
     return 'yes';
 ```
+
+## Dot notation array config
+
+The dot notation allows you to access array value of the config without much hassle.
+```
+$app->config->set('db', array(
+    'host' => 'localhost',
+    'user' => 'root',
+    'pass' => '',
+    'db' => 'qreazy'
+));
+```
+For eg, below code will yield `localhost`
+```
+$host = $app->config->get('db.host');
+```

@@ -72,7 +72,7 @@ class DocController extends BaseController
                 'value' => 'string'
             ),
             'attributes' => array(
-                'description' => 'A key value component which can be retrieve through <code>Exedra\Runtime\Context::attr($key)</code>',
+                'description' => 'A key value component which can be retrieved through <code>Exedra\Runtime\Context::attr($key)</code>',
                 'value' => 'array'
             ),
             'base' => array(
