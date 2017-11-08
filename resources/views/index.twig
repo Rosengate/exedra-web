@@ -181,7 +181,7 @@ $app->map->addRoutes(array(
         'list' => array(
             'method' => 'get',
             'path' => '/',
-            'execute' => 'controller=Person@index'
+            'execute' => function() {}
         )
       )
     )
@@ -191,11 +191,16 @@ $app->map->addRoutes(array(
                     <pre><code>
 $app->map->any('/books')->group(function($group)
 {
-    $group->get('/', 'controller=Book@index')
-      ->tag('bookList');
+    $group->get('/')
+    ->tag('bookList')
+    ->execute(function() {
+
+    });
 
     $group->get('/:id')
-      ->execute('controller=Book@view');
+    ->execute(function(){
+
+    });
 });
 </code></pre>
                 </div>
