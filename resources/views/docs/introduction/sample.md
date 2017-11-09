@@ -22,7 +22,7 @@ $app->map['contact-us']
 
 You can also tag the route.
 ```php
-$app->map->get('/faq')
+$app->map['faq']->get('/faq')
     ->tag('faq')->execute(function() {
     });
 ```
