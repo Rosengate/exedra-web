@@ -47,7 +47,7 @@ $app->factory('runtime.context', function($app, \Exedra\Routing\Finding $finding
     if($context = $finding->getAttribute('context'))
         return new $context($app, $finding, $response);
         
-    return new \CoolApp\Context::class;
+    return new \CoolApp\Context($app, $finding, $response);
 });
 ```
 ### `Exedra\Runtime\Response`
