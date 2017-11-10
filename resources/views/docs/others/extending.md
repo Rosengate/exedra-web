@@ -41,6 +41,15 @@ All created `Context` will use this one instead.
 ```
 $app->factory('runtime.context', \CoolApp\Context::class);
 ```
+Or if you even rather want to have much contextual `Context`
+````
+$app->factory('runtime.context', function($app, \Exedra\Routing\Finding $finding, $response) {
+    if($context = $finding->getAttribute('context'))
+        return new $context($app, $finding, $response);
+        
+    return new \CoolApp\Context::class;
+});
+```
 ### `Exedra\Runtime\Response`
 ```
 $app->factory('runtime.response', \CoolApp\Response::class);
