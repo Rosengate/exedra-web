@@ -1,5 +1,15 @@
 # Registry
+## Table of Contents
+---
+- [Introduction](#introduction)
+- [Service](#service)
+- [Factory](#factory)
+- [Callable](#callable)
+- [Shared services, factories and callables](#shared-services,-factories-and-callables)
 
+---
+
+## Introduction
 Both `Exedra\Application` and `Exedra\Runtime\Context` are built as `Exedra\Container\Container`. This inheritance allows you to set a lazy services, factory creating object and so on.
 
 ## Service
@@ -54,7 +64,7 @@ And the callable is invokable on the application instance.
 $app->log('Something not well.');
 ```
 
-## Shared services, factories / callables
+## Shared services, factories and callables
 Sometimes you might prefer to setup once and share with the context. You may do so by prefixing the name 
 with `@`.
 ```

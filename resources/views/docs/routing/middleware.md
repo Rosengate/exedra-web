@@ -1,4 +1,13 @@
 # Middleware
+## Table of Contents
+---
+- [Introduction](#introduction)
+- [Adding a middleware](#adding-a-middleware)
+  - [Global middleware](#global-middleware)
+  - [Route based middleware](#route-based-middleware)
+- [Middleware class](#middleware-class)
+
+---
 
 Middleware is simply a layer(s) that surrounds your application runtime. In Exedra, the concept of middleware no longer bound to handling request/response only, but anything including your domain logic.
 

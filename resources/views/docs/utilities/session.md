@@ -3,6 +3,15 @@
 
 A dot notated native session manager. Initially not included.
 
+## Table of Contents
+---
+- [Setup](#setup)
+- [Usages](#usages)
+- [Multidimensional Key](#multidimensional-key)
+- [Flash](#flash)
+
+---
+
 ## Setup
 
 Add this service (along with ```Exedra\Session\Flash``` service) through provider.

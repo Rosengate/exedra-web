@@ -1,5 +1,15 @@
 #Usages
-## Simple Routes
+
+## Table of Contents
+---
+- [Simple Routes](#simple-routes)
+- [Global Middleware](#global-middleware)
+- [Nested Routing Example](#nested-routing-example)
+- [Map of array routing](#map-of-array-routing)
+
+---
+
+### Simple Routes
 ```php
 <?php
 use Exedra\Routing\Context;
@@ -27,7 +37,7 @@ $app->map['faq']->get('/faq')
     });
 ```
 
-## Global middleware
+### Global Middleware
 Apply middleware to all requests
 ```php
 $app->map->middleware(function(Context $context)
@@ -39,7 +49,7 @@ $app->map->middleware(function(Context $context)
 $app->map->middleware(\App\Middleware\All::CLASS);
 ```
 
-## Nested routing example
+### Nested Routing Example
 The main dishes of the framework
 ```php
 $app->map['api']->any('/api')->middleware(\App\Middleware\Api::CLASS)->group(function($api)
@@ -98,7 +108,7 @@ $app->map['api']->any('/api')->middleware(\App\Middleware\Api::CLASS)->group(fun
 return $app;
 ```
 
-## Map of array routing
+### Map of array routing
 ```php
 $app->map->addRoutes(array(
     'book' => array(

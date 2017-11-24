@@ -1,9 +1,24 @@
 # Routing
 `Exedra\Routing\*`
 
-The main component of exedra, the entry point of a request dispatch. Every route is unique, and identifable by name, taggable and findable. They're reusable to the extent of generating a url for the route, doing a route based execution, or query a route even for your own use. In this page we'll focus on writing them.
+## Table of Contents
+---
+- [Introduction](#introduction)
+- [Request Verbs](#request-verbs)
+- [Route Naming](#route-naming)
+- [Route Handle](#route-handle)
+- [Named Parameter](#named-parameter)
+- [Nested Routing](#nested-routing)
+- [Attributes](#attributes)
+- [Set Properties](#set-properties)
+- [Dependency Injection](#dependency-injection)
+- [Chainable API](#chainable-api)
+
+---
 
 ## Introduction
+
+The main component of exedra, the entry point of a request dispatch. Every route is unique, and identifable by name, taggable and findable. They're reusable to the extent of generating a url for the route, doing a route based execution, or query a route even for your own use. In this page we'll focus on writing them.
 
 Throughout the documentation, you'll often find most routing begins with `$app->map`. This `Exedra\Routing\Group` type as we call it, is the first group of routes, unbounded to any route. It's registered as a service on application instance itself.
 
@@ -74,7 +89,7 @@ Sample usage
 echo $app->url->route('#add-product');
 ```
 
-## Route execute
+## Route Handle
 ### `Route::execute(mixed handle)`
 The route handle execution method
 ```

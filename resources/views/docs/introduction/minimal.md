@@ -1,8 +1,11 @@
 # Minimal Setup
-Exedra by the most basic design is just an application made of a service container, request, and response object, a router, a context, and some other minor things like
-- ```Exedra\Path```
-- ```Exedra\Url\UrlFactory```
-- ```Exedra\Routing\Factory```
+
+## Table of Contents
+---
+- [Hello world bootstrap](#hello-world-bootstrap)
+- [Dispatch](#dispatch)
+
+---
 
 ### Hello world bootstrap
 Create a file called ```app.php```. (any file name is cool)

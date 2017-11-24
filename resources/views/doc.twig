@@ -98,5 +98,13 @@
             {% endif %}
         </div>
     </div>
+    <script type="text/javascript">
+        $('h1, h2, h3, h4, h5, h6').each(function(i, e) {
+            // https://stackoverflow.com/questions/1983648/replace-space-with-dash-and-make-all-letters-lower-case-using-javascript
+            var id = $(e).html().replace(/\s+/g, '-').toLowerCase();
+
+            $(e).attr('id', id);
+        });
+    </script>
 </body>
 </html>

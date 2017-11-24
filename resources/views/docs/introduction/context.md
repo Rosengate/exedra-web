@@ -1,4 +1,15 @@
 # Context
+
+## Table of Contents
+---
+- [Introduction](#introduction)
+- [Preview](#preview)
+- [Utilities](#utilities)
+
+---
+
+### Introduction
+
 Known as ```Exedra\Runtime\Context```. 
 
 This object is available only within a runtime; through an application ```dispatch()``` or ```execute()``` method.
