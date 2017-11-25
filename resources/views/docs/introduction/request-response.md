@@ -1,13 +1,12 @@
 # Request And Response
-
-These components implement psr-7 message interfaces.
-
 ## Table of Contents
 ---
 - [Server Request](#server-request)
 - [Response](#response)
 
 ---
+
+These components implement psr-7 message interfaces.
 
 ## Server Request
 `Exedra\Http\ServerRequest`

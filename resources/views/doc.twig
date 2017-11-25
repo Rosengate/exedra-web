@@ -86,8 +86,14 @@
             </ul>
         </div>
         <div class="header" style="text-align: right;">
-            <a href="{{ url.route('@web') }}">Home</a> |
-            <a href="https://github.com/rosengate/exedra" target="_blank">Github</a>
+            <a href="{{ url.route('@web') }}">
+                <span class="fa fa-home"></span>
+                Home
+            </a> |
+            <a href="https://github.com/rosengate/exedra" target="_blank">
+                <span class="fa fa-github"></span>
+                Github
+            </a>
         </div>
         <div class="content-body">
             {% if twig_path %}

@@ -1,7 +1,19 @@
 # Extending Exedra
 
+## Table of Contents
+---
+- [Introduction](#introduction)
+- [Application](#application)
+- [Services](#services)
+- [Factories](#factories)
+- [Routing Classes](#routing-classes)
+
+---
+
+## Introduction
 There might comes a point where you need to use your own ServerRequest, Application, Context, and so on. Fear no longer.
 
+## Application
 Most cases are done through factory registry, except the Application, since it's the first.
 
 ### `Exedra\Application`

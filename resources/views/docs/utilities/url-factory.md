@@ -1,14 +1,13 @@
 # URL Factory
-```Exedra\Url\UrlFactory```
-
 ## Table of Contents
 - [Creating Urls](#creating-urls)
 - [URL Object](#url-object)
 
 ---
 
+This component (`Exedra\Url\UrlFactory`) helps you with url creation, routing url routing resolve and so on. Available in both `Exedra\Application` and `Exedra\Runtime\Context`.
+
 ## Creating Urls
-This component helps you with url creation, routing url routing resolve and so on. Available in both `Exedra\Application` and `Exedra\Runtime\Context`.
 
 All methods of this factory return ```Exedra\Url\Url```.
 
@@ -35,7 +34,7 @@ $url = $context->url->previous();
 ### `UrlFactory::to(string $path)`
 Generate a url to given path
 ```
-$url = $context->url=>to($path);
+$url = $context->url->to($path);
 ```
 
 ## URL Object

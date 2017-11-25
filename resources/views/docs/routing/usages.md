@@ -1,6 +1,4 @@
 # Routing
-`Exedra\Routing\*`
-
 ## Table of Contents
 ---
 - [Introduction](#introduction)
@@ -11,6 +9,7 @@
 - [Nested Routing](#nested-routing)
 - [Attributes](#attributes)
 - [Set Properties](#set-properties)
+- [Validator](#validator)
 - [Dependency Injection](#dependency-injection)
 - [Chainable API](#chainable-api)
 
@@ -169,6 +168,30 @@ $app->map->get('/authors')->setProperties(array(
 
 	}
 ));
+```
+
+## Validator
+Add a custom validator on your routing.
+
+It's expected to return `boolean` for the validation result.
+
+#### With closure
+```php
+<?php
+$app->map->get('/author/:id')
+    ->validate(function($params) {
+        return is_int($params['id']);
+    })
+    ->execute(function() {
+        
+    });
+```
+
+#### Class name
+The class must implement `Exedra\Contacts\Routing\Validator`.
+```
+$app->map->get('/books/:name')
+    ->validate(AlphanumericValidator::class);
 ```
 
 ## Dependency injection

@@ -21,6 +21,9 @@
   },
   "Others": {
     "others/service-provider": "Service Provider",
-    "others/extending": "Extending Exedra"
+    "others/extending": "Extending Exedra",
+    "others/independent-routing": "Independent Routing",
+    "others/framework": "Framework",
+    "others/routing-controller": "Routing Controller"
   }
 }
