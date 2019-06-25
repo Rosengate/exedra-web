@@ -27,6 +27,7 @@
     "utilities/session": "Session"
   },
   "Others": {
+    "others/console": "Console",
     "others/service-provider": "Service Provider",
     "others/extending": "Extending Exedra",
     "others/independent-routing": "Independent Routing",
