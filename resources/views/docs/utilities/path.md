@@ -3,7 +3,7 @@
 
 A registry of directory locations. This component is initially available in both `Exedra\Application` and `Exedra\Runtime\Context` instance as a service.
 
-Both `$app->path` and `$context->path` imply the root `__DIR__` of the application.
+Both `$app->path` and `$context->path` imply the application root directory when the `Exedra\Application` is instanced.
 
 ### `Path::to(string $location) : string`
 Location string path relative to the instance.

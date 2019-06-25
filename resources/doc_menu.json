@@ -12,6 +12,13 @@
     "routing/properties": "Properties",
     "routing/middleware": "Middleware"
   },
+  "Controller": {
+    "controller/introduction": "Introduction",
+    "controller/usages": "Usages",
+    "controller/routing-group": "Routing Group",
+    "controller/restful-verbs": "Restful Verbs",
+    "controller/others": "Others"
+  },
   "Utilities": {
     "utilities/url-factory": "URL Factory",
     "utilities/redirection": "Redirection",
@@ -23,7 +30,6 @@
     "others/service-provider": "Service Provider",
     "others/extending": "Extending Exedra",
     "others/independent-routing": "Independent Routing",
-    "others/framework": "Framework",
-    "others/routing-controller": "Routing Controller"
+    "others/framework": "Framework"
   }
 }

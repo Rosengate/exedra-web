@@ -4,13 +4,14 @@ There might be a moment you want to create a package for exedra, or as provider 
 It could also be used to provision your own services.
 
 ### Implementation
-Implement the \Exedra\Contracts\Provider
+Implement the `\Exedra\Contracts\Provider\Provider`
 
-```
+```php
+<?php
 //.. sample provider
 namespace Taskful\Support;
 
-class Provider implements \Exedra\Contracts\Provider
+class Provider implements \Exedra\Contracts\Provider\Provider
 {
 	public function register(\Exedra\Application $app)
 	{
@@ -24,7 +25,7 @@ class Provider implements \Exedra\Contracts\Provider
 }
 ```
 Then register the provider.
-```
+```php
 $app->provider->add(\Taskful\Support\Provider);
 ```
 Or if you prefer an instanced one, which depends on the implementation.

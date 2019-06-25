@@ -189,8 +189,7 @@ $app->map->addRoutes(array(
 </code></pre>
                     <div class='example-title'><span class='fa fa-share-alt'></span> Convenient Routing</div>
                     <pre><code>
-$app->map->any('/books')->group(function($group)
-{
+$app->map->any('/books')->group(function($group) {
     $group->get('/')
     ->tag('bookList')
     ->execute(function() {
@@ -198,7 +197,7 @@ $app->map->any('/books')->group(function($group)
     });
 
     $group->get('/:id')
-    ->execute(function(){
+    ->execute(function() {
 
     });
 });
@@ -214,22 +213,24 @@ echo $context->url->route('@person.list');
 // search tagged route
 echo $context->url->route('#bookList');
 </code></pre>
-                <div class='example-title'><span class='fa fa-cog'></span> Creating a view</div>
+                <div class='example-title'><span class='fa fa-cog'></span> Controller</div>
                 <pre><code>
-$view = $context->view->create('book/list');
-
-$view->set('title', 'List of books');
-$view->set('authors', $authors);
-
-echo $view->render();
+/**
+ * @name about-us
+ * @path /about-us
+ * @method GET|POST
+ */
+public function executeAboutUs(Context $context)
+{
+    return 'This is about page';
+}
 </code></pre>
-                <div class='example-title'><span class='fa fa-code'></span> Form</div>
+                <div class='example-title'><span class='fa fa-code'></span> Middleware</div>
                 <pre><code>
-echo $context->form->text('bookTitle')
-      ->attr('class="form-control"');
-
-echo $context->form->select('gender')
-      ->setOptions(array('male', 'female'));
+$app->map->middleware(function(\Exedra\Runtime\Context $context)
+{
+	return $context->next($context);
+});
 </code></pre>
             </div>
             <div class='col-sm-4'>

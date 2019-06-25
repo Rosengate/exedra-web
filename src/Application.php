@@ -4,7 +4,7 @@ namespace Exedra\Web;
 use Exedra\Web\Controllers\WebController;
 use Exedra\Web\Providers\TwigProvider;
 use Exedra\Web\Providers\UrlSetupProvider;
-use Exedron\Routeller\RoutellerProvider;
+use Exedra\Routeller\RoutellerProvider;
 
 class Application extends \Exedra\Application
 {
