@@ -1,220 +1,185 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Exedra | Route oriented PHP microframework</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A multi-tier nestful route oriented PHP microframework, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing">
-    <meta name="author" content="Ahmad Rahimie">
+  <title>Exedra | Route oriented PHP microframework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+        content="A nestful route oriented PHP microframework, shipped with a flexibility that allow you to design, plan and prototype your application and execution hierarchically through the map of routing">
+  <meta name="author" content="Ahmad Rahimie">
 
-    <link rel="stylesheet" type="text/css" href="{{ url.asset('css/bootstrap.min.css') }}">
-    <script src="{{ url.asset('js/jquery.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ url.asset('devaid/plugins/font-awesome/css/font-awesome.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{  url.asset("highlight-js/styles/foundation.css") }}">
-    <script type="text/javascript" src='{{ url.asset("highlight-js/highlight.pack.js") }}'></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script type="text/javascript">
+  <link rel="stylesheet" type="text/css" href="{{ url.asset('css/bootstrap.min.css') }}">
+  <script src="{{ url.asset('js/jquery.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ url.asset('devaid/plugins/font-awesome/css/font-awesome.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url.asset("highlight-js/styles/foundation.css") }}">
+  <script type="text/javascript" src='{{ url.asset("highlight-js/highlight.pack.js") }}'></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script type="text/javascript">
 
-        $(document).ready(function()
-        {
-            $("pre code").each(function(i, block)
-            {
-                this.innerHTML  = this.innerHTML.trim();
-            });
-        });
+      $(document).ready(function () {
+          $("pre code").each(function (i, block) {
+              this.innerHTML = this.innerHTML.trim();
+          });
+      });
 
-    </script>
-    <style type="text/css">
-        @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+  </script>
+  <style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-        *
-        {
-            font-family: 'Open Sans';
-        }
+    * {
+      font-family: 'Open Sans';
+    }
 
-        pre
-        {
-            padding: 0px;
-        }
-        body
-        {
-            background: #f0f0f0;
-        }
+    pre {
+      padding: 0px;
+    }
 
-        .section-features .row > div
-        {
-            height: 130px;
-        }
+    body {
+      background: #f0f0f0;
+    }
 
-        .section-features .row > div > div:first-child
-        {
-            font-size: 1.3em;
-            font-weight: bold;
-        }
+    .section-features .row > div {
+      height: 130px;
+    }
 
-        .example-title
-        {
-            font-size: 1.1em;
-            font-weight: bold;
-            padding: 3px;
-        }
+    .section-features .row > div > div:first-child {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
 
-        .section-examples
-        {
-            margin-bottom: 100px;
-            margin-top: 70px;
-        }
+    .example-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      padding: 3px;
+    }
 
-        .section-examples pre
-        {
-            margin-bottom: 15px;
-        }
+    .section-examples {
+      margin-bottom: 100px;
+      margin-top: 70px;
+    }
 
-        .footer > div
-        {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #555555;
-        }
+    .section-examples pre {
+      margin-bottom: 15px;
+    }
 
-        .jumbotron a
-        {
-            color: #555555;
-            letter-spacing: 1px;
-            font-size: 1.1em;
-        }
+    .footer > div {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #555555;
+    }
 
-        #title-documentation
-        {
-            font-size: 25px;
-        }
-        #title-exedra
-        {
-            font-size: 150px;
-        }
-        @media (max-width:768px){
-            #title-exedra
-            {
-                font-size: 80px;
-            }
+    .jumbotron a {
+      color: #555555;
+      letter-spacing: 1px;
+      font-size: 1.1em;
+    }
 
-            .jumbotron a
-            {
-                color: #555555;
-                letter-spacing: 1px;
-                font-size: 1em;
-            }
+    #title-documentation {
+      font-size: 25px;
+    }
 
-            .jumbotron .lead
-            {
-            }
+    #title-exedra {
+      font-size: 150px;
+    }
 
-            pre code
-            {
-                font-size: 0.9em;
-            }
-        }
+    @media (max-width: 768px) {
+      #title-exedra {
+        font-size: 80px;
+      }
 
-    </style>
+      .jumbotron a {
+        color: #555555;
+        letter-spacing: 1px;
+        font-size: 1em;
+      }
+
+      .jumbotron .lead {
+      }
+
+      pre code {
+        font-size: 0.9em;
+      }
+    }
+
+  </style>
 </head>
 <body>
 <div class='container'>
-    <div class='jumbotron' style="text-align: center; margin-bottom: 120px;">
-        <a href='{{ url.route('@web.docs.index') }}'>Documentation</a> |
-        <a target="_blank" href='https://github.com/rosengate/exedra'>Github</a> |
-        <a href='{{ url.route('@web.docs.default', {'view': 'introduction/installation'}) }}'>Installation</a>
-        <h1 id='title-exedra'>Exedra</h1>
-        <p class='lead'>
-            A multitier nestful route oriented <b>PHP microframework</b>, shipped with a flexibility that let you design, plan and prototype your application and execution hierarchically through the map of routing.
-        </p>
+  <div class='jumbotron' style="text-align: center; margin-bottom: 120px;">
+    <a href='{{ url.route('@web.docs.index') }}'>Documentation</a> |
+    <a target="_blank" href='https://github.com/rosengate/exedra'>Github</a> |
+    <a href='{{ url.route('@web.docs.default', {'view': 'introduction/installation'}) }}'>Installation</a>
+    <h1 id='title-exedra'>Exedra</h1>
+    <p class='lead'>
+      A nestful route oriented <b>PHP microframework</b>, shipped with a flexibility that allow you to design, plan
+      and prototype your application and execution hierarchically through the map of routing.
+    </p>
+  </div>
+  <section class='section-features'>
+    <h2 style="text-align: center; margin-bottom: 25px;">What's Exedra?</h2>
+    <div class='row'>
+      <div class='col-sm-4'>
+        <div><span class='fa fa-share-alt'></span> Nestful Routing</div>
+        <div>
+          Write a routing beneath another route. Hierarchically design your application based on a nestable/groupable
+          level of routing.
+        </div>
+      </div>
+      <div class='col-sm-4'>
+        <div><span class='fa fa-map-marker'></span> Route Oriented</div>
+        <div>
+          From writing how your application may behave, to querying back the route for url generation, to hierarchically
+          design your application, to binding your middleware on any node of your route.
+        </div>
+      </div>
+      <div class='col-sm-4'>
+        <div><span class='fa fa-paste'></span> Adaptive and flexible</div>
+        <div>
+          Write and use your own handler, design your own routing component(s). Or customize your very own application
+          structure.
+        </div>
+      </div>
     </div>
-    <section class='section-features'>
-        <h2 style="text-align: center; margin-bottom: 25px;">What's Exedra?</h2>
-        <div class='row'>
-            <div class='col-sm-4'>
-                <div><span class='fa fa-share-alt'></span> Nestful Routing</div>
-                <div>
-                    Write a routing beneath another route. Hierarchically design your application based on a nestable/groupable level of routing.
-                </div>
-            </div>
-            <div class='col-sm-4'>
-                <div><span class='fa fa-map-marker'></span> Route Oriented</div>
-                <div>
-                    From writing how your application may behave, to querying back the route for url generation, to hierarchically design your application, to binding your middleware on any node of your route.
-                </div>
-            </div>
-            <div class='col-sm-4'>
-                <div><span class='fa fa-paste'></span> Adaptive and flexible</div>
-                <div>
-                    Write and use your own handler, design your own routing component(s). Or customize your very own application structure.
-                </div>
-            </div>
+    <div class='row'>
+      <div class='col-sm-4'>
+        <div><span class='fa fa-code'></span> Near-zero convention and configuration</div>
+        <div>
+          There're still a configuration, and convention. But too little are required just to have your application
+          running.
         </div>
-        <div class='row'>
-            <div class='col-sm-4'>
-                <div><span class='fa fa-code'></span> Near-zero convention and configuration</div>
-                <div>
-                    There're still a configuration, and convention. But too little are required just to have your application running.
-                </div>
-            </div>
-            <div class='col-sm-4'>
-                <div><span class='fa fa-flash'></span> Fast</div>
-                <div>It's fast. Designed with minimum architecture in mind, without sacrificing the extensibility very much.</div>
-            </div>
-            <div class='col-sm-4'>
-                <div><span class='fa fa-gear'></span> Contextual</div>
-                <div>Codes live in their context. Nothing is outworldy unless specified.</div>
-            </div>
+      </div>
+      <div class='col-sm-4'>
+        <div><span class='fa fa-flash'></span> Fast</div>
+        <div>It's fast. Designed with minimum architecture in mind, without sacrificing the extensibility very much.
         </div>
-    </section>
-    <section class='section-examples'>
-        <h2 style="text-align: center; margin-bottom: 25px;">Sneak peak</h2>
-        <div class='row'>
-            <div class='col-sm-4'>
-                <div class='example-title'><span class='fa fa-share-alt'></span> Default routing</div>
-                <div>
-<pre><code>
-$app->map->addRoutes(array(
-  'person' => array(
-      'method' => 'any',
-      'path' => '/persons',
-      'subroutes' => array(
-        'list' => array(
-            'method' => 'get',
-            'path' => '/',
-            'execute' => function() {}
-        )
-      )
-    )
-));
-</code></pre>
-                    <div class='example-title'><span class='fa fa-share-alt'></span> Convenient Routing</div>
-                    <pre><code>
+      </div>
+      <div class='col-sm-4'>
+        <div><span class='fa fa-gear'></span> Contextual</div>
+        <div>Codes live in their context. Nothing is outworldy. No singletons, no facades.</div>
+      </div>
+    </div>
+  </section>
+  <section class='section-examples'>
+    <h2 style="text-align: center; margin-bottom: 25px;">Sneak peak</h2>
+    <div class='row'>
+      <div class='col-sm-4'>
+        <div>
+          <div class='example-title'><span class='fa fa-share-alt'></span> Convenient Routing [<a href="{{ url.route('@web.docs.default', {'view': 'routing/usages'}) }}">more</a>]</div>
+          <pre><code>
 $app->map->any('/books')->group(function($group) {
     $group->get('/')
     ->tag('bookList')
     ->execute(function() {
-
+        // list books?
     });
 
     $group->get('/:id')
     ->execute(function() {
-
+        // get single book?
     });
 });
 </code></pre>
-                </div>
-            </div>
-            <div class='col-sm-4'>
-                <div class='example-title'><span class='fa fa-link'></span> URL Generator</div>
-                <pre><code>
-// absolute route
-echo $context->url->route('@person.list');
-
-// search tagged route
-echo $context->url->route('#bookList');
-</code></pre>
-                <div class='example-title'><span class='fa fa-cog'></span> Controller</div>
-                <pre><code>
+          <div class='example-title'><span class='fa fa-cog'></span> Annotated Route Controller [<a href="{{ url.route('@web.docs.default', {'view': 'controller/introduction'}) }}">more</a>]</div>
+          <pre><code>
 /**
  * @name about-us
  * @path /about-us
@@ -224,18 +189,71 @@ public function executeAboutUs(Context $context)
 {
     return 'This is about page';
 }
-</code></pre>
-                <div class='example-title'><span class='fa fa-code'></span> Middleware</div>
-                <pre><code>
-$app->map->middleware(function(\Exedra\Runtime\Context $context)
+
+/**
+* @name auth
+* @path /auth
+*/
+public function groupAuth()
 {
-	return $context->next($context);
+    return AuthController::class;
+}
+</code></pre>
+        </div>
+      </div>
+      <div class='col-sm-4'>
+        <div class='example-title'><span class='fa fa-code'></span> Middleware [<a href="{{ url.route('@web.docs.default', {'view': 'routing/middleware'}) }}">more</a>]</div>
+        <pre><code>
+$app->map->middleware(function(Context $context) {
+    return $context->next($context);
 });
 </code></pre>
-            </div>
-            <div class='col-sm-4'>
-                <div class='example-title'><span class='fa fa-code-fork'></span> Path handling</div>
-                <pre><code>
+        <div class='example-title'><span class='fa fa-link'></span> URL Generator [<a href="{{ url.route('@web.docs.default', {'view': 'utilities/url-factory'}) }}">more</a>]</div>
+        <pre><code>
+// absolute route
+echo $context->url->route('@person.list');
+
+// search tagged route
+echo $context->url->route('#bookList');
+</code></pre>
+        <div class='example-title'><span class='fa fa-copy'></span> Service Registry [<a href="{{ url.route('@web.docs.default', {'view': 'introduction/container-registry'}) }}">more</a>]</div>
+        <pre><code>
+use Exedra\Application;
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+
+// some codes..
+
+$app->set('@twig', function(Application $app) {
+  $viewPath = $app->path->to('views');
+
+  $loader = new FilesystemLoader($viewPath);
+
+  return new Environment($loader);
+});
+
+// usage example
+$app->map->any('/contact-us')
+  ->execute(function(Context $context) {
+    return $context->twig->render('contact.twig');
+  });
+</code></pre>
+      </div>
+
+      <div class='col-sm-4'>
+        <div class='example-title'><span class='fa fa-location-arrow'></span> Redirection [<a href="{{ url.route('@web.docs.default', {'view': 'utilities/redirection'}) }}">more</a>]</div>
+        <pre><code>
+// redirect with absolute route
+return $context->redirect->route('@person.list');
+
+// redirect to tagged route
+return $context->redirect->route('#bookList');
+
+// redirect to url
+return $context->redirect->url($url);
+</code></pre>
+        <div class='example-title'><span class='fa fa-code-fork'></span> Path handling [<a href="{{ url.route('@web.docs.default', {'view': 'utilities/path'}) }}">more</a>]</div>
+        <pre><code>
 $file = $context->path->file('Logs/message.log');
 
 // get contents
@@ -244,8 +262,8 @@ $contents = $file->getContents();
 // put contents
 $file->putContents('message from mars');
 </code></pre>
-                <div class='example-title'><span class='fa fa-save'></span> Session</div>
-                <pre><code>
+        <div class='example-title'><span class='fa fa-save'></span> Session [<a href="{{ url.route('@web.docs.default', {'view': 'utilities/session'}) }}">more</a>]</div>
+        <pre><code>
 // dot notation based session
 $context->session->set('facebook.token', $token);
 $context->session->set('facebook.perms', $perms);
@@ -256,12 +274,14 @@ $facebookData = $context->session->get('facebook');
 // delete array of 'facebook' session data
 $context->session->destroy('facebook');
 </code></pre>
-            </div>
-        </div><!-- row ends -->
-    </section>
-    <div class='footer'>
-        <div>Copyright 2016 <a href='http://rosengate.com' target="_blank">Rosengate</a> | <a target="_blank" href='https://github.com/eimihar'>Ahmad Rahimie bin Ahmad Zailani</a> | Free to use under MIT license</div>
+      </div>
+    </div><!-- row ends -->
+  </section>
+  <div class='footer'>
+    <div>Copyright 2019 <a href='http://rosengate.com' target="_blank">Rosengate</a> | <a target="_blank"
+                                                                                          href='https://github.com/eimihar'>Rahimie Ahmad</a> | Free to use under MIT license
     </div>
+  </div>
 </div> <!-- container ends -->
 </body>
 </html>

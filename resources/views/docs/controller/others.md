@@ -17,8 +17,9 @@
  * @ajax true
  * @middleware \App\Middleware\Auth
  */
-pubic function executeUsers()
+public function executeUsers()
 {
+    // do something?
 }
 ```
 ## Attributes
@@ -93,10 +94,12 @@ It takes a combination of verb and the method name. For example,
 ```php
 public function postProducts()
 {
+    // add product or something
 }
 
 public function get()
 {
+    // get product or something
 }
 ```
 Above routing will have a method name like **.post-products**. (**@web.products.post-products**)

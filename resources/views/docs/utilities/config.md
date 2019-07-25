@@ -3,10 +3,10 @@
 
 A dot notation configuration bag, with sets of common methods. Initially available in both `Exedra\Application` and `Exedra\Runtime\Context`.
 
-### `Config::get(string $name)`
+### `Config::get(string $name, mixed default = null)`
 Get the config value
 ```
-$app->config->get('myname');
+$app->config->get('myname', 'John Doe');
 ```
 
 ### `Config::set(string $name, mixed $value)`

@@ -43,19 +43,22 @@ $statement = $app->get('pdo')->query('SELECT * FROM foo');
 
 This container also allows you to dynamically register an object factory.
 ```
-$app->factory('view', function($path) {
+$app->factory('@view', function($path) {
     return new \Exedra\View\View($path);
 });
 ```
 Usage example
 ```
-$app->create('view', ['index.php']);
+return $app->create('view', ['index.php']);
+```
+or
+```
+return $context->create('view', ['index.php']);
 ```
 
 ## Callable
 ```
-$app->func('@log', function($message)
-{
+$app->func('@log', function($message) {
 	$this->log->create($mesasge);
 });
 ```
@@ -69,7 +72,7 @@ Sometimes you might prefer to setup once and share with the context. You may do 
 with `@`.
 ```
 // this example use Twig templating
-$app->set('@twig', function(\Exedra\Application $app){
+$app->set('@twig', function(\Exedra\Application $app) {
     $loader = new \Twig_Loader_Filesystem($app->path->to('views'));
 
     return new \Twig_Environment($loader);
@@ -81,7 +84,8 @@ use Exedra\Runtime\Context;
 
 //... some codes here probably
 
-$app->map->any('/')->execute(function(Context $context) {
-    return $context->twig->render('index.twig');
-});
+$app->map->any('/')
+    ->execute(function(Context $context) {
+        return $context->twig->render('index.twig');
+    });
 ```

@@ -26,7 +26,7 @@ class Provider implements \Exedra\Contracts\Provider\Provider
 ```
 Then register the provider.
 ```php
-$app->provider->add(\Taskful\Support\Provider);
+$app->provider->add(\Taskful\Support\Provider::class);
 ```
 Or if you prefer an instanced one, which depends on the implementation.
 ```

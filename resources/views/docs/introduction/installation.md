@@ -20,7 +20,7 @@ composer require rosengate/exedra dev-master
 ### Git Clone
 You may git clone and then do the autoloading by your own if you want, or use ours.
 
-```
+```css
 git clone https://github.com/rosengate/exedra
 ```
 

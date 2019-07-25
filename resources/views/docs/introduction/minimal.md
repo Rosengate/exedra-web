@@ -26,12 +26,12 @@ return $app;
 Then create a ```/public/index.php``` as the front controller in order to test your app.
 ```php
 <?php
-$app = require_once __DIR__.'/../app.php';
+$app = require_once __DIR__ . '/../app.php';
 
 $app->dispatch();
 ```
 And simply test it with the built-in php server.
-```
+```console
 cd public
 php -S localhost:8080
 ```

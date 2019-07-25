@@ -12,30 +12,36 @@ public function getProducts(Context $context)
 {
 }
 ```
+<br/>
+
 ```php
 /**
  * Create a new product
  * @path /
  */
-pubic function postProducts(Context $context)
+public function postProducts(Context $context)
 {
 }
 ```
+<br/>
+
 ```php
 /**
  * GET the product
  * @path /[:id]
  */
-pubic function getProduct(Context $context)
+public function getProduct(Context $context)
 {
 }
 ```
+<br/>
+
 ```php
 /**
  * DELETE the product
  * @path /[:id]
  */
-pubic function getProduct(Context $context)
+public function getProduct(Context $context)
 {
 }
 ```

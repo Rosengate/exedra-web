@@ -43,6 +43,10 @@ class DocController extends BaseController
         }
 
         $routeProperties = array(
+            'name' => array(
+                'description' => 'Immutable route identifier. Can only be named through certain means.',
+                'value' => ['<code>string</code>']
+            ),
             'method' => array(
                 'description' => 'An HTTP Method. It can be a single method, or multiple method or any. Not specifying any will set the method to <code>any</code>.',
                 'value' => array('<code>string</code>', '<code>array</code>')
@@ -82,6 +86,7 @@ class DocController extends BaseController
 
         return $context->twig->render('doc.twig', array(
             'menu' => json_decode($context->path->file('resources/doc_menu.json')->getContents(), true),
+            'current_view' => $view,
             'twig_path' => $twigPath,
             'contents' => $contents,
             'route_properties' => $routeProperties
