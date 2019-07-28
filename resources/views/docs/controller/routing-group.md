@@ -3,7 +3,6 @@
 ---
 - [Subrouting / Nest-Routing](#subrouting-/-nest-routing)
 - [Immediate subrouting](#immediate-subrouting)
-- [Normal routing](#normal-routing)
 
 ---
 
@@ -24,7 +23,7 @@ public function groupProducts()
 *The routing group under this method is resolved only when it's accessed.*
 
 ### Immediate subrouting
-Similar to `group` prefix, except that this one have their group resolved immediately.
+Similar to `group` prefix, except that this one have their group resolved immediately. Prefix with `sub`.
 ```php
 /**
  * @path /:product-id
@@ -37,33 +36,6 @@ public function subProduct(Group $group)
     
     $group['update']->post('/')->execute(function() {
         // do your things
-    });
-}
-```
-
-### Normal routing
-You can also do a usual routing by prefixing the method name with `setup`. This method expects no annotation.
-```php
-public function setup(Group $group)
-{
-    $group->get('/')->execute(function() {
-    });
-}
-
-public function setupCustom(Group $group)
-{
-    // do another thing
-}
-```
-This method also receives `Exedra\Application` as the second argument.
-
-```php
-/**
- * @path /comments
- */
-public function setup(Group $group, \Exedra\Application $app)
-{
-    $group->get('/')->execute(function() {
     });
 }
 ```

@@ -13,7 +13,7 @@
     "routing/middleware": "Middleware"
   },
   "Controller": {
-    "controller/introduction": "Introduction",
+    "controller/introduction": "Setup",
     "controller/usages": "Usages",
     "controller/routing-group": "Routing Group",
     "controller/restful-verbs": "Restful Verbs",

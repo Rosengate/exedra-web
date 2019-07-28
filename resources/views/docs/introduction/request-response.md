@@ -18,6 +18,13 @@ Get request method
 ```
 $method = $context->request->getMethod();
 ```
+
+### `ServerRequest::param(string name)`
+Get a merged query / parsed body parameters.
+```
+$username = $context->request->param('username');
+```
+
 ### `ServerRequest::getQueryParams()`
 Get GET parameters
 ```
@@ -27,13 +34,7 @@ $params = $context->request->getQueryParams();
 ### `ServerRequest::getParsedBody()`
 Get POST parameters
 ```
-$params = $context->request->getParsedBody()
-```
-
-### `ServerRequest::param(string name)`
-Get a merged query / parsed body parameters.
-```
-$username = $context->request->param('username');
+$params = $context->request->getParsedBody();
 ```
 
 ### `ServerRequest::getUploadedFile(string key)`

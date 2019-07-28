@@ -188,7 +188,7 @@ $app->map->get('/author/:id')
 ```
 
 #### Class name
-The class must implement `Exedra\Contacts\Routing\Validator`.
+The class must implement `Exedra\Contracts\Routing\Validator`.
 ```
 $app->map->get('/books/:name')
     ->validate(AlphanumericValidator::class);

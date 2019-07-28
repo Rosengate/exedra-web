@@ -1,4 +1,14 @@
-# Introduction
+# Installation
+## Table of Contents
+---
+- [Introduction](#introduction)
+- [Via Service Provider](#add-via-service-provider)
+- [Via Routing Factory](#add-via-routing-factory)
+- [Enable Caching](#enable-caching)
+
+---
+
+## Introduction
 A Minimal annotation and reflection based anemic routeful controller for Exedra. In a simple word, a routeable-action-controller component in steroid.
 
 Writing a lot of `\Closure` for your deep nested routing can get messier and not so IDE-friendly as they grow much bigger. 
@@ -9,15 +19,14 @@ The annotation design is fairly simple, just a `@property-value` mapping. Nothin
 
 *p/s : Originally developed as a separate package on https://github.com/exedron/routeller (now deprecated)*
 
-## Installation
-#### Add via service provider
+## Add via service provider
 Setup the service provider
 ```php
 // your application instance
 $app->provider->add(\Exedra\Routeller\RoutellerProvider::class);
 ```
 
-#### Add via routing factory
+## Add via routing factory
 Alternatively, you may manually add the handler, and set up additional things.
 ```php
 $app->routingFactory->addGroupHandler(new \Exedra\Routeller\Handler($app));
@@ -25,7 +34,7 @@ $app->routingFactory->addGroupHandler(new \Exedra\Routeller\Handler($app));
 $app->map->addExecuteHandler('routeller_execute', ExecuteHandler::class);
 ```
 
-#### Enable caching
+## Enable caching
 Enable a file based cache
 ```php
 $options = array(

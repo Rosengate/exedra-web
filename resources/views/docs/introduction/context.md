@@ -5,17 +5,18 @@
 - [Introduction](#introduction)
 - [Preview](#preview)
 - [Utilities](#utilities)
+- [Extending](#extending)
 
 ---
 
-### Introduction
+## Introduction
 
 Known as ```Exedra\Runtime\Context```. 
 
 This object is available only within a runtime; Available within an application ```dispatch()``` or ```execute()``` method.
 It contains information about the request and response instance, the executed route, their named parameters, the route attributes and so on.
 
-### Preview
+## Preview
 ```php
 use Exedra\Runtime\Context;
 
@@ -70,3 +71,14 @@ Forward current request to the specified route
 ```
 return $context->forward('@foo.404');
 ```
+
+## Extending
+You can either pass the class name as 2nd argument
+```
+$app = new \Exedra\Application(__DIR__, \MyApp\Context::class);
+```
+or through factory
+```
+$app->factory('runtime.context', \MyApp\Context::class);
+```
+and your context class needs to extend from `\Exedra\Runtime\Context`

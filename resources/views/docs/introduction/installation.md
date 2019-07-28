@@ -2,38 +2,26 @@
 ## Table of Contents
 ---
 - [Composer](#composer)
-- [Git Clone](#git-clone)
-- [Autoloading your sources](#autoloading-your-sources)
 
 ---
 
-You may install exedra using any of the following ways.
-But, first create your project folder and change directory into the folder.
-
 ### Composer
-Composer is a modern tool that helps you with package management, if you don't have one yet, please do so by visiting their site and install. It's recommended to do this way.
+Composer is a modern tool that helps you with package management, if you don't have one yet, get it from [here](https://getcomposer.org/download). It's recommended to do this way.
 
 ```
 composer require rosengate/exedra dev-master
 ```
 
-### Git Clone
-You may git clone and then do the autoloading by your own if you want, or use ours.
-
-```css
-git clone https://github.com/rosengate/exedra
-```
-
-To use our autoloader.
+### Autoload
+Create a file called `app.php`
 ```php
 <?php
-require_once __DIR__.'/path/to/Exedra/Path.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-\Exedra\Support\Autoloader::getInstance()->autoloadPsr4('Exedra\\', __DIR__ . '/path/to/exedra/src');
+$app = new \Exedra\Application(__DIR__);
+
+// your codes..
 ```
 
-### Autoloading your sources
-You can also use our autoloading mechanic to load your `src`
-```
-\Exedra\Support\Autoloader::getInstance()->autoloadPsr4('CoolApp\\', __DIR__ . '/src');
-```
+More information on how to set up your project can be found on the next topic
+

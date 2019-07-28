@@ -50,11 +50,11 @@ $app->factory('url.factory', \CoolApp\Url\Factory);
 
 ### `Exedra\Runtime\Context`
 All created `Context` will use this one instead.
-```
+```php
 $app->factory('runtime.context', \CoolApp\Context::class);
 ```
 Or if you even rather want to have much contextual `Context`
-````
+````php
 $app->factory('runtime.context', function($app, \Exedra\Routing\Finding $finding, $response) {
     if($context = $finding->getAttribute('context'))
         return new $context($app, $finding, $response);
@@ -62,8 +62,9 @@ $app->factory('runtime.context', function($app, \Exedra\Routing\Finding $finding
     return new \CoolApp\Context($app, $finding, $response);
 });
 ```
+
 ### `Exedra\Runtime\Response`
-```
+```php
 $app->factory('runtime.response', \CoolApp\Response::class);
 ```
 
@@ -76,3 +77,5 @@ $app->routingFactory->register(array(
     'group' => \CoolApp\Routing\Group::class
 ));
 ```
+
+## Routing Group

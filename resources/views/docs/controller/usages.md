@@ -6,6 +6,7 @@
 - [Adding plain routes](#adding-plain-routes)
 - [Middleware](#middleware)
 - [Dependency injection](#dependency-injection)
+- [Normal Routing](#normal-routing)
 
 ---
 
@@ -139,3 +140,30 @@ use Exedra\Routing\Group;
 - ```self``` and ```context``` is the same thing that is a type of \Exedra\Runtime\Context, the context of the current runtime.
 - the services prefixed with ```app.``` will instead look inside the ```Exedra\Application``` container 
 - without a prefix, ```context.```, ```self.``` or ```app.```, the resolve will only look for the service registered in the `Context` instance.
+
+### Normal routing
+You can also do a usual routing by prefixing the method name with `setup`. This method expects no annotation.
+```php
+public function setup(Group $group)
+{
+    $group->get('/')->execute(function() {
+    });
+}
+
+public function setupCustom(Group $group)
+{
+    // do another thing
+}
+```
+This method also receives `Exedra\Application` as the second argument.
+
+```php
+/**
+ * @path /comments
+ */
+public function setup(Group $group, \Exedra\Application $app)
+{
+    $group->get('/')->execute(function() {
+    });
+}
+```
