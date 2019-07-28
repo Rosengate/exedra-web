@@ -28,7 +28,7 @@ $router = $routingFactory->createGroup();
 ```
 ### The routing default handler
 Add a default routing handler, and write some sameple test.
-```
+```php
 $router->addExecuteHandler('execute', \Exedra\Routing\ExecuteHandlers\ClosureHandler::class);
 
 // a simple routing, and some middleware
@@ -44,7 +44,7 @@ $router['hello']->any('/hello')->group(function(Group $group) {
 ```
 ### Request dispatching
 Find matching by given request, and echo the matching response.
-````
+```
 // dispatch the guzzle ServerRequest
 try {
     $finding = $router->findByRequest($request = ServerRequest::fromGlobals());
