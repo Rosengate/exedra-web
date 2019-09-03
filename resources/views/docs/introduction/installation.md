@@ -10,7 +10,7 @@
 Composer is a modern tool that helps you with package management, if you don't have one yet, get it from [here](https://getcomposer.org/download). It's recommended to do this way.
 
 ```
-composer require rosengate/exedra dev-master
+composer require rosengate/exedra
 ```
 
 ## Autoload

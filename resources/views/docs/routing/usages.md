@@ -11,6 +11,7 @@
 - [Set Properties](#set-properties)
 - [Validator](#validator)
 - [Dependency Injection](#dependency-injection)
+- [Fail Route](#fail-route)
 - [Chainable API](#chainable-api)
 
 ---
@@ -64,8 +65,10 @@ All these methods return `Exedra\Routing\Route` type.
 ## Route Naming
 Create a named route through an array offset of the route level. Route name is useful on route finding functionality for url generator, and route based execution.
 ```
+use Exedra\Routing\Group;
+
 // returns \Exedra\Routing\Route
-$app->map['api']->any('/api')->group(function($api)
+$app->map['api']->any('/api')->group(function(Group $api)
 {
 	$api['author']->get('/author')->execute(function() {});
 });
@@ -78,7 +81,9 @@ echo $app->url->route('api.author'); // returns http://example.com/api/author
 ##### `Route::tag(string name)`
 Similar with naming, except method this allow a quick routing search, without knowing a full name.
 ```
-$app->map['api']->any('/api')->group(function($api)
+use Exedra\Routing\Group;
+
+$app->map['api']->any('/api')->group(function(Group $api)
 {
 	$api->post('/api/products')->tag('add-product')->execute(function(){ });
 });
@@ -213,6 +218,27 @@ $app->map->get('/user/:user-id')
     ->execute(function(\Pdo, \Exedra\Runtime\Context $context) {
     
     });
+```
+
+## Fail Route
+Set up a route where it's looked up to when there's no route found on dispatch/lookup within the current group or the groups under
+
+#### Set from group
+```php
+$app->map->setFailRoute('error');
+
+$app->map['error']->any('/404')->execute(function () {
+    // do something
+});
+```
+
+#### Set from route
+```php
+$app->map['error']->any('/404')
+->asFailRoute()
+->execute(function() {
+    // do something
+});
 ```
 
 ## Chainable API

@@ -1,6 +1,8 @@
 # Route properties
 ## Table of Contents
 ---
+- [Requestable](#requestable)
+- [Fail Route](#fail-route)
 - [Tagging and ajax](#tagging-and-ajax)
 - [Attributes](#attributes)
 - [All possible properties](#all-possible-properties)
@@ -9,6 +11,31 @@
 - [Notes](#notes)
 
 ---
+
+### Requestable
+Mark the route whether or not it's requestable (on request dispatch lookup)
+```php
+/**
+ * @name hidden
+ * @requestable false
+ */
+public function executeHidden()
+{
+}
+```
+
+### Fail Route
+Set up a route where it's looked up to when there's no route found on dispatch/lookup within the current group or the groups under
+```php
+/**
+ * @name error
+ * @asFailRoute true
+ * @requestable false
+ */
+public function get404()
+{
+}
+```
 
 ## Tagging and ajax
 ```php
