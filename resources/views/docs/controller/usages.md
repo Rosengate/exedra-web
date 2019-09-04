@@ -13,6 +13,8 @@
 ## Controller initial register
 On your preferred route, register the first controller through the *group()* method.
 ```php
+$app->provider->add(\Exedra\Routeller\RoutellerProvider::class);
+
 $app->map['web']->group(\App\Controller\WebController::class);
 ```
 The controller **MUST** by type of `\Exedra\Routeller\Controller\Controller`.

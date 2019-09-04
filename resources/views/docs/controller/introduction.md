@@ -5,6 +5,7 @@
 - [Via Service Provider](#add-via-service-provider)
 - [Via Routing Factory](#add-via-routing-factory)
 - [Enable Caching](#enable-caching)
+- [Root Controller](#root-controller)
 
 ---
 
@@ -15,7 +16,7 @@ Writing a lot of `\Closure` for your deep nested routing can get messier and not
 This package is built to tackle the issue and give you a nice routing controller over your routing groups. 
 The controller is anemic, flattened and incapable of construction (being a protected ```__construct```), but knows very well about the routing design.
 
-The annotation design is fairly simple, just a `@property-value` mapping. Nothing much!
+The annotation design is fairly simple, just a `@property value` mapping. Nothing much!
 
 *p/s : Originally developed as a separate package on https://github.com/exedron/routeller (now deprecated)*
 
@@ -46,3 +47,12 @@ $cache = new \Exedra\Routeller\Cache\FileCache(__DIR__ .'/routing_caches')
 $app->provider->add(new \Exedra\Routeller\Provider($cache, $options));
 ```
 The ```auto_reload``` option lets it reload the cache each time there's some change to the controllers.
+
+## Root Controller
+This setup method allows you to alternatively initialize your root routing through a controller itself.
+```php
+use Exedra\Routeller\RoutellerRootProvider;
+use App\Controllers\RootController;
+
+$app->provider->add(new RoutellerRootProvider(RootController::class));
+```
