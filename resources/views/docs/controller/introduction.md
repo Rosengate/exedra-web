@@ -23,7 +23,8 @@ The annotation design is fairly simple, just a `@property value` mapping. Nothin
 ## Add via service provider
 Setup the service provider
 ```php
-// your application instance
+$app = new \Exedra\Application(__DIR__);
+
 $app->provider->add(\Exedra\Routeller\RoutellerProvider::class);
 ```
 
