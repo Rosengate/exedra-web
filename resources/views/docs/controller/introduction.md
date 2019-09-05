@@ -55,5 +55,7 @@ This setup method allows you to alternatively initialize your root routing throu
 use Exedra\Routeller\RoutellerRootProvider;
 use App\Controllers\RootController;
 
+$app = new \Exedra\Application(__DIR__);
+
 $app->provider->add(new RoutellerRootProvider(RootController::class));
 ```
