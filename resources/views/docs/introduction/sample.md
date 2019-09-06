@@ -107,24 +107,3 @@ $app->map['api']->any('/api')->middleware(\App\Middleware\Api::CLASS)->group(fun
 
 return $app;
 ```
-
-### Map of array routing
-```php
-$app->map->addRoutes(array(
-    'book' => array(
-        'path' => '/books',
-        'subroutes' => array(
-            'list' => array(
-                'method' => 'GET',
-                'path' => '/',
-                'execute' => 'controller=Book@List',
-            'view' => array(
-                'method' => 'GET',
-                'path' => '/:id',
-                'execute' => 'controller=Book@View'
-                )
-            )
-        )
-    )
-));
-```

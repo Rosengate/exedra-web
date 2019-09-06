@@ -13,7 +13,7 @@
 
 Known as ```Exedra\Runtime\Context```. 
 
-This object is available only within a runtime; Available within an application ```dispatch()``` or ```execute()``` method.
+This object is available only within a runtime; Available within an application ```dispatch()``` or ```execute()``` runtime.
 It contains information about the request and response instance, the executed route, their named parameters, the route attributes and so on.
 
 ## Preview
