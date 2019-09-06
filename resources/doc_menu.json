@@ -2,7 +2,7 @@
   "Introduction": {
     "introduction/installation": "Installation",
     "introduction/minimal": "Minimal Setup",
-    "introduction/sample": "Usages",
+    "introduction/sample": "Examples",
     "introduction/context": "Context",
     "introduction/container-registry": "Registry",
     "introduction/request-response": "Request & Response"

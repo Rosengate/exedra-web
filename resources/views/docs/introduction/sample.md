@@ -5,7 +5,6 @@
 - [Simple Routes](#simple-routes)
 - [Global Middleware](#global-middleware)
 - [Nested Routing Example](#nested-routing-example)
-- [Map of array routing](#map-of-array-routing)
 
 ---
 
