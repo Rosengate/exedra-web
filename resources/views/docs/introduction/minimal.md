@@ -10,9 +10,9 @@
 ---
 
 ### Autoloading src
-Create and autoload your src or app folder, which is where all namespaced classes reside
+Create and autoload your `src` or `app` folder, which is where all your namespaced classes reside. Add below entry to your `composer.json` file.
 ```json
-"autoload": {
+  "autoload": {
     "psr-4": {"App\\": "src/"}
   }
 ```
