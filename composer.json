@@ -3,7 +3,7 @@
         "rosengate/exedra": "dev-master",
         "twig/twig": "~1.0",
         "symfony/console": "~3.0",
-        "erusev/parsedown": "1.6.3"
+        "erusev/parsedown": "1.7.2"
     },
     "autoload": {
         "psr-4": {
