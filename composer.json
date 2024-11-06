@@ -1,7 +1,7 @@
 {
     "require": {
         "rosengate/exedra": "dev-master",
-        "twig/twig": "~1.0",
+        "twig/twig": "~3.11",
         "symfony/console": "~3.0",
         "erusev/parsedown": "1.6.3"
     },
